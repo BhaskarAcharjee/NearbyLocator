@@ -41,8 +41,7 @@
                             android:layout_height="20sp"
                             android:layout_gravity="center"
                             android:layout_marginEnd="5sp"
-                            android:src="@drawable/icon_location">
-                        </ImageView>
+                            android:src="@drawable/icon_location" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -74,24 +73,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="30sp"
                 android:background="@color/black"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal" />
 
             <ImageView
                 android:id="@+id/iv_dineout_hero"
                 android:layout_width="match_parent"
                 android:layout_height="345sp"
-                android:src="@drawable/dineout_img_hero">
-            </ImageView>
+                android:src="@drawable/dineout_img_hero" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="350sp"
                 android:layout_below="@id/iv_dineout_hero"
                 android:layout_marginTop="10sp"
-                android:src="@drawable/dineout_img_body">
-
-            </ImageView>
+                android:src="@drawable/dineout_img_body" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -137,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15sp"
-                    android:paddingBottom="15sp"></androidx.recyclerview.widget.RecyclerView>
+                    android:paddingBottom="15sp" />
 
             </LinearLayout>
 
@@ -162,7 +157,7 @@
                         android:layout_height="1dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey"></View>
+                        android:background="@color/grey" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,7 +175,7 @@
                         android:layout_height="1sp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey"></View>
+                        android:background="@color/grey" />
 
                 </LinearLayout>
 
@@ -189,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="80dp"
-                    android:paddingEnd="80dp"></androidx.viewpager2.widget.ViewPager2>
+                    android:paddingEnd="80dp" />
 
             </LinearLayout>
 
@@ -213,8 +208,7 @@
                     android:id="@+id/rv_morearoundyou"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:nestedScrollingEnabled="false" />
 
             </LinearLayout>
 
@@ -265,7 +259,7 @@
                 android:layout_height="25sp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="5sp"
-                android:src="@drawable/icon_location"></ImageView>
+                android:src="@drawable/icon_location" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -314,7 +308,7 @@
                     android:maxLines="1"
                     android:text="Search for "
                     android:textColor="@color/grey"
-                    android:textSize="16sp"></TextView>
+                    android:textSize="16sp" />
 
                 <TextSwitcher
                     android:id="@+id/textSwitcher"
@@ -333,14 +327,14 @@
                     android:layout_height="20sp"
                     android:layout_marginEnd="10sp"
                     android:layout_toStartOf="@id/iv_mic"
-                    android:src="@drawable/icon_search"></ImageView>
+                    android:src="@drawable/icon_search" />
 
                 <ImageView
                     android:id="@+id/iv_mic"
                     android:layout_width="20sp"
                     android:layout_height="20sp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/icon_mic"></ImageView>
+                    android:src="@drawable/icon_mic" />
 
             </RelativeLayout>
 

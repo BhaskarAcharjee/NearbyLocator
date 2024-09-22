@@ -9,16 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swiggycloneapp.R
 import com.example.swiggycloneapp.model.DineoutDataClass
 
-class DineoutVertiImageAdapter(private val horiImageList: List<DineoutDataClass>): RecyclerView.Adapter<DineoutVertiImageAdapter.DineoutVertiImageHolder>() {
+class DineoutVertiImageAdapter(private val horiImageList: List<DineoutDataClass>) :
+    RecyclerView.Adapter<DineoutVertiImageAdapter.DineoutVertiImageHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): DineoutVertiImageAdapter.DineoutVertiImageHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.dineout_verti_card, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.dineout_verti_card, parent, false)
         return DineoutVertiImageHolder(view)
     }
 
-    override fun onBindViewHolder(holder: DineoutVertiImageAdapter.DineoutVertiImageHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: DineoutVertiImageAdapter.DineoutVertiImageHolder,
+        position: Int
+    ) {
         val data = horiImageList[position]
         holder.bind(data)
     }
@@ -27,7 +32,7 @@ class DineoutVertiImageAdapter(private val horiImageList: List<DineoutDataClass>
         return horiImageList.size
     }
 
-    inner class DineoutVertiImageHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class DineoutVertiImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivFood: ImageView = itemView.findViewById(R.id.iv_hotel)
         private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
         private val tvHotelRating: TextView = itemView.findViewById(R.id.tv_hotel_rating)

@@ -39,7 +39,13 @@ class FoodFragment : Fragment() {
     private lateinit var exploreAdapter: VertiImageAdapter
 
     private lateinit var textSwitcher: TextSwitcher
-    private val hintStrings = arrayOf("Hyderabad Briyani", "A2B Full Meals", "KFC Party Chicken Bowl", "Grill Nights BBQ", "Domino's Cheese Pizza")
+    private val hintStrings = arrayOf(
+        "Hyderabad Briyani",
+        "A2B Full Meals",
+        "KFC Party Chicken Bowl",
+        "Grill Nights BBQ",
+        "Domino's Cheese Pizza"
+    )
     private var currentHintIndex = 0
 
     override fun onCreateView(
@@ -65,7 +71,7 @@ class FoodFragment : Fragment() {
 
         setUpTransformer()
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
@@ -77,7 +83,8 @@ class FoodFragment : Fragment() {
         textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f
-            textView.typeface = ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
+            textView.typeface =
+                ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
             textView
         }
@@ -85,15 +92,18 @@ class FoodFragment : Fragment() {
         switchText()
 
         binding.apply {
-            rvToprated.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            rvToprated.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             topRatedAdapter = HoriImageAdapter(topRatedFoodsList)
             rvToprated.adapter = topRatedAdapter
 
-            rvQuickly.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            rvQuickly.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             getQuicklyAdapter = HoriImageAdapter(getQuicklyFoodsList)
             rvQuickly.adapter = getQuicklyAdapter
 
-            rvExplore.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            rvExplore.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             exploreAdapter = VertiImageAdapter(exploreFoodsList)
             rvExplore.adapter = exploreAdapter
 
@@ -115,10 +125,10 @@ class FoodFragment : Fragment() {
         viewPager2.currentItem = viewPager2.currentItem + 1
     }
 
-    private fun setUpTransformer(){
+    private fun setUpTransformer() {
         val transfomer = CompositePageTransformer()
         transfomer.addTransformer(MarginPageTransformer(90))
-        transfomer.addTransformer{ page,position ->
+        transfomer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
             page.scaleX = 0.85f + r * 0.4f
@@ -130,7 +140,10 @@ class FoodFragment : Fragment() {
         textSwitcher.setText(hintStrings[currentHintIndex])
         currentHintIndex = (currentHintIndex + 1) % hintStrings.size
 
-        textSwitcher.postDelayed({ switchText() }, 1500) // Delay between text switches (2 seconds in this example)
+        textSwitcher.postDelayed(
+            { switchText() },
+            1500
+        ) // Delay between text switches (2 seconds in this example)
     }
 
     override fun onPause() {

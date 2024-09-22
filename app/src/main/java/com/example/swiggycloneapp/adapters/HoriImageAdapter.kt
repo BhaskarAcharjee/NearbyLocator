@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swiggycloneapp.model.HoriFoodsDataClass
 import com.example.swiggycloneapp.R
 
-class HoriImageAdapter(private val horiImageList: List<HoriFoodsDataClass>): RecyclerView.Adapter<HoriImageAdapter.HoriImageHolder>() {
+class HoriImageAdapter(private val horiImageList: List<HoriFoodsDataClass>) :
+    RecyclerView.Adapter<HoriImageAdapter.HoriImageHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): HoriImageAdapter.HoriImageHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.food_hori_card, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.food_hori_card, parent, false)
         return HoriImageHolder(view)
     }
 
@@ -27,7 +29,7 @@ class HoriImageAdapter(private val horiImageList: List<HoriFoodsDataClass>): Rec
         return horiImageList.size
     }
 
-    inner class HoriImageHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class HoriImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivFood: ImageView = itemView.findViewById(R.id.iv_food)
         private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
         private val tvRating: TextView = itemView.findViewById(R.id.tv_rating)

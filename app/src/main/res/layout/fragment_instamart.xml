@@ -206,8 +206,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="80dp"
-                    android:paddingEnd="80dp">
-                </androidx.viewpager2.widget.ViewPager2>
+                    android:paddingEnd="80dp" />
 
             </LinearLayout>
 
@@ -247,8 +246,7 @@
                     android:id="@+id/rv_hotdeals"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginTop="15sp" />
 
             </LinearLayout>
 
@@ -352,8 +350,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="80dp"
-                    android:paddingEnd="80dp">
-                </androidx.viewpager2.widget.ViewPager2>
+                    android:paddingEnd="80dp" />
 
             </LinearLayout>
 
@@ -371,7 +368,7 @@
                     android:paddingStart="10sp"
                     android:text="Top picks for you"
                     android:textColor="@color/black"
-                    android:textSize="18sp"></TextView>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -382,14 +379,13 @@
                     android:paddingStart="10sp"
                     android:text="Based on what's popular around you"
                     android:textColor="@color/black"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_top_picks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginTop="15sp" />
 
             </LinearLayout>
 
@@ -410,7 +406,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="@string/end_note"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

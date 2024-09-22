@@ -34,7 +34,13 @@ class DineoutFragment : Fragment() {
     private lateinit var dineOutHoriAdapter: DineoutHoriImageAdapter
     private lateinit var dineOutVertiAdapter: DineoutVertiImageAdapter
 
-    private val hintStrings = arrayOf("Buhari Hotel", "Palmshore", "Royal Le Meridian", "Purva Windermare", "The Orange Palace")
+    private val hintStrings = arrayOf(
+        "Buhari Hotel",
+        "Palmshore",
+        "Royal Le Meridian",
+        "Purva Windermare",
+        "The Orange Palace"
+    )
     private var currentHintIndex = 0
 
     override fun onCreateView(
@@ -49,11 +55,13 @@ class DineoutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            rvBestoffers.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            rvBestoffers.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             dineOutHoriAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
             rvBestoffers.adapter = dineOutHoriAdapter
 
-            rvMorearoundyou.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+            rvMorearoundyou.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             dineOutVertiAdapter = DineoutVertiImageAdapter(dineoutMoreList)
             rvMorearoundyou.adapter = dineOutVertiAdapter
 
@@ -69,7 +77,8 @@ class DineoutFragment : Fragment() {
 
             setUpTransformer()
 
-            dineoutViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            dineoutViewPager.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     handler.removeCallbacks(runnable)
@@ -91,7 +100,8 @@ class DineoutFragment : Fragment() {
             textSwitcher.setFactory {
                 val textView = TextView(context)
                 textView.textSize = 16f
-                textView.typeface = ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
+                textView.typeface =
+                    ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
                 textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
                 textView
             }
@@ -100,10 +110,10 @@ class DineoutFragment : Fragment() {
         }
     }
 
-    private fun setUpTransformer(){
+    private fun setUpTransformer() {
         val transfomer = CompositePageTransformer()
         transfomer.addTransformer(MarginPageTransformer(90))
-        transfomer.addTransformer{ page,position ->
+        transfomer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
             page.scaleX = 0.85f + r * 0.4f
@@ -120,7 +130,10 @@ class DineoutFragment : Fragment() {
         binding.textSwitcher.setText(hintStrings[currentHintIndex])
         currentHintIndex = (currentHintIndex + 1) % hintStrings.size
 
-        binding.textSwitcher.postDelayed({ switchText() }, 1500) // Delay between text switches (2 seconds in this example)
+        binding.textSwitcher.postDelayed(
+            { switchText() },
+            1500
+        ) // Delay between text switches (2 seconds in this example)
     }
 
 }

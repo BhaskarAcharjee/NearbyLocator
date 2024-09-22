@@ -47,7 +47,7 @@ class GenieFragment : Fragment() {
 
         setUpTransformer()
 
-        genieViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        genieViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
@@ -57,10 +57,10 @@ class GenieFragment : Fragment() {
 
     }
 
-    private fun setUpTransformer(){
+    private fun setUpTransformer() {
         val transfomer = CompositePageTransformer()
         transfomer.addTransformer(MarginPageTransformer(90))
-        transfomer.addTransformer{ page,position ->
+        transfomer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
             page.scaleX = 0.85f + r * 0.4f

@@ -1,6 +1,6 @@
 package com.example.swiggycloneapp.model
 
-data class DineoutDataClass (
+data class DineoutDataClass(
     var hotelImage: Int,
     var hotelName: String = "",
     var hotelRating: String = "",

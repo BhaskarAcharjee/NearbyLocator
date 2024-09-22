@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Swiggy-Clone-App</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Nearby-Locator</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="current_location">Acharya Bhaban, Palashi, West Bengal</string>
     <string name="short_location">North 24 Pgs, West Bengal</string>

@@ -4,31 +4,26 @@
         android:id="@+id/homeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Home">
-    </item>
+        android:title="Home" />
     <item
         android:id="@+id/foodFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Food">
-    </item>
+        android:title="Food" />
     <item
         android:id="@+id/instamartFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Instamart">
-    </item>
+        android:title="Instamart" />
     <item
         android:id="@+id/dineoutFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Dineout">
-    </item>
+        android:title="Dineout" />
     <item
         android:id="@+id/genieFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Genie">
-    </item>
+        android:title="Genie" />
 
 </menu>

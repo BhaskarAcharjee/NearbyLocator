@@ -38,7 +38,8 @@ class InstamartFragment : Fragment() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var binding: FragmentInstamartBinding
 
-    private val hintStrings = arrayOf("Biscuits", "Fruits & Vegitables", "Toothpaste", "Consmetics", "Snacks & Drinks")
+    private val hintStrings =
+        arrayOf("Biscuits", "Fruits & Vegitables", "Toothpaste", "Consmetics", "Snacks & Drinks")
     private var currentHintIndex = 0
 
     override fun onCreateView(
@@ -75,7 +76,7 @@ class InstamartFragment : Fragment() {
 
         setUpTransformer()
 
-        viewPager1.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager1.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
@@ -83,7 +84,7 @@ class InstamartFragment : Fragment() {
             }
         })
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
@@ -94,7 +95,8 @@ class InstamartFragment : Fragment() {
         binding.textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f
-            textView.typeface = ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
+            textView.typeface =
+                ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
             textView
         }
@@ -102,11 +104,13 @@ class InstamartFragment : Fragment() {
         switchText()
 
         binding.apply {
-            rvHotdeals.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            rvHotdeals.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             hotDealsAdapter = InstamartImageAdapter(hotDealsList)
             rvHotdeals.adapter = hotDealsAdapter
 
-            rvTopPicks.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+            rvTopPicks.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             topPicksAdapter = InstamartImageAdapter(topPicksList)
             rvTopPicks.adapter = topPicksAdapter
 
@@ -124,10 +128,10 @@ class InstamartFragment : Fragment() {
 
     }
 
-    private fun setUpTransformer(){
+    private fun setUpTransformer() {
         val transfomer = CompositePageTransformer()
         transfomer.addTransformer(MarginPageTransformer(90))
-        transfomer.addTransformer{ page,position ->
+        transfomer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
             page.scaleX = 0.85f + r * 0.4f
@@ -145,6 +149,9 @@ class InstamartFragment : Fragment() {
         binding.textSwitcher.setText(hintStrings[currentHintIndex])
         currentHintIndex = (currentHintIndex + 1) % hintStrings.size
 
-        binding.textSwitcher.postDelayed({ switchText() }, 1500) // Delay between text switches (2 seconds in this example)
+        binding.textSwitcher.postDelayed(
+            { switchText() },
+            1500
+        ) // Delay between text switches (2 seconds in this example)
     }
 }

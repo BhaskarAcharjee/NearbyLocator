@@ -30,7 +30,41 @@ class HomeFragment : Fragment() {
     private lateinit var slideAdapter: ImageSlideAdapter
 
     private lateinit var textSwitcher: TextSwitcher
-    private val hintStrings = arrayOf( "Restaurant", "Cafe", "Bar", "Grocery Store", "Supermarket", "Bank", "ATM", "Hospital", "Clinic", "Pharmacy", "Gas Station", "Salon", "Gym", "Park", "Movie Theater", "Shopping Mall", "Library", "Museum", "Post Office", "Hotel", "Parking", "Car Repair", "Laundry", "Bus Stop", "Train Station", "Airport", "Police Station", "School", "University", "Church", "Temple", "Mosque", "Zoo" )
+    private val hintStrings = arrayOf(
+        "Restaurant",
+        "Cafe",
+        "Bar",
+        "Grocery Store",
+        "Supermarket",
+        "Bank",
+        "ATM",
+        "Hospital",
+        "Clinic",
+        "Pharmacy",
+        "Gas Station",
+        "Salon",
+        "Gym",
+        "Park",
+        "Movie Theater",
+        "Shopping Mall",
+        "Library",
+        "Museum",
+        "Post Office",
+        "Hotel",
+        "Parking",
+        "Car Repair",
+        "Laundry",
+        "Bus Stop",
+        "Train Station",
+        "Airport",
+        "Police Station",
+        "School",
+        "University",
+        "Church",
+        "Temple",
+        "Mosque",
+        "Zoo"
+    )
 
     private var currentHintIndex = 0
 
@@ -62,7 +96,7 @@ class HomeFragment : Fragment() {
 
         setUpTransformer()
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
@@ -74,7 +108,8 @@ class HomeFragment : Fragment() {
         textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f
-            textView.typeface = ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
+            textView.typeface =
+                ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
             textView
         }
@@ -87,10 +122,10 @@ class HomeFragment : Fragment() {
         viewPager2.currentItem = viewPager2.currentItem + 1
     }
 
-    private fun setUpTransformer(){
+    private fun setUpTransformer() {
         val transfomer = CompositePageTransformer()
         transfomer.addTransformer(MarginPageTransformer(40))
-        transfomer.addTransformer{ page,position ->
+        transfomer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.85f + r * 0.14f
             page.scaleX = 0.85f + r * 0.3f
@@ -102,7 +137,10 @@ class HomeFragment : Fragment() {
         textSwitcher.setText(hintStrings[currentHintIndex])
         currentHintIndex = (currentHintIndex + 1) % hintStrings.size
 
-        textSwitcher.postDelayed({ switchText() }, 1500) // Delay between text switches (2 seconds in this example)
+        textSwitcher.postDelayed(
+            { switchText() },
+            1500
+        ) // Delay between text switches (2 seconds in this example)
     }
 
     override fun onPause() {

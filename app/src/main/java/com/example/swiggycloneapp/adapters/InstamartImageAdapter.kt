@@ -11,16 +11,21 @@ import com.example.swiggycloneapp.R
 import com.example.swiggycloneapp.model.HoriFoodsDataClass
 import com.example.swiggycloneapp.model.InstamartDataClass
 
-class InstamartImageAdapter(private val instamartImageList: List<InstamartDataClass>): RecyclerView.Adapter<InstamartImageAdapter.InstamartImageHolder>() {
+class InstamartImageAdapter(private val instamartImageList: List<InstamartDataClass>) :
+    RecyclerView.Adapter<InstamartImageAdapter.InstamartImageHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): InstamartImageAdapter.InstamartImageHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.instamart_card, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.instamart_card, parent, false)
         return InstamartImageHolder(view)
     }
 
-    override fun onBindViewHolder(holder: InstamartImageAdapter.InstamartImageHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: InstamartImageAdapter.InstamartImageHolder,
+        position: Int
+    ) {
         val data = instamartImageList[position]
         holder.bind(data)
     }
@@ -29,7 +34,7 @@ class InstamartImageAdapter(private val instamartImageList: List<InstamartDataCl
         return instamartImageList.size
     }
 
-    inner class InstamartImageHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class InstamartImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivProduct: ImageView = itemView.findViewById(R.id.iv_product_image)
         private val tvProductCompany: TextView = itemView.findViewById(R.id.product_company)
         private val tvProductName: TextView = itemView.findViewById(R.id.product_name)

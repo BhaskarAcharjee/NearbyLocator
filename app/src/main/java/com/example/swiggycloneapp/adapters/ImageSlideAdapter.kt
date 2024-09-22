@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.swiggycloneapp.R
 
-class ImageSlideAdapter(private val imageList: ArrayList<Int>, private val viewPager2: ViewPager2): RecyclerView.Adapter<ImageSlideAdapter.ImageViewHolder>() {
+class ImageSlideAdapter(private val imageList: ArrayList<Int>, private val viewPager2: ViewPager2) :
+    RecyclerView.Adapter<ImageSlideAdapter.ImageViewHolder>() {
 
-    inner class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val slideImage: ImageView = itemView.findViewById(R.id.slide_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.image_container, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.image_container, parent, false)
         return ImageViewHolder(view)
     }
 
@@ -25,7 +27,7 @@ class ImageSlideAdapter(private val imageList: ArrayList<Int>, private val viewP
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         holder.slideImage.setImageResource(imageList[position])
-        if (position == imageList.size - 1){
+        if (position == imageList.size - 1) {
             viewPager2.post(runnable)
         }
     }

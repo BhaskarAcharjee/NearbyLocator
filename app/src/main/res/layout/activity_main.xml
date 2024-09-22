@@ -167,13 +167,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
                 android:background="@color/swiggy_orange"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <ImageView
                 android:layout_width="20sp"
                 android:layout_height="30sp"
                 android:layout_marginTop="3sp"
-                android:src="@drawable/icon_event"/>
+                android:src="@drawable/icon_event" />
 
             <TextView
                 android:id="@+id/tv_dineout"
@@ -182,7 +182,7 @@
                 android:fontFamily="@font/swiggy_font_medium"
                 android:text="Events"
                 android:textColor="@color/grey"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
 
         </LinearLayout>
@@ -199,13 +199,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
                 android:background="@color/swiggy_orange"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <ImageView
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_marginTop="3sp"
-                android:src="@drawable/icon_profile"/>
+                android:src="@drawable/icon_profile" />
 
             <TextView
                 android:id="@+id/tv_genie"
@@ -214,7 +214,7 @@
                 android:fontFamily="@font/swiggy_font_medium"
                 android:text="Profile"
                 android:textColor="@color/grey"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
         </LinearLayout>
 
