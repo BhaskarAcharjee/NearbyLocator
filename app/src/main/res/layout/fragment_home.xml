@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".view.HomeFragment">
 
+    <!--    Header  -->
     <RelativeLayout
         android:id="@+id/rl_header"
-        android:padding="10sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10sp">
 
         <LinearLayout
-            android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -24,43 +25,48 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5sp"
                     android:layout_width="20sp"
                     android:layout_height="20sp"
-                    android:src="@drawable/icon_location">
-                </ImageView>
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5sp"
+                    android:src="@drawable/icon_location" />
 
                 <TextView
-                    android:textSize="18sp"
-                    android:paddingTop="5sp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/swiggy_font_medium"
-                    android:text="Home">
-                </TextView>
+                    android:paddingTop="5sp"
+                    android:text="@string/city_location"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5sp"
+                    android:src="@drawable/icon_downarrow">
+                </ImageView>
 
             </LinearLayout>
 
             <TextView
-                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grey"
                 android:fontFamily="@font/swiggy_font_light"
-                android:text="@string/current_location">
-            </TextView>
+                android:text="@string/current_location"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
@@ -72,71 +78,66 @@
             <ImageView
                 android:layout_width="45sp"
                 android:layout_height="45sp"
-                android:src="@drawable/profile_dp_colored">
-            </ImageView>
+                android:src="@drawable/profile_dp_colored" />
 
         </LinearLayout>
 
-
-
     </RelativeLayout>
 
+    <!-- Searchbar -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_searchbar"
-        app:cardCornerRadius="8sp"
-        android:layout_margin="10sp"
-        app:strokeColor="#f1f1f4"
-        android:elevation="0dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:elevation="0dp"
+        app:cardCornerRadius="8sp"
+        app:strokeColor="#f1f1f4">
 
         <RelativeLayout
-            android:padding="10sp"
-            android:background="#f1f1f4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#f1f1f4"
+            android:padding="10sp">
 
             <TextView
                 android:id="@+id/tv_search"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
                 android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="16sp"
-                android:textColor="@color/grey"
                 android:fontFamily="@font/swiggy_font_regular"
-                android:text="Search for ">
-            </TextView>
+                android:maxLines="1"
+                android:text="Search nearby "
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
 
             <TextSwitcher
                 android:id="@+id/textSwitcher"
-                android:layout_toEndOf="@id/tv_search"
-                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grey"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/tv_search"
                 android:ellipsize="end"
+                android:fontFamily="@font/swiggy_font_regular"
                 android:inAnimation="@anim/text_slide_to_top"
                 android:outAnimation="@anim/text_slide_from_bottom"
-                android:fontFamily="@font/swiggy_font_regular" />
+                android:textColor="@color/grey" />
 
             <ImageView
-                android:layout_toStartOf="@id/iv_mic"
-                android:layout_marginEnd="10sp"
                 android:layout_width="20sp"
                 android:layout_height="20sp"
-                android:src="@drawable/icon_search">
-            </ImageView>
+                android:layout_marginEnd="10sp"
+                android:layout_toStartOf="@id/iv_mic"
+                android:src="@drawable/icon_search" />
 
             <ImageView
                 android:id="@+id/iv_mic"
-                android:layout_alignParentEnd="true"
                 android:layout_width="20sp"
                 android:layout_height="20sp"
-                android:src="@drawable/icon_mic">
-            </ImageView>
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_mic" />
 
         </RelativeLayout>
 
@@ -144,141 +145,202 @@
 
     <ScrollView
         android:id="@+id/sv_home"
-        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/ll_body"
-                android:layout_marginTop="20sp"
-                android:weightSum="1"
+            <!-- Horizontal Scrollable Categories -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_weight="0.25"
-                    android:layout_width="0dp"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:padding="10sp"
+                    android:scrollbars="none">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="80sp"
-                        android:src="@drawable/homeimage1">
-                    </ImageView>
-
-                    <TextView
-                        android:paddingTop="5sp"
+                    <LinearLayout
+                        android:id="@+id/ll_categories"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/swiggy_font_medium"
-                        android:text="Food"
-                        android:textStyle="bold">
-                    </TextView>
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_weight="0.25"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                        <!-- multiple categories -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="80sp"
-                        android:src="@drawable/homeimage2">
-                    </ImageView>
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/resturant_icon" />
 
-                    <TextView
-                        android:paddingTop="5sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Instamart"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/swiggy_font_medium">
-                    </TextView>
-                </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="Restaurant"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_weight="0.25"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="80sp"
-                        android:src="@drawable/homeimage3">
-                    </ImageView>
-                    <TextView
-                        android:paddingTop="5sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Dineout"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/swiggy_font_medium">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="0.25"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/bank_icon" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="80sp"
-                        android:src="@drawable/homeimage4">
-                    </ImageView>
-                    <TextView
-                        android:paddingTop="5sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Genie"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/swiggy_font_medium">
-                    </TextView>
-                </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="Bank"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
-            </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
 
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/atm_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="ATM"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/hospital_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="Hospital"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/groceries_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="Groceries"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:background="@drawable/rounded_corner"
+                                android:src="@drawable/parking_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/swiggy_font_medium"
+                                android:paddingTop="5sp"
+                                android:text="Parking"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+
+            </RelativeLayout>
+
+<!--            offers (dynamically added) -->
             <LinearLayout
-                android:layout_marginTop="20sp"
-                android:layout_marginBottom="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="200sp">
+                android:layout_height="200sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="20sp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewpager2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="80dp"
-                    android:paddingEnd="80dp">
-                </androidx.viewpager2.widget.ViewPager2>
+                    android:paddingEnd="80dp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:padding="10sp"
-                android:background="#f1f1f4"
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="#f1f1f4"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10sp">
 
+<!--                Discover Nearby Headline -->
                 <LinearLayout
-                    android:padding="20sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="20sp">
 
                     <View
                         android:layout_width="0dp"
@@ -288,94 +350,83 @@
                         android:background="@color/grey" />
 
                     <TextView
-                        android:letterSpacing="0.2"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/dark_grey"
-                        android:textStyle="bold"
+                        android:layout_weight="1"
                         android:fontFamily="@font/swiggy_font_extrabold"
-                        android:text="DISCOVER SWIGGY">
-                    </TextView>
+                        android:gravity="center"
+                        android:letterSpacing="0.2"
+                        android:text="DISCOVER NEARBY"
+                        android:textColor="@color/dark_grey"
+                        android:textStyle="bold" />
 
                     <View
-                        android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="1sp"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey">
-                    </View>
+                        android:background="@color/grey" />
 
                 </LinearLayout>
 
 
                 <ImageView
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:elevation="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="520sp"
-                    android:src="@drawable/homead1">
-                </ImageView>
+                    android:elevation="18sp"
+                    android:paddingTop="20sp"
+                    android:paddingBottom="20sp"
+                    android:src="@drawable/homead1" />
 
                 <ImageView
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:elevation="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="520sp"
-                    android:src="@drawable/homead2">
-                </ImageView>
+                    android:elevation="18sp"
+                    android:paddingTop="20sp"
+                    android:paddingBottom="20sp"
+                    android:src="@drawable/homead2" />
 
                 <ImageView
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:elevation="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="520sp"
-                    android:src="@drawable/homead3">
-                </ImageView>
+                    android:elevation="18sp"
+                    android:paddingTop="20sp"
+                    android:paddingBottom="20sp"
+                    android:src="@drawable/homead3" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="70sp"
-                android:paddingBottom="70sp"
-                android:paddingStart="30sp"
-                android:paddingEnd="30sp"
-                android:background="#f1f1f4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="#f1f1f4"
+                android:orientation="vertical"
+                android:paddingStart="30sp"
+                android:paddingTop="70sp"
+                android:paddingEnd="30sp"
+                android:paddingBottom="70sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Live \nit up!"
                     android:fontFamily="@font/swiggy_font_extrabold"
-                    android:textSize="80sp"
-                    android:textColor="@color/grey">
-                </TextView>
+                    android:text="@string/app_tagline"
+                    android:textColor="@color/grey"
+                    android:textSize="60sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crafted with ❤️ by Bhaskar Acharjee"
                     android:fontFamily="@font/swiggy_font_light"
-                    android:textSize="20sp"
-                    android:textColor="@color/grey">
-                </TextView>
-
-
+                    android:text="Crafted with ❤️ by Bhaskar Acharjee"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-
     </ScrollView>
-
 
 </LinearLayout>

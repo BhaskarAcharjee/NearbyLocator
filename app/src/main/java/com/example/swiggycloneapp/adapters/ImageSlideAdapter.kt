@@ -1,4 +1,4 @@
-package com.example.swiggycloneapp
+package com.example.swiggycloneapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.swiggycloneapp.R
 
 class ImageSlideAdapter(private val imageList: ArrayList<Int>, private val viewPager2: ViewPager2): RecyclerView.Adapter<ImageSlideAdapter.ImageViewHolder>() {
 

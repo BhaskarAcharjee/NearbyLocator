@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.swiggycloneapp.ImageSlideAdapter
-import com.example.swiggycloneapp.R
+import com.example.swiggycloneapp.adapters.ImageSlideAdapter
 import com.example.swiggycloneapp.databinding.FragmentGenieBinding
 import com.example.swiggycloneapp.utils.genieSlideList
-import com.example.swiggycloneapp.utils.instamartSlide1
-import com.example.swiggycloneapp.utils.instamartSlide2
 import kotlin.math.abs
 
 

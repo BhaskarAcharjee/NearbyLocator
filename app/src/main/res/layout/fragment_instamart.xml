@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_header"
-        android:visibility="gone"
-        android:translationZ="100sp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fedbdc">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#fedbdc"
+        android:translationZ="100sp"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="65sp"
-            android:src="@drawable/banner1">
-        </ImageView>
-
+            android:src="@drawable/banner1" />
 
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/sv_instamart"
-        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,15 +36,15 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:padding="10sp"
-                android:background="#fedbdc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#fedbdc"
+                android:padding="10sp">
 
                 <LinearLayout
-                    android:layout_alignParentStart="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -55,124 +52,122 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="5sp"
                             android:layout_width="20sp"
                             android:layout_height="20sp"
-                            android:src="@drawable/icon_location">
-                        </ImageView>
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="5sp"
+                            android:src="@drawable/icon_location" />
 
                         <TextView
-                            android:textSize="18sp"
-                            android:paddingTop="5sp"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/swiggy_font_medium"
-                            android:text="Home">
-                        </TextView>
+                            android:paddingTop="5sp"
+                            android:text="@string/city_location"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="10sp"
+                            android:layout_height="10sp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5sp"
+                            android:src="@drawable/icon_downarrow" />
 
                     </LinearLayout>
 
                     <TextView
-                        android:textSize="14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/swiggy_font_light"
-                        android:text="1/422E, Kulattur, Chennai, Tamil Nadu">
-                    </TextView>
+                        android:text="@string/current_location"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
 
                     </com.google.android.material.card.MaterialCardView>
 
                     <ImageView
                         android:layout_width="45sp"
                         android:layout_height="45sp"
-                        android:src="@drawable/profile_dp_colored">
-                    </ImageView>
+                        android:src="@drawable/profile_dp_colored" />
 
                 </LinearLayout>
-
 
 
             </RelativeLayout>
 
             <LinearLayout
-                android:background="#fedbdc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#fedbdc">
 
                 <com.google.android.material.card.MaterialCardView
-                    app:cardCornerRadius="8sp"
-                    android:layout_margin="10sp"
-                    app:strokeColor="#f1f1f4"
-                    android:elevation="0dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="8sp"
+                    app:strokeColor="#f1f1f4">
 
                     <RelativeLayout
-                        android:padding="10sp"
-                        android:background="@color/white"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="10sp">
 
                         <TextView
                             android:id="@+id/tv_search"
-                            android:layout_alignParentStart="true"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
                             android:ellipsize="end"
-                            android:maxLines="1"
-                            android:textSize="16sp"
-                            android:textColor="@color/grey"
                             android:fontFamily="@font/swiggy_font_regular"
-                            android:text="Search for ">
-                        </TextView>
+                            android:maxLines="1"
+                            android:text="Search for "
+                            android:textColor="@color/grey"
+                            android:textSize="16sp" />
 
                         <TextSwitcher
                             android:id="@+id/textSwitcher"
-                            android:layout_toEndOf="@id/tv_search"
-                            android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/tv_search"
                             android:ellipsize="end"
+                            android:fontFamily="@font/swiggy_font_regular"
                             android:inAnimation="@anim/text_slide_to_top"
                             android:outAnimation="@anim/text_slide_from_bottom"
-                            android:fontFamily="@font/swiggy_font_regular" />
+                            android:textColor="@color/grey" />
 
                         <ImageView
-                            android:layout_toStartOf="@id/iv_mic"
-                            android:layout_marginEnd="10sp"
                             android:layout_width="20sp"
                             android:layout_height="20sp"
-                            android:src="@drawable/icon_search">
-                        </ImageView>
+                            android:layout_marginEnd="10sp"
+                            android:layout_toStartOf="@id/iv_mic"
+                            android:src="@drawable/icon_search" />
 
                         <ImageView
                             android:id="@+id/iv_mic"
-                            android:layout_alignParentEnd="true"
                             android:layout_width="20sp"
                             android:layout_height="20sp"
-                            android:src="@drawable/icon_mic">
-                        </ImageView>
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/icon_mic" />
 
                     </RelativeLayout>
 
@@ -182,30 +177,29 @@
 
             <LinearLayout
                 android:id="@+id/ll_banner"
-                android:background="#fedbdc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#fedbdc">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="65sp"
-                    android:src="@drawable/banner1">
-                </ImageView>
+                    android:src="@drawable/banner1" />
 
             </LinearLayout>
 
             <ImageView
-                android:paddingTop="10sp"
-                android:layout_gravity="center"
                 android:layout_width="100sp"
                 android:layout_height="50sp"
-                android:src="@drawable/img_offerzone">
-            </ImageView>
+                android:layout_gravity="center"
+                android:paddingTop="10sp"
+                android:src="@drawable/img_offerzone" />
 
             <LinearLayout
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="200sp">
+                android:layout_height="200sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="20sp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewpager1"
@@ -218,147 +212,138 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="18sp"
-                android:src="@drawable/img_graboffer">
-            </ImageView>
+                android:layout_gravity="center"
+                android:src="@drawable/img_graboffer" />
 
             <LinearLayout
-                android:paddingTop="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="20sp">
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/swiggy_font_extrabold"
-                    android:textSize="18sp"
-                    android:text="Hot Deals!">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="Hot Deals!"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/swiggy_font_light"
-                    android:textColor="@color/black"
-                    android:text="Grab upto 30% off, exclusively for you"
                     android:maxLines="1"
-                    android:ellipsize="end">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="Grab upto 30% off, exclusively for you"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_hotdeals"
-                    android:layout_marginTop="15sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp">
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="20sp">
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/swiggy_font_extrabold"
-                    android:textSize="18sp"
-                    android:text="All Categories">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="All Categories"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="650sp"
-                    android:src="@drawable/instamart_all">
-                </ImageView>
+                    android:src="@drawable/instamart_all" />
 
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:paddingTop="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="20sp">
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/swiggy_font_extrabold"
-                    android:textSize="18sp"
-                    android:text="Brand with a buzz!">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="Brand with a buzz!"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
 
                 <ImageView
-                    android:layout_marginTop="15sp"
                     android:layout_width="match_parent"
                     android:layout_height="350sp"
-                    android:src="@drawable/img_brand">
-                </ImageView>
+                    android:layout_marginTop="15sp"
+                    android:src="@drawable/img_brand" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20sp"
-                android:layout_marginBottom="20sp"
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp"
-                android:background="#f1f1f4"
                 android:layout_width="match_parent"
                 android:layout_height="280sp"
-                android:orientation="vertical">
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="20sp"
+                android:background="#f1f1f4"
+                android:orientation="vertical"
+                android:paddingTop="20sp"
+                android:paddingBottom="20sp">
 
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingStart="15sp"
                     android:paddingEnd="15sp"
-                    android:paddingBottom="10sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:paddingBottom="10sp">
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey"></View>
+                        android:background="@color/grey" />
 
                     <TextView
-                        android:letterSpacing="0.2"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/dark_grey"
-                        android:textStyle="bold"
+                        android:layout_weight="1"
                         android:fontFamily="@font/swiggy_font_extrabold"
-                        android:text="SNACKS &amp; DRINKS">
-                    </TextView>
+                        android:gravity="center"
+                        android:letterSpacing="0.2"
+                        android:text="SNACKS &amp; DRINKS"
+                        android:textColor="@color/dark_grey"
+                        android:textStyle="bold" />
 
                     <View
-                        android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="1sp"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey">
-                    </View>
+                        android:background="@color/grey" />
 
                 </LinearLayout>
 
@@ -373,62 +358,59 @@
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="20sp"
+                android:paddingBottom="20sp">
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/swiggy_font_extrabold"
-                    android:textSize="18sp"
-                    android:text="Top picks for you">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="Top picks for you"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"></TextView>
 
                 <TextView
-                    android:paddingStart="10sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/swiggy_font_light"
-                    android:textColor="@color/black"
-                    android:text="Based on what's popular around you"
                     android:maxLines="1"
-                    android:ellipsize="end">
-                </TextView>
+                    android:paddingStart="10sp"
+                    android:text="Based on what's popular around you"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_top_picks"
-                    android:layout_marginTop="15sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp">
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
             <LinearLayout
-                android:padding="30sp"
-                android:background="#f1f1f4"
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="#f1f1f4"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="30sp">
 
                 <TextView
                     android:id="@+id/tv_hotel_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="16sp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/swiggy_font_light"
-                    android:text="Thats all for now! :)"
+                    android:gravity="center"
                     android:maxLines="1"
-                    android:ellipsize="end">
-                </TextView>
+                    android:text="@string/end_note"
+                    android:textSize="16sp"/>
 
             </LinearLayout>
 

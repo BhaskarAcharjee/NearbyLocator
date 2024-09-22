@@ -9,24 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.swiggycloneapp.ImageSlideAdapter
+import com.example.swiggycloneapp.adapters.ImageSlideAdapter
 import com.example.swiggycloneapp.R
 import com.example.swiggycloneapp.adapters.DineoutHoriImageAdapter
 import com.example.swiggycloneapp.adapters.DineoutVertiImageAdapter
-import com.example.swiggycloneapp.adapters.HoriImageAdapter
 import com.example.swiggycloneapp.databinding.FragmentDineoutBinding
 import com.example.swiggycloneapp.utils.dineoutBestOffersList
 import com.example.swiggycloneapp.utils.dineoutMoreList
 import com.example.swiggycloneapp.utils.dineoutSlideList
-import com.example.swiggycloneapp.utils.genieSlideList
-import com.example.swiggycloneapp.utils.topRatedFoodsList
 import kotlin.math.abs
 
 class DineoutFragment : Fragment() {

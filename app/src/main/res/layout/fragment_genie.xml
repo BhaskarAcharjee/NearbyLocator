@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".view.GenieFragment">
 
     <RelativeLayout
         android:id="@+id/rl_header"
-        android:padding="10sp"
-        android:background="#e6e1fc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#e6e1fc"
+        android:padding="10sp">
 
         <LinearLayout
-            android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -25,44 +25,50 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5sp"
                     android:layout_width="20sp"
                     android:layout_height="20sp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5sp"
                     android:src="@drawable/icon_location">
                 </ImageView>
 
                 <TextView
-                    android:textSize="18sp"
-                    android:paddingTop="5sp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/swiggy_font_medium"
-                    android:text="Home">
-                </TextView>
+                    android:paddingTop="5sp"
+                    android:text="@string/city_location"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="10sp"
+                    android:layout_height="10sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5sp"
+                    android:src="@drawable/icon_downarrow">
+                </ImageView>
 
             </LinearLayout>
 
             <TextView
-                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grey"
                 android:fontFamily="@font/swiggy_font_light"
-                android:text="1/422E, Kulattur, Chennai, Tamil Nadu">
-            </TextView>
+                android:text="@string/current_location"
+                android:textColor="@color/grey"
+                android:textSize="14sp"/>
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
@@ -82,18 +88,18 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="60sp"
         android:layout_width="match_parent"
         android:layout_height="30sp"
+        android:layout_marginTop="60sp"
         android:background="#e6e1fc">
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/sv_genie"
-        android:scrollbars="none"
-        android:layout_below="@id/rl_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_header"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,63 +120,61 @@
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="15sp"
-                android:layout_marginEnd="15sp"
                 android:layout_marginTop="15sp"
+                android:layout_marginEnd="15sp"
                 android:layout_marginBottom="5sp"
                 app:cardCornerRadius="12sp"
-                app:cardElevation="5sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:cardElevation="5sp">
 
                 <LinearLayout
-                    android:padding="10sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="10sp">
 
                     <com.airbnb.lottie.LottieAnimationView
-                        app:lottie_rawRes="@raw/anim_offer"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
                         app:lottie_autoPlay="true"
                         app:lottie_loop="true"
-                        app:lottie_speed="1"
-                        android:layout_width="60sp"
-                        android:layout_height="60sp">
+                        app:lottie_rawRes="@raw/anim_offer"
+                        app:lottie_speed="1">
 
                     </com.airbnb.lottie.LottieAnimationView>
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:paddingStart="10sp"
-                        android:paddingEnd="10sp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingStart="10sp"
+                        android:paddingEnd="10sp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/swiggy_font_medium"
                             android:gravity="start"
+                            android:maxLines="1"
                             android:text="Upto 25% off on first order"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
                             android:textSize="18sp"
-                            android:fontFamily="@font/swiggy_font_medium"
-                            android:maxLines="1"
-                            android:ellipsize="end">
-                        </TextView>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/swiggy_font_medium"
                             android:gravity="start"
+                            android:maxLines="1"
                             android:text="USE CODEGENIE AT CHECKOUT"
                             android:textColor="@color/grey"
-                            android:textStyle="bold"
                             android:textSize="14sp"
-                            android:fontFamily="@font/swiggy_font_medium"
-                            android:maxLines="1"
-                            android:ellipsize="end">
-                        </TextView>
+                            android:textStyle="bold"/>
 
 
                     </LinearLayout>
@@ -180,70 +184,67 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 app:cardCornerRadius="12sp"
-                app:cardElevation="5sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:cardElevation="5sp">
 
                 <LinearLayout
-                    android:padding="15sp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15sp">
 
                     <TextView
-                        android:paddingTop="5sp"
-                        android:paddingBottom="5sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="Pick up or send anything"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
+                        android:ellipsize="end"
                         android:fontFamily="@font/swiggy_font_medium"
+                        android:gravity="start"
                         android:maxLines="1"
-                        android:ellipsize="end">
-                    </TextView>
-
-                    <TextView
                         android:paddingTop="5sp"
                         android:paddingBottom="5sp"
+                        android:text="Pick up or send anything"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
                         android:id="@+id/tv_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="@color/grey"
+                        android:ellipsize="end"
                         android:fontFamily="@font/swiggy_font_light"
-                        android:text="Sit back, relax and let Genie do the rest"
                         android:maxLines="1"
-                        android:ellipsize="end">
-                    </TextView>
+                        android:paddingTop="5sp"
+                        android:paddingBottom="5sp"
+                        android:text="Sit back, relax and let Genie do the rest"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"/>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="5sp"
-                        app:cardCornerRadius="10sp"
-                        app:strokeColor="@color/swiggy_orange"
                         android:backgroundTint="@color/swiggy_orange"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        app:cardCornerRadius="10sp"
+                        app:strokeColor="@color/swiggy_orange">
 
                         <LinearLayout
-                            android:padding="12sp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:padding="12sp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="start"
-                                android:textSize="18sp"
                                 android:fontFamily="@font/swiggy_font_medium"
+                                android:gravity="start"
+                                android:text="Set pickup &amp; drop location"
                                 android:textColor="@color/white"
-                                android:text="Set pickup &amp; drop location">
-                            </TextView>
+                                android:textSize="18sp"/>
 
 
                         </LinearLayout>
@@ -254,45 +255,45 @@
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
-                android:layout_marginTop="25sp"
-                android:paddingTop="20sp"
-                android:paddingBottom="30sp"
-                android:background="#f1f1f4"
                 android:layout_width="match_parent"
                 android:layout_height="300sp"
-                android:orientation="vertical">
+                android:layout_marginTop="25sp"
+                android:background="#f1f1f4"
+                android:orientation="vertical"
+                android:paddingTop="20sp"
+                android:paddingBottom="30sp">
 
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingStart="15sp"
                     android:paddingEnd="15sp"
-                    android:paddingBottom="10sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:paddingBottom="10sp">
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/grey"></View>
+                        android:background="@color/grey">
+                    </View>
 
                     <TextView
-                        android:letterSpacing="0.2"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/dark_grey"
-                        android:textStyle="bold"
+                        android:layout_weight="1"
                         android:fontFamily="@font/swiggy_font_extrabold"
-                        android:text="MORE WITH GENIE">
-                    </TextView>
+                        android:gravity="center"
+                        android:letterSpacing="0.2"
+                        android:text="MORE WITH GENIE"
+                        android:textColor="@color/dark_grey"
+                        android:textStyle="bold"/>
 
                     <View
-                        android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="1sp"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@color/grey">
                     </View>

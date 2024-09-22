@@ -9,14 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextSwitcher
 import android.widget.TextView
-import android.widget.ViewSwitcher
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.swiggycloneapp.ImageSlideAdapter
+import com.example.swiggycloneapp.adapters.ImageSlideAdapter
 import com.example.swiggycloneapp.R
 import com.example.swiggycloneapp.databinding.FragmentHomeBinding
 import kotlin.math.abs
@@ -31,7 +30,8 @@ class HomeFragment : Fragment() {
     private lateinit var slideAdapter: ImageSlideAdapter
 
     private lateinit var textSwitcher: TextSwitcher
-    private val hintStrings = arrayOf("dishes & foods", "favourite restaurants", "home groceries")
+    private val hintStrings = arrayOf( "Restaurant", "Cafe", "Bar", "Grocery Store", "Supermarket", "Bank", "ATM", "Hospital", "Clinic", "Pharmacy", "Gas Station", "Salon", "Gym", "Park", "Movie Theater", "Shopping Mall", "Library", "Museum", "Post Office", "Hotel", "Parking", "Car Repair", "Laundry", "Bus Stop", "Train Station", "Airport", "Police Station", "School", "University", "Church", "Temple", "Mosque", "Zoo" )
+
     private var currentHintIndex = 0
 
     override fun onCreateView(
