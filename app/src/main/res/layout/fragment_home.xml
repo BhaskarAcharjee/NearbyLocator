@@ -8,79 +8,9 @@
     tools:context=".view.HomeFragment">
 
     <!--    Header  -->
-    <RelativeLayout
+    <include
         android:id="@+id/rl_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10sp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="20sp"
-                    android:layout_height="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5sp"
-                    android:src="@drawable/icon_location" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="@string/city_location"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="10sp"
-                    android:layout_height="10sp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5sp"
-                    android:src="@drawable/icon_downarrow" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/swiggy_font_light"
-                android:text="@string/current_location"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/profile_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true">
-
-            <!--            <com.google.android.material.card.MaterialCardView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content">-->
-            <!--        </com.google.android.material.card.MaterialCardView>-->
-
-            <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:src="@drawable/profile_dp_colored" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+        layout="@layout/layout_header" />
 
     <!-- Searchbar -->
     <com.google.android.material.card.MaterialCardView

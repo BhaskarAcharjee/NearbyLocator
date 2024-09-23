@@ -21,7 +21,6 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import kotlin.math.abs
 
-
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
@@ -117,8 +116,11 @@ class HomeFragment : Fragment() {
 
         switchText()
 
+        val headerLayout = binding.rlHeader
+        val profileIcon = headerLayout.profileIcon // Access the profile icon from the included layout (layout_header)
+
         // Set up click listener for profile icon
-        binding.profileIcon.setOnClickListener {
+        profileIcon.setOnClickListener {
             // Navigate to ProfileFragment
             val navController = findNavController()
             navController.navigate(R.id.action_homeFragment_to_profileFragment)
