@@ -11,11 +11,15 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
+            android:id="@+id/action_homeFragment_to_seeallFragment"
+            app:destination="@id/seeallFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
-
     </fragment>
 
     <fragment
@@ -24,8 +28,8 @@
         android:label="fragment_service"
         tools:layout="@layout/fragment_service" />
     <fragment
-        android:id="@+id/mapviewtFragment"
-        android:name="com.example.nearbylocator.view.MapviewFragment"
+        android:id="@+id/mapviewFragment"
+        android:name="com.example.nearbylocator.view.MapViewFragment"
         android:label="fragment_mapview"
         tools:layout="@layout/fragment_mapview" />
     <fragment
@@ -38,4 +42,9 @@
         android:name="com.example.nearbylocator.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/seeallFragment"
+        android:name="com.example.nearbylocator.view.SeeallFragment"
+        android:label="fragment_seeall"
+        tools:layout="@layout/fragment_seeall" />
 </navigation>

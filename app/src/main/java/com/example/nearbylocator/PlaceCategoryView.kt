@@ -40,7 +40,7 @@ class PlaceCategoryView @JvmOverloads constructor(
     fun setSeeAllClickListener(navController: NavController) {
         binding.tvSeeAll.setOnClickListener {
             // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
-            navController.navigate(R.id.action_homeFragment_to_mapviewFragment)
+            navController.navigate(R.id.action_homeFragment_to_seeallFragment)
         }
     }
 
