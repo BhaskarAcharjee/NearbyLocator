@@ -94,45 +94,45 @@
                 android:orientation="vertical"
                 android:paddingBottom="20sp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10sp"
-                    android:paddingEnd="10sp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingStart="10sp"-->
+<!--                    android:paddingEnd="10sp">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/swiggy_font_extrabold"
-                        android:text="Best offers near you"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/swiggy_font_extrabold"-->
+<!--                        android:text="Best offers near you"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/swiggy_font_medium"
-                        android:gravity="end"
-                        android:text="SEE ALL"
-                        android:textColor="@color/swiggy_orange"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/swiggy_font_medium"-->
+<!--                        android:gravity="end"-->
+<!--                        android:text="SEE ALL"-->
+<!--                        android:textColor="@color/swiggy_orange"-->
+<!--                        android:textSize="14sp" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/swiggy_font_regular"
-                    android:paddingStart="10sp"
-                    android:text="Restaurants to hang out in your area"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/swiggy_font_regular"-->
+<!--                    android:paddingStart="10sp"-->
+<!--                    android:text="Restaurants to hang out in your area"-->
+<!--                    android:textSize="14sp" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_bestoffers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="15sp"
-                    android:paddingBottom="15sp" />
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rv_bestoffers"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingTop="15sp"-->
+<!--                    android:paddingBottom="15sp" />-->
 
             </LinearLayout>
 

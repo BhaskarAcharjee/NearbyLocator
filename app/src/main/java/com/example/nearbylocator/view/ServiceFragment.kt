@@ -16,14 +16,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.HoriImageAdapter
+import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.VertiImageAdapter
 import com.example.nearbylocator.databinding.FragmentServiceBinding
 import com.example.nearbylocator.utils.exploreFoodsList
 import com.example.nearbylocator.utils.getQuicklyFoodsList
 import com.example.nearbylocator.utils.homeSlideImages
+import com.example.nearbylocator.utils.services_hint_Strings
 import com.example.nearbylocator.utils.topRatedFoodsList
 import kotlin.math.abs
 
@@ -37,30 +38,7 @@ class ServiceFragment : Fragment() {
     private lateinit var topRatedAdapter: HoriImageAdapter
     private lateinit var getQuicklyAdapter: HoriImageAdapter
     private lateinit var exploreAdapter: VertiImageAdapter
-
     private lateinit var textSwitcher: TextSwitcher
-    private val hintStrings = arrayOf(
-        "Car Repair",
-        "Car Wash",
-        "Pedicure",
-        "Salon",
-        "Dry Cleaner",
-        "Laundry Service",
-        "Home Cleaning",
-        "Plumbing Service",
-        "Electrician",
-        "HVAC Repair",
-        "Pest Control",
-        "Gardening Service",
-        "Massage Therapy",
-        "Fitness Trainer",
-        "Pet Grooming",
-        "Yoga Classes",
-        "Tutoring",
-        "Childcare",
-        "Photography Service",
-        "Moving Company"
-    )
 
     private var currentHintIndex = 0
 
@@ -153,8 +131,8 @@ class ServiceFragment : Fragment() {
     }
 
     private fun switchText() {
-        textSwitcher.setText(hintStrings[currentHintIndex])
-        currentHintIndex = (currentHintIndex + 1) % hintStrings.size
+        textSwitcher.setText(services_hint_Strings[currentHintIndex])
+        currentHintIndex = (currentHintIndex + 1) % services_hint_Strings.size
 
         textSwitcher.postDelayed(
             { switchText() },

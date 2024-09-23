@@ -6,6 +6,67 @@ import com.example.nearbylocator.model.EventDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.VertiServicesDataClass
 
+//Search hints
+val places_hint_Strings = arrayOf(
+    "Restaurant",
+    "Cafe",
+    "Bar",
+    "Grocery Store",
+    "Supermarket",
+    "Bank",
+    "ATM",
+    "Hospital",
+    "Clinic",
+    "Pharmacy",
+    "Gas Station",
+    "Salon",
+    "Gym",
+    "Park",
+    "Movie Theater",
+    "Shopping Mall",
+    "Library",
+    "Museum",
+    "Post Office",
+    "Hotel",
+    "Parking",
+    "Car Repair",
+    "Laundry",
+    "Bus Stop",
+    "Train Station",
+    "Airport",
+    "Police Station",
+    "School",
+    "University",
+    "Church",
+    "Temple",
+    "Mosque",
+    "Zoo"
+)
+
+val services_hint_Strings = arrayOf(
+    "Car Repair",
+    "Car Wash",
+    "Pedicure",
+    "Salon",
+    "Dry Cleaner",
+    "Laundry Service",
+    "Home Cleaning",
+    "Plumbing Service",
+    "Electrician",
+    "HVAC Repair",
+    "Pest Control",
+    "Gardening Service",
+    "Massage Therapy",
+    "Fitness Trainer",
+    "Pet Grooming",
+    "Yoga Classes",
+    "Tutoring",
+    "Childcare",
+    "Photography Service",
+    "Moving Company"
+)
+
+
 val homeSlideImages = arrayListOf(
     R.drawable.homeslide5,
     R.drawable.homeslide6,

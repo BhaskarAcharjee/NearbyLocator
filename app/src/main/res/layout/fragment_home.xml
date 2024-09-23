@@ -109,7 +109,7 @@
                 android:orientation="vertical"
                 android:padding="10sp">
 
-                <!--                Discover Nearby Headline -->
+                <!--    Discover Nearby Headline    -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,31 +142,46 @@
 
                 </LinearLayout>
 
-
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="520sp"
-                    android:elevation="18sp"
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:src="@drawable/homead1" />
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10sp">
 
-                <ImageView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/swiggy_font_extrabold"
+                        android:text="Best offers near you"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/swiggy_font_medium"
+                        android:gravity="end"
+                        android:text="SEE ALL"
+                        android:textColor="@color/swiggy_orange"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/swiggy_font_regular"
+                    android:paddingStart="10sp"
+                    android:text="Restaurants to hang out in your area"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_bestoffers"
                     android:layout_width="match_parent"
-                    android:layout_height="520sp"
-                    android:elevation="18sp"
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:src="@drawable/homead2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="520sp"
-                    android:elevation="18sp"
-                    android:paddingTop="20sp"
-                    android:paddingBottom="20sp"
-                    android:src="@drawable/homead3" />
-
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp" />
 
             </LinearLayout>
 
