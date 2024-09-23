@@ -266,7 +266,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/swiggy_font_medium"
-                android:text="Home, "
+                android:text="@string/city_location"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -276,7 +276,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/swiggy_font_light"
-                android:text="Chennai, Tamil Nadu"
+                android:text="@string/short_location"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 

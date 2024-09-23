@@ -11,6 +11,7 @@ import android.widget.TextSwitcher
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -116,6 +117,12 @@ class HomeFragment : Fragment() {
 
         switchText()
 
+        // Set up click listener for profile icon
+        binding.profileIcon.setOnClickListener {
+            // Navigate to ProfileFragment
+            val navController = findNavController()
+            navController.navigate(R.id.action_homeFragment_to_profileFragment)
+        }
     }
 
     private val runnable = Runnable {

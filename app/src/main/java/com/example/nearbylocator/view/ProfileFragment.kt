@@ -1,75 +1,70 @@
 package com.example.nearbylocator.view
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
-import com.example.nearbylocator.adapters.ImageSlideAdapter
-import com.example.nearbylocator.databinding.FragmentProfileBinding
-import com.example.nearbylocator.utils.genieSlideList
-import kotlin.math.abs
-
+import android.os.Build
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.example.nearbylocator.R
 
 class ProfileFragment : Fragment() {
-
-    private lateinit var handler: Handler
-    private lateinit var genieSlideAdapter: ImageSlideAdapter
-    private lateinit var genieViewPager: ViewPager2
-    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentProfileBinding.inflate(layoutInflater)
-        return binding.root
+    ): View? {
+        // Inflate the layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        // Set up the toolbar
+        val toolbar = rootView.findViewById<Toolbar>(R.id.toolbar)
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
+
+        // Set the title for CollapsingToolbarLayout
+        val collapsingToolbarLayout =
+            rootView.findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout)
+        collapsingToolbarLayout.title = ""
+
+        val appBarLayout = rootView.findViewById<AppBarLayout>(R.id.app_bar)
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (Math.abs(verticalOffset) == appBarLayout.totalScrollRange) {
+                collapsingToolbarLayout.title = getString(R.string.profile_title)
+            } else {
+                collapsingToolbarLayout.title = ""
+            }
+        })
+
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        genieViewPager = binding.genieViewpager
-        genieSlideAdapter = ImageSlideAdapter(genieSlideList, genieViewPager)
-
-        handler = Handler(Looper.myLooper()!!)
-        genieViewPager.adapter = genieSlideAdapter
-        genieViewPager.offscreenPageLimit = 3
-        genieViewPager.clipToPadding = false
-        genieViewPager.clipChildren = false
-        genieViewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
-        setUpTransformer()
-
-        genieViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                handler.removeCallbacks(runnable)
-                handler.postDelayed(runnable, 2500)
-            }
-        })
-
+        // Apply the status bar style for this fragment
+        applyProfileThemeStatusBar()
     }
 
-    private fun setUpTransformer() {
-        val transfomer = CompositePageTransformer()
-        transfomer.addTransformer(MarginPageTransformer(90))
-        transfomer.addTransformer { page, position ->
-            val r = 1 - abs(position)
-            page.scaleY = 0.85f + r * 0.14f
-            page.scaleX = 0.85f + r * 0.4f
+    private fun applyProfileThemeStatusBar() {
+        // Change status bar color and apply ProfileTheme style
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor =
+                ContextCompat.getColor(requireContext(), R.color.profilePrimaryDark)
         }
-        genieViewPager.setPageTransformer(transfomer)
-
     }
 
-    private val runnable = Runnable {
-        genieViewPager.currentItem = genieViewPager.currentItem + 1
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        // Revert the status bar color back to default when the fragment is destroyed
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor =
+                ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark)
+        }
     }
 }

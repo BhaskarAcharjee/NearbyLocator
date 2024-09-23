@@ -9,21 +9,21 @@
         android:id="@+id/serviceFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Food" />
+        android:title="Service" />
     <item
         android:id="@+id/mapviewtFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Instamart" />
+        android:title="Mapview" />
     <item
         android:id="@+id/eventFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Dineout" />
+        android:title="Event" />
     <item
         android:id="@+id/profileFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Genie" />
+        android:title="Profile" />
 
 </menu>

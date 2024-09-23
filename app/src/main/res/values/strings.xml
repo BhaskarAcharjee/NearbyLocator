@@ -7,4 +7,16 @@
     <string name="app_tagline">Discover \nWhats Near</string>
     <string name="end_note">Thats all for now! :)</string>
 
+    <string name="profile_title">Profile</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">\@corvasbhaskar</string>
+    <string name="email">developer@corvas.com</string>
+
+    <string name="content_name">Bhaskar Acharjee</string>
+    <string name="content_mobile">+91-6290594650</string>
+    <string name="content_email">developer@corvas.com</string>
+    <string name="content_address">Acharya Bhaban, Palashi, Barasat</string>
+    <string name="content_DOB">14-04-2002</string>
+
 </resources>
