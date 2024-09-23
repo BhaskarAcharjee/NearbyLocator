@@ -142,6 +142,7 @@
 
                 </LinearLayout>
 
+                <!-- Food & Drinks Category -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/swiggy_font_extrabold"
-                        android:text="Best offers near you"
+                        android:text="Food &amp; Drinks"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -173,15 +174,58 @@
                     android:layout_gravity="start"
                     android:fontFamily="@font/swiggy_font_regular"
                     android:paddingStart="10sp"
-                    android:text="Restaurants to hang out in your area"
+                    android:text="Explore restaurants and cafes nearby"
                     android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_bestoffers"
+                    android:id="@+id/rv_food_drinks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15sp"
                     android:paddingBottom="15sp" />
+
+                <!-- Shopping Category -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/swiggy_font_extrabold"
+                        android:text="Shopping"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/swiggy_font_medium"
+                        android:gravity="end"
+                        android:text="SEE ALL"
+                        android:textColor="@color/swiggy_orange"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/swiggy_font_regular"
+                    android:paddingStart="10sp"
+                    android:text="Find the best places to shop"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_shopping"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp" />
+
 
             </LinearLayout>
 

@@ -18,5 +18,7 @@
     <string name="content_email">developer@corvas.com</string>
     <string name="content_address">Acharya Bhaban, Palashi, Barasat</string>
     <string name="content_DOB">14-04-2002</string>
+    <string name="place_category1_tagline">Restaurants, Cafe to hang out in your area</string>
+    <string name="place_category1"><![CDATA[Food & Drinks]]></string>
 
 </resources>
