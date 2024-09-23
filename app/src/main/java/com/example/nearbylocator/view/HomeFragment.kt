@@ -103,22 +103,98 @@ class HomeFragment : Fragment() {
         viewPager2.currentItem += 1
     }
 
-    // Set up place categories like Food & Drinks, Shopping, etc. with individual RecyclerViews (horizontal)
+    // Set up place categories with individual RecyclerViews (horizontal)
     private fun setupPlaceCategories() {
-        // Food & Drinks Category RecyclerView
-        binding.rvFoodDrinks.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val foodAdapter = DineoutHoriImageAdapter(dineoutBestOffersList) // Use a different list for food
-        binding.rvFoodDrinks.adapter = foodAdapter
+        // Food & Drinks Category
+        val foodAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryFoodDrinks.apply {
+            setTitle("Food & Drinks")
+            setDescription("Explore restaurants and cafes nearby")
+            setRecyclerViewAdapter(foodAdapter)
+        }
 
-        // Shopping Category RecyclerView
-        binding.rvShopping.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val shoppingAdapter = DineoutHoriImageAdapter(dineoutBestOffersList) // Use a different list for shopping
-        binding.rvShopping.adapter = shoppingAdapter
+        // Shopping Category
+        val shoppingAdapter =
+            DineoutHoriImageAdapter(dineoutBestOffersList) // You can use a different list
+        binding.placeCategoryShopping.apply {
+            setTitle("Shopping")
+            setDescription("Find the best places to shop")
+            setRecyclerViewAdapter(shoppingAdapter)
+        }
 
-        // You can add more categories (e.g., Transportation, Financial Services) in the same way
+        // Transportation Category
+        val transportationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryTransportation.apply {
+            setTitle("Transportation")
+            setDescription("Discover transport services around you")
+            setRecyclerViewAdapter(transportationAdapter)
+        }
+
+        // Health Care Category
+        val healthCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryHealthCare.apply {
+            setTitle("Health Care")
+            setDescription("Find clinics, hospitals, and healthcare services")
+            setRecyclerViewAdapter(healthCareAdapter)
+        }
+
+        // Financial Services Category
+        val financialServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryFinancialServices.apply {
+            setTitle("Financial Services")
+            setDescription("Locate banks and ATMs near you")
+            setRecyclerViewAdapter(financialServicesAdapter)
+        }
+
+        // Public Services Category
+        val publicServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryPublicServices.apply {
+            setTitle("Public Services")
+            setDescription("Explore public service offices nearby")
+            setRecyclerViewAdapter(publicServicesAdapter)
+        }
+
+        // Fitness & Wellness Category
+        val fitnessWellnessAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryFitnessWellness.apply {
+            setTitle("Fitness & Wellness")
+            setDescription("Discover gyms, spas, and wellness centers")
+            setRecyclerViewAdapter(fitnessWellnessAdapter)
+        }
+
+        // Personal Care Category
+        val personalCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryPersonalCare.apply {
+            setTitle("Personal Care")
+            setDescription("Find beauty salons and personal care services")
+            setRecyclerViewAdapter(personalCareAdapter)
+        }
+
+        // Entertainment Category
+        val entertainmentAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryEntertainment.apply {
+            setTitle("Entertainment")
+            setDescription("Explore cinemas, parks, and entertainment spots")
+            setRecyclerViewAdapter(entertainmentAdapter)
+        }
+
+        // Education Category
+        val educationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryEducation.apply {
+            setTitle("Education")
+            setDescription("Locate schools, colleges, and educational centers")
+            setRecyclerViewAdapter(educationAdapter)
+        }
+
+        // Religious Category
+        val religiousAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
+        binding.placeCategoryReligious.apply {
+            setTitle("Religious")
+            setDescription("Find religious places nearby")
+            setRecyclerViewAdapter(religiousAdapter)
+        }
     }
+
 
     // Set up a TextSwitcher for showing place hints that switch automatically
     private fun setupTextSwitcher() {
