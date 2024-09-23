@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <!-- Horizontal Scrollable Categories -->
-            <include layout="@layout/layout_quickcategoriesplaces" />
+            <include layout="@layout/layout_quick_place_category" />
 
             <!--   offers (dynamically added) -->
             <LinearLayout

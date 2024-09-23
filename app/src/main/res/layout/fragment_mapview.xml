@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,17 +6,26 @@
     <WebView
         android:id="@+id/mapWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
+<!--        android:layout_above="@id/recyclerView"-->
 
-    <!-- Search bar at the top -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <!-- Custom Search Bar layout (layout_searchbar.xml) -->
+    <include
+        android:id="@+id/customSearchBar"
+        layout="@layout/layout_searchbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search for places"
         android:layout_margin="16dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/rounded_corner"
-        android:elevation="4dp" />
+        android:layout_above="@id/recyclerView" />
 
+    <!-- RecyclerView for horizontally scrolling cards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="8dp" />
 </RelativeLayout>

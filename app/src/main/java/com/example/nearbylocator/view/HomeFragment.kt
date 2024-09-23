@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
     private lateinit var handler: Handler
     private lateinit var imageList: ArrayList<Int>
     private lateinit var slideAdapter: ImageSlideAdapter
-    private lateinit var dineOutHoriAdapter: DineoutHoriImageAdapter
     private lateinit var textSwitcher: TextSwitcher
     private var currentHintIndex = 0
 
