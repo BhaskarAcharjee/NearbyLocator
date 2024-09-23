@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -112,6 +111,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore restaurants and cafes nearby")
             setRecyclerViewAdapter(foodAdapter)
         }
+        binding.placeCategoryFoodDrinks.setSeeAllClickListener(findNavController())
 
         // Shopping Category
         val shoppingAdapter =
@@ -121,6 +121,7 @@ class HomeFragment : Fragment() {
             setDescription("Find the best places to shop")
             setRecyclerViewAdapter(shoppingAdapter)
         }
+        binding.placeCategoryShopping.setSeeAllClickListener(findNavController()) // Pass the fragment's NavController from HomeFragment to the PlaceCategoryView
 
         // Transportation Category
         val transportationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)

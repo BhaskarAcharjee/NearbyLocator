@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutHoriImageAdapter
 import com.example.nearbylocator.databinding.ViewPlaceCategoryBinding
 
@@ -34,8 +36,12 @@ class PlaceCategoryView @JvmOverloads constructor(
         binding.rvCategoryItems.adapter = adapter
     }
 
-    // Handle the "See All" click (Optional)
-    fun setSeeAllClickListener(listener: OnClickListener) {
-        binding.tvSeeAll.setOnClickListener(listener)
+    // Handle the "See All" click and navigate to MapviewFragment
+    fun setSeeAllClickListener(navController: NavController) {
+        binding.tvSeeAll.setOnClickListener {
+            // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
+            navController.navigate(R.id.action_homeFragment_to_mapviewFragment)
+        }
     }
+
 }

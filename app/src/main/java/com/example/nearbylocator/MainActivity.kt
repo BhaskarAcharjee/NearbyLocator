@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     binding.tvGenie.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
                     textViewId.typeface = Typeface.create(binding.tvGenie.typeface, Typeface.NORMAL)
                 }
-                R.id.mapviewtFragment -> {
+                R.id.mapviewFragment -> {
                     window.statusBarColor = getColor(R.color.bg_pink)
                     window.decorView.windowInsetsController?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS)
                     textViewId = binding.tvInstamart
