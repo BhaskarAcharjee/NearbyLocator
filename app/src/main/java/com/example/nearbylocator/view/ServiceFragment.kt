@@ -40,12 +40,28 @@ class ServiceFragment : Fragment() {
 
     private lateinit var textSwitcher: TextSwitcher
     private val hintStrings = arrayOf(
-        "Hyderabad Briyani",
-        "A2B Full Meals",
-        "KFC Party Chicken Bowl",
-        "Grill Nights BBQ",
-        "Domino's Cheese Pizza"
+        "Car Repair",
+        "Car Wash",
+        "Pedicure",
+        "Salon",
+        "Dry Cleaner",
+        "Laundry Service",
+        "Home Cleaning",
+        "Plumbing Service",
+        "Electrician",
+        "HVAC Repair",
+        "Pest Control",
+        "Gardening Service",
+        "Massage Therapy",
+        "Fitness Trainer",
+        "Pet Grooming",
+        "Yoga Classes",
+        "Tutoring",
+        "Childcare",
+        "Photography Service",
+        "Moving Company"
     )
+
     private var currentHintIndex = 0
 
     override fun onCreateView(
@@ -107,22 +123,22 @@ class ServiceFragment : Fragment() {
             exploreAdapter = VertiImageAdapter(exploreFoodsList)
             rvExplore.adapter = exploreAdapter
 
-            svFood.viewTreeObserver.addOnScrollChangedListener {
-                val linearLayoutHeight = llBody.height
-                val scrollY = svFood.scrollY
-
-                if (scrollY >= linearLayoutHeight) {
-                    Handler().postDelayed({ rlHeader.visibility = View.GONE }, 200)
-                } else {
-                    Handler().postDelayed({ rlHeader.visibility = View.VISIBLE }, 200)
-                }
-            }
+//            svFood.viewTreeObserver.addOnScrollChangedListener {
+//                val linearLayoutHeight = llBody.height
+//                val scrollY = svFood.scrollY
+//
+//                if (scrollY >= linearLayoutHeight) {
+//                    Handler().postDelayed({ rlHeader.visibility = View.GONE }, 200)
+//                } else {
+//                    Handler().postDelayed({ rlHeader.visibility = View.VISIBLE }, 200)
+//                }
+//            }
         }
 
     }
 
     private val runnable = Runnable {
-        viewPager2.currentItem = viewPager2.currentItem + 1
+        viewPager2.currentItem += 1
     }
 
     private fun setUpTransformer() {

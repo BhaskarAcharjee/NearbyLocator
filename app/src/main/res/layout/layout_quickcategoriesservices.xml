@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- multiple categories -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    app:lottie_rawRes="@raw/anim_service"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_speed="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Services"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/homecleaning_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Cleaning"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/electrician_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Electrician"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/plumber_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Plumbing"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/saloon_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Saloon"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/carrepair_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Car Repair"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/carwash_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5sp"
+                    android:text="Car Wash"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</RelativeLayout>
