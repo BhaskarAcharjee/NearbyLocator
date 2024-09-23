@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.swiggycloneapp'
+    namespace 'com.example.nearbylocator'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.swiggycloneapp"
+        applicationId "com.example.nearbylocator"
         minSdk 24
         targetSdk 33
         versionCode 1

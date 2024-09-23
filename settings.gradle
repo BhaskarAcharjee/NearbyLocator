@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Swiggy-Clone-App"
+rootProject.name = "Nearby-Locator"
 include ':app'

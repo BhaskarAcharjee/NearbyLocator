@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.swiggycloneapp.view.HomeFragment"
+        android:name="com.example.nearbylocator.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/foodFragment"
-        android:name="com.example.swiggycloneapp.view.FoodFragment"
-        android:label="fragment_food"
-        tools:layout="@layout/fragment_food" />
+        android:id="@+id/serviceFragment"
+        android:name="com.example.nearbylocator.view.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" />
     <fragment
-        android:id="@+id/instamartFragment"
-        android:name="com.example.swiggycloneapp.view.InstamartFragment"
-        android:label="fragment_instamart"
-        tools:layout="@layout/fragment_instamart" />
+        android:id="@+id/mapviewtFragment"
+        android:name="com.example.nearbylocator.view.MapviewFragment"
+        android:label="fragment_mapview"
+        tools:layout="@layout/fragment_mapview" />
     <fragment
-        android:id="@+id/dineoutFragment"
-        android:name="com.example.swiggycloneapp.view.DineoutFragment"
-        android:label="fragment_dineout"
-        tools:layout="@layout/fragment_dineout" />
+        android:id="@+id/eventFragment"
+        android:name="com.example.nearbylocator.view.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
     <fragment
-        android:id="@+id/genieFragment"
-        android:name="com.example.swiggycloneapp.view.GenieFragment"
-        android:label="fragment_genie"
-        tools:layout="@layout/fragment_genie" />
+        android:id="@+id/profileFragment"
+        android:name="com.example.nearbylocator.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

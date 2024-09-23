@@ -6,22 +6,22 @@
         android:layout_height="wrap_content"
         android:title="Home" />
     <item
-        android:id="@+id/foodFragment"
+        android:id="@+id/serviceFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Food" />
     <item
-        android:id="@+id/instamartFragment"
+        android:id="@+id/mapviewtFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Instamart" />
     <item
-        android:id="@+id/dineoutFragment"
+        android:id="@+id/eventFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Dineout" />
     <item
-        android:id="@+id/genieFragment"
+        android:id="@+id/profileFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Genie" />
