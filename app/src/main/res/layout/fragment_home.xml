@@ -13,63 +13,9 @@
         layout="@layout/layout_header" />
 
     <!-- Searchbar -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_searchbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:elevation="0dp"
-        app:cardCornerRadius="8sp"
-        app:strokeColor="#f1f1f4">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f1f1f4"
-            android:padding="10sp">
-
-            <TextView
-                android:id="@+id/tv_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:fontFamily="@font/swiggy_font_regular"
-                android:maxLines="1"
-                android:text="Search nearby "
-                android:textColor="@color/grey"
-                android:textSize="16sp" />
-
-            <TextSwitcher
-                android:id="@+id/textSwitcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/tv_search"
-                android:ellipsize="end"
-                android:fontFamily="@font/swiggy_font_regular"
-                android:inAnimation="@anim/text_slide_to_top"
-                android:outAnimation="@anim/text_slide_from_bottom"
-                android:textColor="@color/grey" />
-
-            <ImageView
-                android:layout_width="20sp"
-                android:layout_height="20sp"
-                android:layout_marginEnd="10sp"
-                android:layout_toStartOf="@id/iv_mic"
-                android:src="@drawable/icon_search" />
-
-            <ImageView
-                android:id="@+id/iv_mic"
-                android:layout_width="20sp"
-                android:layout_height="20sp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/icon_mic" />
-
-        </RelativeLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    <include
+        android:id="@+id/place_searchbar"
+        layout="@layout/layout_searchbar" />
 
     <ScrollView
         android:id="@+id/sv_home"
@@ -234,7 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/swiggy_font_light"
-                    android:text="Crafted with ❤️ by Bhaskar Acharjee"
+                    android:text="@string/crafted_by"
                     android:textColor="@color/grey"
                     android:textSize="20sp" />
 

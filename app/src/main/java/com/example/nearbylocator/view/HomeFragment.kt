@@ -199,7 +199,8 @@ class HomeFragment : Fragment() {
 
     // Set up a TextSwitcher for showing place hints that switch automatically
     private fun setupTextSwitcher() {
-        textSwitcher = binding.textSwitcher
+        val placeSearchbarLayout = binding.placeSearchbar
+        textSwitcher = placeSearchbarLayout.textSwitcher
         textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f

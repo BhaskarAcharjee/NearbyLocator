@@ -73,7 +73,8 @@ class ServiceFragment : Fragment() {
             }
         })
 
-        textSwitcher = binding.textSwitcher
+        val serviceSearchbarLayout = binding.serviceSearchbar
+        textSwitcher = serviceSearchbarLayout.textSwitcher
         textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f
