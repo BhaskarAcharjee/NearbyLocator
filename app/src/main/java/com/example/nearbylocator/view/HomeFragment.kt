@@ -248,7 +248,7 @@ class HomeFragment : Fragment() {
         resturantIcon.setOnClickListener {
             // Navigate to ProfileFragment
             val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_eventFragment)
+            navController.navigate(R.id.action_homeFragment_to_viewallFragment)
         }
     }
 

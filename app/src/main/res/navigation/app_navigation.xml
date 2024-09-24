@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
     app:startDestination="@id/homeFragment">
-
+    <!--Main Page Fragment -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.nearbylocator.view.HomeFragment"
@@ -21,8 +21,8 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_homeFragment_to_eventFragment"
-            app:destination="@id/eventFragment"
+            android:id="@+id/action_homeFragment_to_viewallFragment"
+            app:destination="@id/viewallFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -47,9 +47,16 @@
         android:name="com.example.nearbylocator.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <!-- Sub Page Fragment -->
     <fragment
         android:id="@+id/seeallFragment"
         android:name="com.example.nearbylocator.view.SeeallFragment"
         android:label="fragment_seeall"
         tools:layout="@layout/fragment_seeall" />
+    <fragment
+        android:id="@+id/viewallFragment"
+        android:name="com.example.nearbylocator.view.ViewallFragment"
+        android:label="fragment_viewall"
+        tools:layout="@layout/fragment_viewall" />
 </navigation>

@@ -1,82 +1,51 @@
 package com.example.nearbylocator.view
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.example.nearbylocator.R
-import com.example.nearbylocator.adapters.DineoutVertiImageAdapter
 import com.example.nearbylocator.databinding.FragmentEventBinding
-import com.example.nearbylocator.utils.dineoutMoreList
 
 class EventFragment : Fragment() {
 
     private lateinit var binding: FragmentEventBinding
-    private lateinit var dineOutVertiAdapter: DineoutVertiImageAdapter
-
-    private val hintStrings = arrayOf(
-        "Buhari Hotel",
-        "Palmshore",
-        "Royal Le Meridian",
-        "Purva Windermare",
-        "The Orange Palace"
-    )
-    private var currentHintIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEventBinding.inflate(layoutInflater)
+        binding = FragmentEventBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
-            // Setup vertical RecyclerView for more around you
-            rvMorearoundyou.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            dineOutVertiAdapter = DineoutVertiImageAdapter(dineoutMoreList)
-            rvMorearoundyou.adapter = dineOutVertiAdapter
+        // Set up Toolbar
+        val toolbar: Toolbar = binding.toolbar
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
 
-            svDineout.viewTreeObserver.addOnScrollChangedListener {
-                val linearLayoutHeight = llSearchbar.height + llMedian.height
-                val scrollY = svDineout.scrollY
-
-                if (scrollY >= linearLayoutHeight) {
-                    llSearchbar.visibility = View.VISIBLE
-                } else {
-                    llSearchbar.visibility = View.GONE
-                }
-            }
-
-            textSwitcher.setFactory {
-                val textView = TextView(context)
-                textView.textSize = 16f
-                textView.typeface =
-                    ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
-                textView
-            }
-
-            switchText()
-        }
+        // Set up SearchView
+        setupSearchView()
     }
 
-    private fun switchText() {
-        binding.textSwitcher.setText(hintStrings[currentHintIndex])
-        currentHintIndex = (currentHintIndex + 1) % hintStrings.size
+    private fun setupSearchView() {
+        val searchView: SearchView = binding.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Handle search submit
+                return false
+            }
 
-        binding.textSwitcher.postDelayed(
-            { switchText() },
-            1500
-        ) // Delay between text switches (2 seconds in this example)
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Handle text change for search
+                return false
+            }
+        })
     }
 }

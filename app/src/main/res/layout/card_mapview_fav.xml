@@ -19,9 +19,7 @@
             android:id="@+id/iv_food"
             android:layout_width="130sp"
             android:layout_height="160sp"
-            android:scaleType="centerCrop"
             android:src="@drawable/verti_img_1" />
-
     </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
@@ -119,107 +117,85 @@
             android:layout_marginBottom="8dp"
             android:background="@android:color/darker_gray" />
 
-        <!-- Transportation icons and times -->
-        <LinearLayout
+        <!-- Horizontal scrollable transportation icons and times -->
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_transport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:scrollbars="none">
 
-            <!-- Walking icon and time -->
-            <ImageView
-                android:layout_width="20sp"
-                android:layout_height="wrap_content"
-                android:contentDescription="Walking"
-                android:src="@drawable/walking_icon" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="9 min"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <!-- Cycle icon and time -->
-            <ImageView
-                android:layout_width="20sp"
-                android:layout_height="wrap_content"
-                android:contentDescription="Cycling"
-                android:src="@drawable/cycling_icon" />
+                <!-- Walking icon and time -->
+                <ImageView
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Walking"
+                    android:src="@drawable/walking_icon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="7 min"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="9 min"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-            <!-- Car icon and time -->
-            <ImageView
-                android:layout_width="20sp"
-                android:layout_height="wrap_content"
-                android:contentDescription="Car"
-                android:src="@drawable/car_icon" />
+                <!-- Cycle icon and time -->
+                <ImageView
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Cycling"
+                    android:src="@drawable/cycling_icon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="4 min"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="7 min"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-            <!-- Train icon and time -->
-            <ImageView
-                android:layout_width="20sp"
-                android:layout_height="wrap_content"
-                android:contentDescription="Train"
-                android:src="@drawable/bus_icon" />
+                <!-- Car icon and time -->
+                <ImageView
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Car"
+                    android:src="@drawable/car_icon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1 min"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="4 min"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <!-- Train icon and time -->
+                <ImageView
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Train"
+                    android:src="@drawable/bus_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="1 min"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="20dp"
-        android:background="@color/profileBackground"
-        android:gravity="center">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/profile_bk" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/profile_back_button"
-            android:textAlignment="center"
-            android:paddingLeft="30dp"
-            android:paddingRight="50dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:src="@drawable/back_to_home_button"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:minWidth="250dp" />
-
-    </RelativeLayout>
 
 </LinearLayout>
