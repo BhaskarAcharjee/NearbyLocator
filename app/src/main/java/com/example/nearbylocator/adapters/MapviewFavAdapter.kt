@@ -8,18 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 
-class CardAdapter(private val places: List<Place>) :
-    RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class MapviewFavAdapter(private val mapviewFavDataClasses: List<MapviewFavDataClass>) :
+    RecyclerView.Adapter<MapviewFavAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        // Inflate the card_service_verti.xml layout
+        // Inflate the card_mapview_fav.xml layout
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.card_service_verti, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_mapview_fav, parent, false)
         return CardViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val place = places[position]
+        val place = mapviewFavDataClasses[position]
 
         // Set data into views from the place object
         holder.tvHotelName.text = place.name
@@ -28,11 +28,11 @@ class CardAdapter(private val places: List<Place>) :
         holder.tvType.text = place.type
         holder.tvHotelLocation.text = place.location
         holder.ivFood.setImageResource(place.imageResource) // Assuming place has an image resource
-        holder.ivOffer.setImageResource(R.drawable.img_extra10) // Assuming a default offer image
+//        holder.ivOffer.setImageResource(R.drawable.img_extra10) // Assuming a default offer image
     }
 
     override fun getItemCount(): Int {
-        return places.size
+        return mapviewFavDataClasses.size
     }
 
     class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,6 +42,6 @@ class CardAdapter(private val places: List<Place>) :
         val tvTime: TextView = itemView.findViewById(R.id.tv_time)
         val tvType: TextView = itemView.findViewById(R.id.tv_type)
         val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_hotel_location)
-        val ivOffer: ImageView = itemView.findViewById(R.id.iv_offer)
+//        val ivOffer: ImageView = itemView.findViewById(R.id.iv_offer)
     }
 }

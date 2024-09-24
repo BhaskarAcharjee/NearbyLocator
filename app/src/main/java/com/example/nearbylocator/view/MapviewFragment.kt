@@ -11,12 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.utils.mapviewFavDataClasses
 
 class MapViewFragment : Fragment() {
 
     private lateinit var mapWebView: WebView
     private lateinit var recyclerView: RecyclerView
-    private lateinit var cardAdapter: CardAdapter
+    private lateinit var mapviewFavAdapter: MapviewFavAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,43 +63,7 @@ class MapViewFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        // Sample data
-        val places = listOf(
-            Place(
-                "Salem RR Briyani",
-                4.5f,
-                "20 mins",
-                "Briyani, Pizza",
-                "Medavakkam, 3.0 km",
-                R.drawable.verti_img_1
-            ),
-            Place(
-                "Burger King",
-                4.0f,
-                "15 mins",
-                "Burgers, Fast Food",
-                "Velachery, 2.5 km",
-                R.drawable.verti_img_2
-            ),
-            Place(
-                "Domino's Pizza",
-                4.2f,
-                "10 mins",
-                "Pizza, Italian",
-                "Tambaram, 4.0 km",
-                R.drawable.verti_img_3
-            ),
-            Place(
-                "Subway",
-                3.8f,
-                "25 mins",
-                "Sandwiches, Salads",
-                "Sholinganallur, 5.0 km",
-                R.drawable.verti_img_4
-            )
-        )
-
-        cardAdapter = CardAdapter(places)
-        recyclerView.adapter = cardAdapter
+        mapviewFavAdapter = MapviewFavAdapter(mapviewFavDataClasses)
+        recyclerView.adapter = mapviewFavAdapter
     }
 }

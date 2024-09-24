@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
         setupTextSwitcher() // Set up the text switcher for hints
         setupProfileIconNavigation() // Set up profile icon click event
+        setupQuickCategoryNavigation()
     }
 
     // Setting up ViewPager2 for image slider with transformer
@@ -235,6 +236,19 @@ class HomeFragment : Fragment() {
             // Navigate to ProfileFragment
             val navController = findNavController()
             navController.navigate(R.id.action_homeFragment_to_profileFragment)
+        }
+    }
+
+    private fun setupQuickCategoryNavigation() {
+        val quickPlaceCategoryLayout = binding.quickPlaceCategory
+        val resturantIcon =
+            quickPlaceCategoryLayout.resturantIcon // Access the profile icon from the included layout (layout_header)
+
+        // Set up click listener for profile icon
+        resturantIcon.setOnClickListener {
+            // Navigate to ProfileFragment
+            val navController = findNavController()
+            navController.navigate(R.id.action_homeFragment_to_eventFragment)
         }
     }
 

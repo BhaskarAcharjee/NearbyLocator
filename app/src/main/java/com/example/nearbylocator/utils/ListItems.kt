@@ -5,6 +5,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.model.EventDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.VertiServicesDataClass
+import com.example.nearbylocator.view.MapviewFavDataClass
 
 //Search hints
 val places_hint_Strings = arrayOf(
@@ -73,6 +74,41 @@ val homeSlideImages = arrayListOf(
     R.drawable.homeslide1,
     R.drawable.homeslide7,
     R.drawable.homeslide2
+)
+
+val mapviewFavDataClasses = listOf(
+    MapviewFavDataClass(
+        "Salem RR Briyani",
+        4.5f,
+        "20 mins",
+        "Briyani, Pizza",
+        "Medavakkam, 3.0 km",
+        R.drawable.verti_img_1
+    ),
+    MapviewFavDataClass(
+        "Burger King",
+        4.0f,
+        "15 mins",
+        "Burgers, Fast Food",
+        "Velachery, 2.5 km",
+        R.drawable.verti_img_2
+    ),
+    MapviewFavDataClass(
+        "Domino's Pizza",
+        4.2f,
+        "10 mins",
+        "Pizza, Italian",
+        "Tambaram, 4.0 km",
+        R.drawable.verti_img_3
+    ),
+    MapviewFavDataClass(
+        "Subway",
+        3.8f,
+        "25 mins",
+        "Sandwiches, Salads",
+        "Sholinganallur, 5.0 km",
+        R.drawable.verti_img_4
+    )
 )
 
 val topRatedFoodsList = listOf(

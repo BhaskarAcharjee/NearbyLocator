@@ -1,6 +1,6 @@
 package com.example.nearbylocator.view
 
-data class Place(
+data class MapviewFavDataClass(
     val name: String,
     val rating: Float,
     val time: String,
