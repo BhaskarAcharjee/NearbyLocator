@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         setupTextSwitcher() // Set up the text switcher for hints
         setupProfileIconNavigation() // Set up profile icon click event
         setupQuickCategoryNavigation()
+        setupChoosePlaceCategory()
     }
 
     // Setting up ViewPager2 for image slider with transformer
@@ -249,6 +250,19 @@ class HomeFragment : Fragment() {
             // Navigate to ProfileFragment
             val navController = findNavController()
             navController.navigate(R.id.action_homeFragment_to_viewallFragment)
+        }
+    }
+
+    private fun setupChoosePlaceCategory() {
+        val quickPlaceCategoryLayout = binding.quickPlaceCategory
+        val placeIcon =
+            quickPlaceCategoryLayout.placeIcon // Access the profile icon from the included layout (layout_header)
+
+        // Set up click listener for profile icon
+        placeIcon.setOnClickListener {
+            // Navigate to ProfileFragment
+            val navController = findNavController()
+            navController.navigate(R.id.action_homeFragment_to_choosePlaceFragment)
         }
     }
 

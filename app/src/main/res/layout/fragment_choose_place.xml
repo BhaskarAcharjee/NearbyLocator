@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chooseQuickPlaceCategoryLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ChoosePlaceFragment"
+    android:padding="16dp">
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/back_icon"
+        android:contentDescription="Back" />
+
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backButton"
+        android:layout_marginBottom="8dp"
+        android:text="Choose Place Category"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Short Description -->
+    <TextView
+        android:id="@+id/shortDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/heading"
+        android:layout_marginBottom="16dp"
+        android:text="Select a category to find nearby places."
+        android:textSize="16sp" />
+
+    <!-- Vertical ScrollView containing the GridLayout -->
+    <ScrollView
+        android:id="@+id/categoryScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/doneButton"
+        android:layout_below="@id/shortDescription"
+        android:scrollbars="none"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:padding="10dp"
+            android:rowCount="4">
+
+            <!-- Restaurant Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/resturant_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Restaurant"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Bank Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/bank_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Bank"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- ATM Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/atm_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="ATM"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Hospital Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/hospital_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Hospital"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Groceries Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/groceries_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Groceries"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Additional Categories can be added here -->
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Parking Category -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_corner"
+                    android:src="@drawable/parking_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/swiggy_font_medium"
+                    android:paddingTop="5dp"
+                    android:text="Parking"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </GridLayout>
+    </ScrollView>
+
+    <!-- Done Button -->
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/light_grey"
+        android:drawablePadding="8dp"
+        android:padding="10dp"
+        android:text="Done"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -25,6 +25,11 @@
             app:destination="@id/viewallFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_choosePlaceFragment"
+            app:destination="@id/choosePlaceFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -59,4 +64,9 @@
         android:name="com.example.nearbylocator.fragments.ViewallFragment"
         android:label="fragment_viewall"
         tools:layout="@layout/fragment_viewall" />
+    <fragment
+        android:id="@+id/choosePlaceFragment"
+        android:name="com.example.nearbylocator.fragments.ChoosePlaceFragment"
+        android:label="fragment_choose_place"
+        tools:layout="@layout/fragment_choose_place" />
 </navigation>
