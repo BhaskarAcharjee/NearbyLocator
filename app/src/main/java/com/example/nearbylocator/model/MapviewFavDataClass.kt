@@ -1,4 +1,4 @@
-package com.example.nearbylocator.view
+package com.example.nearbylocator.model
 
 data class MapviewFavDataClass(
     val name: String,

@@ -7,9 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.model.MapviewFavDataClass
 
-class MapviewFavAdapter(private val mapviewFavDataClasses: List<MapviewFavDataClass>) :
-    RecyclerView.Adapter<MapviewFavAdapter.CardViewHolder>() {
+// Adding a click listener as a lambda function in the constructor
+class MapviewFavAdapter(
+    private val mapviewFavDataClasses: List<MapviewFavDataClass>,
+    private val onCardClick: (Int) -> Unit // Lambda function to handle clicks
+) : RecyclerView.Adapter<MapviewFavAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         // Inflate the card_mapview_fav.xml layout
@@ -29,6 +33,11 @@ class MapviewFavAdapter(private val mapviewFavDataClasses: List<MapviewFavDataCl
         holder.tvHotelLocation.text = place.location
         holder.ivFood.setImageResource(place.imageResource) // Assuming place has an image resource
 //        holder.ivOffer.setImageResource(R.drawable.img_extra10) // Assuming a default offer image
+
+        // Handle the card click
+        holder.itemView.setOnClickListener {
+            onCardClick(position) // Call the lambda function, passing the clicked position
+        }
     }
 
     override fun getItemCount(): Int {

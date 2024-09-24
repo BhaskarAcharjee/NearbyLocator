@@ -5,7 +5,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.model.EventDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.VertiServicesDataClass
-import com.example.nearbylocator.view.MapviewFavDataClass
+import com.example.nearbylocator.model.MapviewFavDataClass
 
 //Search hints
 val places_hint_Strings = arrayOf(
