@@ -1,4 +1,4 @@
-package com.example.nearbylocator.view
+package com.example.nearbylocator.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
     <!--    Header  -->
     <include
@@ -91,67 +91,67 @@
                 </LinearLayout>
 
                 <!-- Place Categories -->
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryFoodDrinks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryShopping"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryTransportation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryHealthCare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryFinancialServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryPublicServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryFitnessWellness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryPersonalCare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryEntertainment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryEducation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.customviews.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryView
                     android:id="@+id/placeCategoryReligious"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

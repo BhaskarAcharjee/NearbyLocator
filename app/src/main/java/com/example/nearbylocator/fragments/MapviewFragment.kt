@@ -1,4 +1,4 @@
-package com.example.nearbylocator.view
+package com.example.nearbylocator.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 import com.example.nearbylocator.utils.mapviewFavDataClasses
+import com.example.nearbylocator.view.MapviewFavAdapter
 
 class MapViewFragment : Fragment() {
 

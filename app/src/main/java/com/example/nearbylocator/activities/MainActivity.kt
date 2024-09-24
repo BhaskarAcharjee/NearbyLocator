@@ -1,4 +1,4 @@
-package com.example.nearbylocator
+package com.example.nearbylocator.activities
 
 import android.graphics.Color
 import android.graphics.Typeface
@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.nearbylocator.R
 import com.example.nearbylocator.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

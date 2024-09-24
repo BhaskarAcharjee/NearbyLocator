@@ -1,4 +1,4 @@
-package com.example.nearbylocator.customviews
+package com.example.nearbylocator.view
 
 import android.content.Context
 import android.util.AttributeSet

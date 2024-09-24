@@ -1,4 +1,4 @@
-package com.example.nearbylocator.view
+package com.example.nearbylocator.fragments
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import com.example.nearbylocator.R
 import com.example.nearbylocator.databinding.FragmentEventBinding
 
 class EventFragment : Fragment() {

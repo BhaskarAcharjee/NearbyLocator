@@ -1,4 +1,4 @@
-package com.example.nearbylocator
+package com.example.nearbylocator.activities
 
 import android.content.Intent
 import android.os.Bundle
