@@ -2,6 +2,7 @@ package com.example.nearbylocator.utils
 
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.R
+import com.example.nearbylocator.fragments.ChoosePlaceFragment.Category
 import com.example.nearbylocator.model.EventDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.VertiServicesDataClass
@@ -67,6 +68,27 @@ val services_hint_Strings = arrayOf(
     "Moving Company"
 )
 
+val quickPlaceCategories = listOf(
+    Category("Restaurant", R.drawable.resturant_icon),
+    Category("Bank", R.drawable.bank_icon),
+    Category("ATM", R.drawable.atm_icon),
+    Category("Hospital", R.drawable.hospital_icon),
+    Category("Groceries", R.drawable.groceries_icon),
+    Category("Parking", R.drawable.parking_icon),
+    // Add more categories as needed
+    Category("Restaurant", R.drawable.resturant_icon),
+    Category("Bank", R.drawable.bank_icon),
+    Category("ATM", R.drawable.atm_icon),
+    Category("Hospital", R.drawable.hospital_icon),
+    Category("Groceries", R.drawable.groceries_icon),
+    Category("Parking", R.drawable.parking_icon),
+    Category("Restaurant", R.drawable.resturant_icon),
+    Category("Bank", R.drawable.bank_icon),
+    Category("ATM", R.drawable.atm_icon),
+    Category("Hospital", R.drawable.hospital_icon),
+    Category("Groceries", R.drawable.groceries_icon),
+    Category("Parking", R.drawable.parking_icon)
+)
 
 val homeSlideImages = arrayListOf(
     R.drawable.homeslide5,

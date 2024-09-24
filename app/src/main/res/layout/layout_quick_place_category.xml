@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- multiple categories -->
+            <!-- PlaceIcon stays static -->
             <LinearLayout
                 android:id="@+id/placeIcon"
                 android:layout_width="wrap_content"
@@ -27,9 +26,9 @@
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="80sp"
                     android:layout_height="80sp"
-                    app:lottie_rawRes="@raw/anim_place"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/anim_place"
                     app:lottie_speed="1" />
 
                 <TextView
@@ -42,143 +41,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/resturantIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/resturant_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="Restaurant"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/bank_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="Bank"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/atm_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="ATM"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/hospital_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="Hospital"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/groceries_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="Groceries"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10sp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:background="@drawable/rounded_corner"
-                    android:src="@drawable/parking_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/swiggy_font_medium"
-                    android:paddingTop="5sp"
-                    android:text="Parking"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
         </LinearLayout>
 
     </HorizontalScrollView>
-
-
 </RelativeLayout>

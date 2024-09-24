@@ -1,11 +1,16 @@
 package com.example.nearbylocator.fragments
 
+import android.content.Context
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -53,7 +58,7 @@ class HomeFragment : Fragment() {
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
         setupTextSwitcher() // Set up the text switcher for hints
         setupProfileIconNavigation() // Set up profile icon click event
-        setupQuickCategoryNavigation()
+        setupQuickCategoryNavigation() // Merge into one function
         setupChoosePlaceCategory()
     }
 
@@ -115,88 +120,16 @@ class HomeFragment : Fragment() {
         binding.placeCategoryFoodDrinks.setSeeAllClickListener(findNavController())
 
         // Shopping Category
-        val shoppingAdapter =
-            DineoutHoriImageAdapter(dineoutBestOffersList) // You can use a different list
+        val shoppingAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
         binding.placeCategoryShopping.apply {
             setTitle("Shopping")
             setDescription("Find the best places to shop")
             setRecyclerViewAdapter(shoppingAdapter)
         }
-        binding.placeCategoryShopping.setSeeAllClickListener(findNavController()) // Pass the fragment's NavController from HomeFragment to the PlaceCategoryView
+        binding.placeCategoryShopping.setSeeAllClickListener(findNavController())
 
-        // Transportation Category
-        val transportationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryTransportation.apply {
-            setTitle("Transportation")
-            setDescription("Discover transport services around you")
-            setRecyclerViewAdapter(transportationAdapter)
-        }
-
-        // Health Care Category
-        val healthCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryHealthCare.apply {
-            setTitle("Health Care")
-            setDescription("Find clinics, hospitals, and healthcare services")
-            setRecyclerViewAdapter(healthCareAdapter)
-        }
-
-        // Financial Services Category
-        val financialServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryFinancialServices.apply {
-            setTitle("Financial Services")
-            setDescription("Locate banks and ATMs near you")
-            setRecyclerViewAdapter(financialServicesAdapter)
-        }
-
-        // Public Services Category
-        val publicServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryPublicServices.apply {
-            setTitle("Public Services")
-            setDescription("Explore public service offices nearby")
-            setRecyclerViewAdapter(publicServicesAdapter)
-        }
-
-        // Fitness & Wellness Category
-        val fitnessWellnessAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryFitnessWellness.apply {
-            setTitle("Fitness & Wellness")
-            setDescription("Discover gyms, spas, and wellness centers")
-            setRecyclerViewAdapter(fitnessWellnessAdapter)
-        }
-
-        // Personal Care Category
-        val personalCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryPersonalCare.apply {
-            setTitle("Personal Care")
-            setDescription("Find beauty salons and personal care services")
-            setRecyclerViewAdapter(personalCareAdapter)
-        }
-
-        // Entertainment Category
-        val entertainmentAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryEntertainment.apply {
-            setTitle("Entertainment")
-            setDescription("Explore cinemas, parks, and entertainment spots")
-            setRecyclerViewAdapter(entertainmentAdapter)
-        }
-
-        // Education Category
-        val educationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryEducation.apply {
-            setTitle("Education")
-            setDescription("Locate schools, colleges, and educational centers")
-            setRecyclerViewAdapter(educationAdapter)
-        }
-
-        // Religious Category
-        val religiousAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
-        binding.placeCategoryReligious.apply {
-            setTitle("Religious")
-            setDescription("Find religious places nearby")
-            setRecyclerViewAdapter(religiousAdapter)
-        }
+        // Add more categories as needed using a similar pattern
     }
-
 
     // Set up a TextSwitcher for showing place hints that switch automatically
     private fun setupTextSwitcher() {
@@ -240,19 +173,70 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // Merged Quick Category Navigation setup
     private fun setupQuickCategoryNavigation() {
-        val quickPlaceCategoryLayout = binding.quickPlaceCategory
-        val resturantIcon =
-            quickPlaceCategoryLayout.resturantIcon // Access the profile icon from the included layout (layout_header)
+        // Define category data
+        val categories = listOf(
+            Category("Restaurant", R.drawable.resturant_icon),
+            Category("Bank", R.drawable.bank_icon),
+            Category("ATM", R.drawable.atm_icon),
+            Category("Hospital", R.drawable.hospital_icon),
+            Category("Groceries", R.drawable.groceries_icon),
+            Category("Parking", R.drawable.parking_icon)
+        )
 
-        // Set up click listener for profile icon
-        resturantIcon.setOnClickListener {
-            // Navigate to ProfileFragment
-            val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_viewallFragment)
+        val categoryLayout = binding.quickPlaceCategory.llCategories
+
+        // Dynamically add categories
+        categories.forEach { category ->
+            val categoryView = createCategoryView(category)
+            categoryLayout.addView(categoryView)
         }
     }
 
+    // Helper function to create a category view dynamically
+    private fun createCategoryView(category: Category): LinearLayout {
+        val context = context ?: return LinearLayout(requireContext())
+
+        // Create a LinearLayout for the category
+        val categoryLayout = LinearLayout(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(0, 0, 10.spToPx(context), 0)
+            }
+            orientation = LinearLayout.VERTICAL
+        }
+
+        // Create an ImageView for the icon
+        val imageView = ImageView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(80.spToPx(context), 80.spToPx(context))
+            setBackgroundResource(R.drawable.rounded_corner)
+            setImageResource(category.iconResId)
+        }
+
+        // Create a TextView for the label
+        val textView = TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setPadding(0, 5.spToPx(context), 0, 0)
+                gravity = Gravity.CENTER_HORIZONTAL
+            }
+            text = category.title
+            setTypeface(ResourcesCompat.getFont(context, R.font.swiggy_font_medium), Typeface.BOLD)
+        }
+
+        // Add ImageView and TextView to the category layout
+        categoryLayout.addView(imageView)
+        categoryLayout.addView(textView)
+
+        return categoryLayout
+    }
+
+    // Setting up navigation for "Choose Place Category" to respective fragment
     private fun setupChoosePlaceCategory() {
         val quickPlaceCategoryLayout = binding.quickPlaceCategory
         val placeIcon =
@@ -266,15 +250,11 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Pause the image auto-slide when the fragment is paused
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(runnable)
-    }
+    // Category data class
+    data class Category(val title: String, val iconResId: Int)
 
-    // Resume the image auto-slide when the fragment is resumed
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(runnable, 2500)
+    // Extension function for converting sp to pixels
+    private fun Int.spToPx(context: Context): Int {
+        return (this * context.resources.displayMetrics.scaledDensity).toInt()
     }
 }

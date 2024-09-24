@@ -68,5 +68,9 @@
         android:id="@+id/choosePlaceFragment"
         android:name="com.example.nearbylocator.fragments.ChoosePlaceFragment"
         android:label="fragment_choose_place"
-        tools:layout="@layout/fragment_choose_place" />
+        tools:layout="@layout/fragment_choose_place" >
+        <action
+            android:id="@+id/action_choosePlaceFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
