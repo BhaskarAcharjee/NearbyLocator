@@ -7,22 +7,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.ChoosePlaceCategory
+import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
 
 class ChoosePlaceCategoryAdapter(
-    private val categories: List<ChoosePlaceCategory>,
-    private val onItemClick: (ChoosePlaceCategory) -> Unit
+    private val categories: List<ChoosePlaceCategoryDataClass>,
+    private val onItemClick: (ChoosePlaceCategoryDataClass) -> Unit
 ) : RecyclerView.Adapter<ChoosePlaceCategoryAdapter.CategoryViewHolder>() {
 
-    private val selectedCategories = mutableSetOf<ChoosePlaceCategory>()
+    private val selectedCategories = mutableSetOf<ChoosePlaceCategoryDataClass>()
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.categoryIcon)
         private val name: TextView = itemView.findViewById(R.id.categoryName)
 
-        fun bind(category: ChoosePlaceCategory) {
+        fun bind(category: ChoosePlaceCategoryDataClass) {
             icon.setImageResource(category.icon)
-            name.text = category.name
+            name.text = category.title
 
             // Handle the background change based on selection state
             if (selectedCategories.contains(category)) {
@@ -61,7 +61,7 @@ class ChoosePlaceCategoryAdapter(
     override fun getItemCount(): Int = categories.size
 
     // Public method to get selected categories
-    fun getSelectedCategories(): Set<ChoosePlaceCategory> {
+    fun getSelectedCategories(): Set<ChoosePlaceCategoryDataClass> {
         return selectedCategories
     }
 }

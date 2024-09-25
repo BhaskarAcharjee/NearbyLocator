@@ -5,19 +5,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.QuickPlaceCategory
+import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
 
 class QuickPlaceCategoryAdapter(
-    private val categories: List<QuickPlaceCategory>,
-    private val onItemClick: (QuickPlaceCategory) -> Unit
+    private val categories: MutableList<QuickPlaceCategoryDataClass>, // Change to MutableList
+    private val onItemClick: (QuickPlaceCategoryDataClass) -> Unit
 ) : RecyclerView.Adapter<QuickPlaceCategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.iv_category_icon)
         private val title: TextView = itemView.findViewById(R.id.tv_category_name)
 
-        fun bind(category: QuickPlaceCategory) {
-            icon.setImageResource(category.iconResId)
+        fun bind(category: QuickPlaceCategoryDataClass) {
+            icon.setImageResource(category.icon)
             title.text = category.title
             itemView.setOnClickListener { onItemClick(category) }
         }
@@ -34,4 +34,16 @@ class QuickPlaceCategoryAdapter(
     }
 
     override fun getItemCount(): Int = categories.size
+
+    // Clear the current categories and notify the adapter
+    fun clearCategories() {
+        categories.clear()
+        notifyDataSetChanged() // Notify the adapter that the data has changed
+    }
+
+    // Add a new category and notify the adapter
+    fun addCategory(category: QuickPlaceCategoryDataClass) {
+        categories.add(category)
+        notifyItemInserted(categories.size - 1) // Notify that a new item was inserted
+    }
 }

@@ -2,16 +2,12 @@ package com.example.nearbylocator.fragments
 
 import QuickPlaceCategoryAdapter
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -27,7 +23,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutHoriImageAdapter
 import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
-import com.example.nearbylocator.model.QuickPlaceCategory
+import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
 import com.example.nearbylocator.utils.dineoutBestOffersList
 import com.example.nearbylocator.utils.places_hint_Strings
 import kotlin.math.abs
@@ -63,7 +59,27 @@ class HomeFragment : Fragment() {
         setupProfileIconNavigation() // Set up profile icon click event
         setupQuickCategoryNavigation() // Merge into one function
         setupChoosePlaceCategory()
+        // Update quick categories when the fragment is created
+        updateQuickPlaceCategories()
     }
+
+    private fun updateQuickPlaceCategories() {
+        val selectedCategories =
+            ChoosePlaceFragment.selectedCategories // This should be of type List<ChoosePlaceCategory>
+        val quickPlaceCategoryAdapter =
+            binding.quickPlaceCategory.rvCategories.adapter as? QuickPlaceCategoryAdapter
+
+        quickPlaceCategoryAdapter?.let {
+            it.clearCategories()
+            selectedCategories.forEach { chooseCategory -> // Assuming chooseCategory is of type ChoosePlaceCategory
+                // Map ChoosePlaceCategory to QuickPlaceCategory
+                val quickCategory = QuickPlaceCategoryDataClass(chooseCategory.title, chooseCategory.icon)
+                it.addCategory(quickCategory)
+            }
+            it.notifyDataSetChanged()
+        }
+    }
+
 
     // Setting up ViewPager2 for image slider with transformer
     private fun setupViewPager() {
@@ -179,13 +195,13 @@ class HomeFragment : Fragment() {
     // Merged Quick Category Navigation setup
     private fun setupQuickCategoryNavigation() {
         // Define category data
-        val categories = listOf(
-            QuickPlaceCategory("Restaurant", R.drawable.resturant_icon),
-            QuickPlaceCategory("Bank", R.drawable.bank_icon),
-            QuickPlaceCategory("ATM", R.drawable.atm_icon),
-            QuickPlaceCategory("Hospital", R.drawable.hospital_icon),
-            QuickPlaceCategory("Groceries", R.drawable.groceries_icon),
-            QuickPlaceCategory("Parking", R.drawable.parking_icon)
+        val categories = mutableListOf( // Change to mutableListOf
+            QuickPlaceCategoryDataClass("Restaurant", R.drawable.resturant_icon),
+            QuickPlaceCategoryDataClass("Bank", R.drawable.bank_icon),
+            QuickPlaceCategoryDataClass("ATM", R.drawable.atm_icon),
+            QuickPlaceCategoryDataClass("Hospital", R.drawable.hospital_icon),
+            QuickPlaceCategoryDataClass("Groceries", R.drawable.groceries_icon),
+            QuickPlaceCategoryDataClass("Parking", R.drawable.parking_icon)
         )
 
         val quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(categories) { category ->
@@ -204,7 +220,6 @@ class HomeFragment : Fragment() {
             false
         )
     }
-
 
     // Setting up navigation for "Choose Place Category" to respective fragment
     private fun setupChoosePlaceCategory() {

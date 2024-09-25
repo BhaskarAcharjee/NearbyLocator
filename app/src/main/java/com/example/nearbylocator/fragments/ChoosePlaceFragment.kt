@@ -12,11 +12,17 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
 import com.example.nearbylocator.utils.choosePlaceCategories
+import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
 
 class ChoosePlaceFragment : Fragment() {
 
     private lateinit var binding: FragmentChoosePlaceBinding
     private lateinit var adapter: ChoosePlaceCategoryAdapter
+
+    // Shared variable to hold selected categories
+    companion object {
+        var selectedCategories: MutableSet<ChoosePlaceCategoryDataClass> = mutableSetOf()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,30 +43,41 @@ class ChoosePlaceFragment : Fragment() {
 
         binding.doneButton.setOnClickListener {
             val selectedCategories = adapter.getSelectedCategories()
-            if (selectedCategories.isNotEmpty()) {
-                // Handle selected categories (e.g., pass data to another fragment or activity)
-                Toast.makeText(
-                    requireContext(),
-                    "Selected categories: ${selectedCategories.size}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(requireContext(), "No categories selected.", Toast.LENGTH_SHORT)
-                    .show()
+            when {
+                selectedCategories.size < 3 -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Please select at least 3 categories.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                selectedCategories.size > 5 -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "You can select up to 5 categories.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                else -> {
+                    // Update the shared variable with selected categories
+                    Companion.selectedCategories.clear()
+                    Companion.selectedCategories.addAll(selectedCategories)
+                    findNavController().navigate(R.id.action_choosePlaceFragment_to_homeFragment)
+                }
             }
         }
     }
 
     private fun setupCategoryGrid() {
-        // Initialize adapter with categories and click listener
         adapter = ChoosePlaceCategoryAdapter(choosePlaceCategories) { category ->
-            // Handle click events if necessary (e.g., show a message)
-            Toast.makeText(requireContext(), "${category.name} clicked!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "${category.title} clicked!", Toast.LENGTH_SHORT)
+                .show()
         }
 
-        // Set up RecyclerView with GridLayoutManager
         binding.categoryRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 3) // 3 columns
+            layoutManager = GridLayoutManager(context, 3)
             adapter = this@ChoosePlaceFragment.adapter
         }
     }

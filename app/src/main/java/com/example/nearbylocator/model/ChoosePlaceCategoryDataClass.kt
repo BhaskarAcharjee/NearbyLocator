@@ -1,6 +1,6 @@
 package com.example.nearbylocator.model
 
-data class ChoosePlaceCategory(
-    val name: String,
+data class ChoosePlaceCategoryDataClass(
+    val title: String,
     val icon: Int
 )

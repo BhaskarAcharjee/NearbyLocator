@@ -1,6 +1,6 @@
 package com.example.nearbylocator.model
 
-data class QuickPlaceCategory(
+data class QuickPlaceCategoryDataClass(
     val title: String,
-    val iconResId: Int
+    val icon: Int
 )

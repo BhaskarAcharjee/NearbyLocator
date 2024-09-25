@@ -1,7 +1,7 @@
 package com.example.nearbylocator.utils
 
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.ChoosePlaceCategory
+import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
 import com.example.nearbylocator.model.EventDataClass
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.model.MapviewDataClass
@@ -69,12 +69,12 @@ val services_hint_Strings = arrayOf(
 )
 
 val choosePlaceCategories = listOf(
-    ChoosePlaceCategory("Restaurant", R.drawable.resturant_icon),
-    ChoosePlaceCategory("Bank", R.drawable.bank_icon),
-    ChoosePlaceCategory("ATM", R.drawable.atm_icon),
-    ChoosePlaceCategory("Hospital", R.drawable.hospital_icon),
-    ChoosePlaceCategory("Groceries", R.drawable.groceries_icon),
-    ChoosePlaceCategory("Parking", R.drawable.parking_icon)
+    ChoosePlaceCategoryDataClass("Restaurant", R.drawable.resturant_icon),
+    ChoosePlaceCategoryDataClass("Bank", R.drawable.bank_icon),
+    ChoosePlaceCategoryDataClass("ATM", R.drawable.atm_icon),
+    ChoosePlaceCategoryDataClass("Hospital", R.drawable.hospital_icon),
+    ChoosePlaceCategoryDataClass("Groceries", R.drawable.groceries_icon),
+    ChoosePlaceCategoryDataClass("Parking", R.drawable.parking_icon)
 )
 
 
