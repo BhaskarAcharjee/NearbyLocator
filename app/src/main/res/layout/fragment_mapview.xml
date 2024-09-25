@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- WebView for the Google Maps iframe -->
-        <WebView
-            android:id="@+id/mapWebView"
+        <!-- MapView for the native Google Maps -->
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <!-- Custom Search Bar layout (layout_searchbar.xml) -->
+        <!-- Custom Search Bar layout -->
         <include
             android:id="@+id/customSearchBar"
             layout="@layout/layout_searchbar"
@@ -32,10 +32,9 @@
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:padding="8dp" />
-
     </RelativeLayout>
 
-    <!-- Bottom Sheet for layout_mapview_extended -->
+    <!-- Bottom Sheet for extended map view -->
     <LinearLayout
         android:id="@+id/layoutMiscellaneous"
         android:layout_width="match_parent"
@@ -48,7 +47,6 @@
 
         <!-- Include the extended layout here -->
         <include layout="@layout/layout_mapview_extended" />
-
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

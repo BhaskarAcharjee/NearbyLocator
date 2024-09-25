@@ -17,7 +17,7 @@ class InstamartImageAdapter(private val instamartImageList: List<MapviewDataClas
         viewType: Int
     ): InstamartImageAdapter.InstamartImageHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.card_mapview, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_hotdeal, parent, false)
         return InstamartImageHolder(view)
     }
 
