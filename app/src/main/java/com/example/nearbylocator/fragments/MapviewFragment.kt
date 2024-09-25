@@ -8,12 +8,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.model.MapviewFavDataClass
 import com.example.nearbylocator.utils.mapviewFavDataClasses
 import com.example.nearbylocator.view.MapviewFavAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -38,6 +41,14 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private lateinit var searchBar: View
     private lateinit var favoriteCards: RecyclerView
 
+    // Declare views for the extended card
+    private lateinit var extendedHotelName: TextView
+    private lateinit var extendedRating: TextView
+    private lateinit var extendedTime: TextView
+    private lateinit var extendedType: TextView
+    private lateinit var extendedLocation: TextView
+//    private lateinit var extendedFoodImage: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,8 +65,15 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        setupRecyclerView()
-        setupBottomSheet(view)
+        // Initialize the extended card views
+        extendedHotelName = view.findViewById(R.id.tv_hotel_name_extended)
+        extendedRating = view.findViewById(R.id.tv_rating_extended)
+        extendedTime = view.findViewById(R.id.tv_time_extended)
+        extendedType = view.findViewById(R.id.tv_type_extended)
+        extendedLocation = view.findViewById(R.id.tv_hotel_location_extended)
+
+        setupRecyclerView()  // Setup RecyclerView with favorite cards
+        setupBottomSheet(view)  // Setup Bottom Sheet behavior
 
         return view
     }
@@ -65,9 +83,19 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         mapviewFavAdapter = MapviewFavAdapter(mapviewFavDataClasses) { position ->
-            expandBottomSheet()
+            val selectedPlace = mapviewFavDataClasses[position]
+            expandBottomSheet()  // Expand the Bottom Sheet
+            populateExtendedCard(selectedPlace)  // Populate extended card
         }
         recyclerView.adapter = mapviewFavAdapter
+    }
+
+    private fun populateExtendedCard(selectedPlace: MapviewFavDataClass) {
+        extendedHotelName.text = selectedPlace.name
+        extendedRating.text = selectedPlace.rating.toString()
+        extendedTime.text = selectedPlace.time
+        extendedType.text = selectedPlace.type
+        extendedLocation.text = selectedPlace.location
     }
 
     private fun setupBottomSheet(view: View) {
