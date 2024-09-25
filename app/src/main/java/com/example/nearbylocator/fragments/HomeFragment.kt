@@ -26,6 +26,7 @@ import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
 import com.example.nearbylocator.utils.dineoutBestOffersList
 import com.example.nearbylocator.utils.places_hint_Strings
+import com.example.nearbylocator.view.HeaderView
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -52,8 +53,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Get reference to HeaderView
+        val headerView = binding.headerView as HeaderView
+
+        // Set city and current location
+        headerView.setCityLocation(getString(R.string.city_location))
+        headerView.setCurrentLocation(getString(R.string.current_location))
+
         // Call setup methods for different sections
-        setupProfileIconNavigation() // Set up profile icon click event
         setupTextSwitcher() // Set up the text switcher for hints
         setupViewPager() // Set up the image slider
         setupQuickCategoryNavigation() // Merge into one function
@@ -134,20 +141,6 @@ class HomeFragment : Fragment() {
             { switchText() },
             1500
         )
-    }
-
-    // Handle profile icon click navigation to the profile fragment
-    private fun setupProfileIconNavigation() {
-        val headerLayout = binding.rlHeader
-        val profileIcon =
-            headerLayout.profileIcon // Access the profile icon from the included layout (layout_header)
-
-        // Set up click listener for profile icon
-        profileIcon.setOnClickListener {
-            // Navigate to ProfileFragment
-            val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_profileFragment)
-        }
     }
 
     // Merged Quick Category Navigation setup

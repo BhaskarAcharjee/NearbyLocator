@@ -9,9 +9,10 @@
     tools:context=".fragments.ServiceFragment">
 
     <!--    Header  -->
-    <include
-        android:id="@+id/rl_header"
-        layout="@layout/layout_header" />
+    <com.example.nearbylocator.view.HeaderView
+        android:id="@+id/header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <!-- Searchbar -->
     <include
