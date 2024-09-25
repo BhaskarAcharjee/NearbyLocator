@@ -2,6 +2,7 @@ package com.example.nearbylocator.fragments
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.util.Locale
 
 class MapViewFragment : Fragment(), OnMapReadyCallback {
 
@@ -82,6 +84,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                         searchBar.visibility = View.GONE
                         favoriteCards.visibility = View.GONE
                     }
+
                     BottomSheetBehavior.STATE_COLLAPSED, BottomSheetBehavior.STATE_HIDDEN -> {
                         searchBar.visibility = View.VISIBLE
                         favoriteCards.visibility = View.VISIBLE
@@ -138,7 +141,80 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                 )
             }
         }
+
+        // Set a click listener to add a marker at the clicked position
+        googleMap.setOnMapClickListener { latLng ->
+            // Clear existing markers if needed (optional)
+            googleMap.clear()
+
+            // Reverse geocoding to get place name from latLng
+            val geocoder = Geocoder(requireContext(), Locale.getDefault())
+            var addressText = "Selected Location"
+
+            try {
+                // Get the address based on the latitude and longitude
+                val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+
+                if (addresses != null && addresses.isNotEmpty()) {
+                    val address = addresses[0]
+                    // Concatenate address components for a readable format
+                    addressText = address.getAddressLine(0) ?: "Selected Location"
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            // Add a new marker with the place name as title
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(latLng)
+                    .title(addressText)
+            )?.showInfoWindow() // Immediately show the info window with the place name
+
+            // Optionally, move the camera to the clicked location
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        }
+
+        // Handle clicking on the "My Location" button
+        googleMap.setOnMyLocationButtonClickListener {
+            // Move the camera to the user's current location and add a marker
+            moveToCurrentLocation()
+            true
+        }
     }
+
+    // Method to move to the user's current location and place a marker
+    private fun moveToCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val userLocation = LatLng(it.latitude, it.longitude)
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
+
+                // Clear any existing markers (optional)
+                googleMap.clear()
+
+                // Add a marker at the user's current location
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(userLocation)
+                        .title("You are here")
+                )?.showInfoWindow()
+            }
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()
