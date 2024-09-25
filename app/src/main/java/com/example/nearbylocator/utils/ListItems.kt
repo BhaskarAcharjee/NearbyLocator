@@ -74,7 +74,11 @@ val choosePlaceCategories = listOf(
     ChoosePlaceCategoryDataClass("ATM", R.drawable.atm_icon),
     ChoosePlaceCategoryDataClass("Hospital", R.drawable.hospital_icon),
     ChoosePlaceCategoryDataClass("Groceries", R.drawable.groceries_icon),
-    ChoosePlaceCategoryDataClass("Parking", R.drawable.parking_icon)
+    ChoosePlaceCategoryDataClass("Parking", R.drawable.parking_icon),
+    ChoosePlaceCategoryDataClass("Post Office", R.drawable.postoffice_icon),
+    ChoosePlaceCategoryDataClass("Police Station", R.drawable.policestation_icon),
+    ChoosePlaceCategoryDataClass("Bus Stop", R.drawable.busstop_icon),
+    ChoosePlaceCategoryDataClass("Pharmacy", R.drawable.pharmacy_icon),
 )
 
 

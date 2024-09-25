@@ -50,7 +50,7 @@ class ChoosePlaceCategoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_place_category, parent, false)
+            .inflate(R.layout.card_choose_place_category, parent, false)
         return CategoryViewHolder(view)
     }
 

@@ -9,6 +9,8 @@
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:layout_gravity="center"
+        android:padding="5dp"
+        android:background="@drawable/rounded_corner"
         android:src="@drawable/bank_icon" />
 
     <TextView

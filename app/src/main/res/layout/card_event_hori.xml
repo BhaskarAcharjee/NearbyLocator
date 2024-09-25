@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10sp"
-    android:layout_marginEnd="10sp"
+    android:layout_marginEnd="15sp"
     android:orientation="vertical">
 
     <ImageView

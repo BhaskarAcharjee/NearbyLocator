@@ -72,8 +72,7 @@ class ChoosePlaceFragment : Fragment() {
 
     private fun setupCategoryGrid() {
         adapter = ChoosePlaceCategoryAdapter(choosePlaceCategories) { category ->
-            Toast.makeText(requireContext(), "${category.title} clicked!", Toast.LENGTH_SHORT)
-                .show()
+
         }
 
         binding.categoryRecyclerView.apply {
