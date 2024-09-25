@@ -1,5 +1,6 @@
 package com.example.nearbylocator.fragments
 
+import QuickPlaceCategoryAdapter
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -25,6 +27,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutHoriImageAdapter
 import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
+import com.example.nearbylocator.model.QuickPlaceCategory
 import com.example.nearbylocator.utils.dineoutBestOffersList
 import com.example.nearbylocator.utils.places_hint_Strings
 import kotlin.math.abs
@@ -177,64 +180,31 @@ class HomeFragment : Fragment() {
     private fun setupQuickCategoryNavigation() {
         // Define category data
         val categories = listOf(
-            Category("Restaurant", R.drawable.resturant_icon),
-            Category("Bank", R.drawable.bank_icon),
-            Category("ATM", R.drawable.atm_icon),
-            Category("Hospital", R.drawable.hospital_icon),
-            Category("Groceries", R.drawable.groceries_icon),
-            Category("Parking", R.drawable.parking_icon)
+            QuickPlaceCategory("Restaurant", R.drawable.resturant_icon),
+            QuickPlaceCategory("Bank", R.drawable.bank_icon),
+            QuickPlaceCategory("ATM", R.drawable.atm_icon),
+            QuickPlaceCategory("Hospital", R.drawable.hospital_icon),
+            QuickPlaceCategory("Groceries", R.drawable.groceries_icon),
+            QuickPlaceCategory("Parking", R.drawable.parking_icon)
         )
 
-        val categoryLayout = binding.quickPlaceCategory.llCategories
-
-        // Dynamically add categories
-        categories.forEach { category ->
-            val categoryView = createCategoryView(category)
-            categoryLayout.addView(categoryView)
+        val quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(categories) { category ->
+            // Handle the click on a category, you can navigate to a new fragment based on category
+            when (category.title) {
+                "Restaurant" -> findNavController().navigate(R.id.action_homeFragment_to_seeallFragment)
+                "Bank" -> findNavController().navigate(R.id.action_homeFragment_to_seeallFragment)
+                // Add more cases as needed
+            }
         }
+
+        binding.quickPlaceCategory.rvCategories.adapter = quickPlaceCategoryAdapter
+        binding.quickPlaceCategory.rvCategories.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
     }
 
-    // Helper function to create a category view dynamically
-    private fun createCategoryView(category: Category): LinearLayout {
-        val context = context ?: return LinearLayout(requireContext())
-
-        // Create a LinearLayout for the category
-        val categoryLayout = LinearLayout(context).apply {
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setMargins(0, 0, 10.spToPx(context), 0)
-            }
-            orientation = LinearLayout.VERTICAL
-        }
-
-        // Create an ImageView for the icon
-        val imageView = ImageView(context).apply {
-            layoutParams = LinearLayout.LayoutParams(80.spToPx(context), 80.spToPx(context))
-            setBackgroundResource(R.drawable.rounded_corner)
-            setImageResource(category.iconResId)
-        }
-
-        // Create a TextView for the label
-        val textView = TextView(context).apply {
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                setPadding(0, 5.spToPx(context), 0, 0)
-                gravity = Gravity.CENTER_HORIZONTAL
-            }
-            text = category.title
-            setTypeface(ResourcesCompat.getFont(context, R.font.swiggy_font_medium), Typeface.BOLD)
-        }
-
-        // Add ImageView and TextView to the category layout
-        categoryLayout.addView(imageView)
-        categoryLayout.addView(textView)
-
-        return categoryLayout
-    }
 
     // Setting up navigation for "Choose Place Category" to respective fragment
     private fun setupChoosePlaceCategory() {
@@ -249,9 +219,6 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_homeFragment_to_choosePlaceFragment)
         }
     }
-
-    // Category data class
-    data class Category(val title: String, val iconResId: Int)
 
     // Extension function for converting sp to pixels
     private fun Int.spToPx(context: Context): Int {

@@ -10,7 +10,6 @@
         android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/ll_categories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -41,7 +40,14 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <!-- RecyclerView to load categories -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" />
         </LinearLayout>
-
     </HorizontalScrollView>
 </RelativeLayout>

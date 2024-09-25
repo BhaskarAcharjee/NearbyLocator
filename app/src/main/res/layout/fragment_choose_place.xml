@@ -38,25 +38,14 @@
         android:text="Select a category to find nearby places."
         android:textSize="16sp" />
 
-    <!-- Vertical ScrollView containing the GridLayout -->
-    <ScrollView
-        android:id="@+id/categoryScrollView"
+    <!-- RecyclerView for Category Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@+id/doneButton"
+        android:layout_above="@id/doneButton"
         android:layout_below="@id/shortDescription"
-        android:layout_weight="1"
-        android:scrollbars="none">
-
-        <GridLayout
-            android:id="@+id/categoryGridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3">
-            <!-- Dynamic items will be added here -->
-        </GridLayout>
-
-    </ScrollView>
+        android:layout_weight="1" />
 
     <!-- Done Button -->
     <Button
