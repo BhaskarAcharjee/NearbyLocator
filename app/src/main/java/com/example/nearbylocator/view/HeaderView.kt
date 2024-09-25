@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.navigation.findNavController
 import com.example.nearbylocator.R
-import com.example.nearbylocator.databinding.LayoutHeaderBinding
+import com.example.nearbylocator.databinding.ViewHeaderBinding
 
 class HeaderView @JvmOverloads constructor(
     context: Context,
@@ -15,8 +15,8 @@ class HeaderView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {
 
-    private var binding: LayoutHeaderBinding =
-        LayoutHeaderBinding.inflate(LayoutInflater.from(context), this, true)
+    private var binding: ViewHeaderBinding =
+        ViewHeaderBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         setupProfileIconNavigation()

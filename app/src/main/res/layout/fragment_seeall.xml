@@ -44,7 +44,7 @@
                 <!--    Hedaer  -->
                 <include
                     android:id="@+id/rl_header"
-                    layout="@layout/layout_header" />
+                    layout="@layout/view_header" />
 
             </FrameLayout>
 
