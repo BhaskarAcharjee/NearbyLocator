@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.navigation.findNavController
 import com.example.nearbylocator.databinding.ViewHeaderBinding
+import com.example.nearbylocator.repository.LocationRepository
 
 class HeaderView @JvmOverloads constructor(
     context: Context,
@@ -17,7 +18,7 @@ class HeaderView @JvmOverloads constructor(
         ViewHeaderBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        // You can call setupProfileIconNavigation() later with a destination ID
+        // Initialize location observer if needed
     }
 
     fun setupProfileIconNavigation(actionId: Int) {
@@ -27,11 +28,21 @@ class HeaderView @JvmOverloads constructor(
         }
     }
 
-    fun setCityLocation(city: String) {
+    private fun setCityLocation(city: String) {
         binding.cityLocation.text = city
     }
 
-    fun setCurrentLocation(current: String) {
+    private fun setCurrentLocation(current: String) {
         binding.currentLocation.text = current
+    }
+
+    fun observeLocationUpdates(locationRepository: LocationRepository) {
+        locationRepository.currentCityLocation.observeForever { city ->
+            setCityLocation(city)
+        }
+
+        locationRepository.currentShortAddress.observeForever { shortAddress ->
+            setCurrentLocation(shortAddress)
+        }
     }
 }

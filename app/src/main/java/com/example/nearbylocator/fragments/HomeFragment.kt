@@ -19,6 +19,7 @@ import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
+import com.example.nearbylocator.repository.LocationRepository
 import com.example.nearbylocator.utils.educationList
 import com.example.nearbylocator.utils.entertainmentList
 import com.example.nearbylocator.utils.financialServicesList
@@ -41,6 +42,7 @@ class HomeFragment : Fragment() {
     private lateinit var handler: Handler
     private lateinit var imageList: ArrayList<Int>
     private lateinit var slideAdapter: ImageSlideAdapter
+    private lateinit var locationRepository: LocationRepository
 
     // onCreateView inflates the layout and returns the root view
     override fun onCreateView(
@@ -55,25 +57,40 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Get reference to HeaderView
-        val headerView = binding.headerView
-
-        // Set city and current location
-        headerView.setCityLocation(getString(R.string.city_location))
-        headerView.setCurrentLocation(getString(R.string.current_location))
-        headerView.setupProfileIconNavigation(R.id.action_homeFragment_to_profileFragment)
-
-        // Access custom SearchBarView
-        val searchBarView = binding.searchBarView
-        // Update hints dynamically
-        searchBarView.setHints(places_hint_Strings)
-
         // Call setup methods for different sections
+        setupHeaderView()
+        setupSearchbarView()
         setupViewPager() // Set up the image slider
         setupQuickCategoryNavigation() // Merge into one function
         setupChoosePlaceCategory()
         updateQuickPlaceCategories() // Update quick categories when the fragment is created
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
+    }
+
+    private fun setupHeaderView() {
+        // Initialize LocationRepository
+        locationRepository = LocationRepository(requireContext())
+        // Get reference to HeaderView
+        val headerView = binding.headerView
+        // Observe location updates to update header views
+        headerView.observeLocationUpdates(locationRepository)
+        // Start requesting location updates
+        locationRepository.startLocationUpdates()
+        // Handle navigation for profile icon
+        headerView.setupProfileIconNavigation(R.id.action_homeFragment_to_profileFragment)
+    }
+
+    private fun setupSearchbarView() {
+        // Access custom SearchBarView
+        val searchBarView = binding.searchBarView
+        // Update hints dynamically
+        searchBarView.setHints(places_hint_Strings)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Stop location updates when the fragment is destroyed
+        locationRepository.stopLocationUpdates()
     }
 
     // Setting up ViewPager2 for image slider with transformer
