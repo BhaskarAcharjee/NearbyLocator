@@ -18,14 +18,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.InstamartImageAdapter
-import com.example.nearbylocator.databinding.FragmentSeeallBinding
+import com.example.nearbylocator.databinding.FragmentCategoryGroupBinding
 import com.example.nearbylocator.utils.hotDealsList
 import com.example.nearbylocator.utils.instamartSlide1
 import com.example.nearbylocator.utils.instamartSlide2
 import com.example.nearbylocator.utils.topPicksList
 import kotlin.math.abs
 
-class SeeallFragment : Fragment() {
+class CategoryGroupFragment : Fragment() {
 
     private lateinit var handler: Handler
     private lateinit var slideAdapter1: ImageSlideAdapter
@@ -36,7 +36,7 @@ class SeeallFragment : Fragment() {
     private lateinit var imageList2: ArrayList<Int>
     private lateinit var viewPager1: ViewPager2
     private lateinit var viewPager2: ViewPager2
-    private lateinit var binding: FragmentSeeallBinding
+    private lateinit var binding: FragmentCategoryGroupBinding
 
     private val hintStrings =
         arrayOf("Biscuits", "Fruits & Vegitables", "Toothpaste", "Consmetics", "Snacks & Drinks")
@@ -46,7 +46,7 @@ class SeeallFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSeeallBinding.inflate(layoutInflater)
+        binding = FragmentCategoryGroupBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -92,7 +92,8 @@ class SeeallFragment : Fragment() {
             }
         })
 
-        binding.textSwitcher.setFactory {
+        val searchbarLayout = binding.placeSearchbar
+        searchbarLayout.textSwitcher.setFactory {
             val textView = TextView(context)
             textView.textSize = 16f
             textView.typeface =
@@ -146,10 +147,11 @@ class SeeallFragment : Fragment() {
     }
 
     private fun switchText() {
-        binding.textSwitcher.setText(hintStrings[currentHintIndex])
+        val searchbarLayout = binding.placeSearchbar
+        searchbarLayout.textSwitcher.setText(hintStrings[currentHintIndex])
         currentHintIndex = (currentHintIndex + 1) % hintStrings.size
 
-        binding.textSwitcher.postDelayed(
+        searchbarLayout.textSwitcher.postDelayed(
             { switchText() },
             1500
         ) // Delay between text switches (2 seconds in this example)

@@ -92,67 +92,67 @@
                 </LinearLayout>
 
                 <!-- Place Categories -->
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryFoodDrinks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryShopping"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryTransportation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryHealthCare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryFinancialServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryPublicServices"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryFitnessWellness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryPersonalCare"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryEntertainment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryEducation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp" />
 
-                <com.example.nearbylocator.view.PlaceCategoryView
+                <com.example.nearbylocator.view.PlaceCategoryGroupView
                     android:id="@+id/placeCategoryReligious"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

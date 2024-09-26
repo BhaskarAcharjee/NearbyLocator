@@ -10,7 +10,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutHoriImageAdapter
 import com.example.nearbylocator.databinding.ViewPlaceCategoryBinding
 
-class PlaceCategoryView @JvmOverloads constructor(
+class PlaceCategoryGroupView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -40,7 +40,7 @@ class PlaceCategoryView @JvmOverloads constructor(
     fun setSeeAllClickListener(navController: NavController) {
         binding.tvSeeAll.setOnClickListener {
             // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
-            navController.navigate(R.id.action_homeFragment_to_seeallFragment)
+            navController.navigate(R.id.action_homeFragment_to_categoryGroupFragment)
         }
     }
 

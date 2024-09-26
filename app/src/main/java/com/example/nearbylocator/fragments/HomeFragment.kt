@@ -155,8 +155,8 @@ class HomeFragment : Fragment() {
         val quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(defaultCategories) { category ->
             // Handle the click on a category, you can navigate to a new fragment based on category
             when (category.title) {
-                "Restaurant" -> findNavController().navigate(R.id.action_homeFragment_to_seeallFragment)
-                "Bank" -> findNavController().navigate(R.id.action_homeFragment_to_seeallFragment)
+                "Restaurant" -> findNavController().navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
+                "Bank" -> findNavController().navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
                 // Add more cases as needed
             }
         }
@@ -241,6 +241,7 @@ class HomeFragment : Fragment() {
             setDescription("Discover transport services around you")
             setRecyclerViewAdapter(transportationAdapter)
         }
+        binding.placeCategoryTransportation.setSeeAllClickListener(findNavController())
 
         // Health Care Category
         val healthCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -249,6 +250,7 @@ class HomeFragment : Fragment() {
             setDescription("Find clinics, hospitals, and healthcare services")
             setRecyclerViewAdapter(healthCareAdapter)
         }
+        binding.placeCategoryHealthCare.setSeeAllClickListener(findNavController())
 
         // Financial Services Category
         val financialServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -257,6 +259,7 @@ class HomeFragment : Fragment() {
             setDescription("Locate banks and ATMs near you")
             setRecyclerViewAdapter(financialServicesAdapter)
         }
+        binding.placeCategoryFinancialServices.setSeeAllClickListener(findNavController())
 
         // Public Services Category
         val publicServicesAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -265,6 +268,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore public service offices nearby")
             setRecyclerViewAdapter(publicServicesAdapter)
         }
+        binding.placeCategoryPublicServices.setSeeAllClickListener(findNavController())
 
         // Fitness & Wellness Category
         val fitnessWellnessAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -273,6 +277,7 @@ class HomeFragment : Fragment() {
             setDescription("Discover gyms, spas, and wellness centers")
             setRecyclerViewAdapter(fitnessWellnessAdapter)
         }
+        binding.placeCategoryFitnessWellness.setSeeAllClickListener(findNavController())
 
         // Personal Care Category
         val personalCareAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -281,6 +286,7 @@ class HomeFragment : Fragment() {
             setDescription("Find beauty salons and personal care services")
             setRecyclerViewAdapter(personalCareAdapter)
         }
+        binding.placeCategoryPersonalCare.setSeeAllClickListener(findNavController())
 
         // Entertainment Category
         val entertainmentAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -289,6 +295,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore cinemas, parks, and entertainment spots")
             setRecyclerViewAdapter(entertainmentAdapter)
         }
+        binding.placeCategoryEntertainment.setSeeAllClickListener(findNavController())
 
         // Education Category
         val educationAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -297,6 +304,7 @@ class HomeFragment : Fragment() {
             setDescription("Locate schools, colleges, and educational centers")
             setRecyclerViewAdapter(educationAdapter)
         }
+        binding.placeCategoryEducation.setSeeAllClickListener(findNavController())
 
         // Religious Category
         val religiousAdapter = DineoutHoriImageAdapter(dineoutBestOffersList)
@@ -305,5 +313,6 @@ class HomeFragment : Fragment() {
             setDescription("Find religious places nearby")
             setRecyclerViewAdapter(religiousAdapter)
         }
+        binding.placeCategoryReligious.setSeeAllClickListener(findNavController())
     }
 }

@@ -11,8 +11,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_seeallFragment"
-            app:destination="@id/seeallFragment"
+            android:id="@+id/action_homeFragment_to_categoryGroupFragment"
+            app:destination="@id/categoryGroupFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
@@ -21,8 +21,8 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_homeFragment_to_viewallFragment"
-            app:destination="@id/viewallFragment"
+            android:id="@+id/action_homeFragment_to_categoryIndividualFragment"
+            app:destination="@id/categoryIndividualFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
@@ -55,15 +55,15 @@
 
     <!-- Sub Page Fragment -->
     <fragment
-        android:id="@+id/seeallFragment"
-        android:name="com.example.nearbylocator.fragments.SeeallFragment"
-        android:label="fragment_seeall"
-        tools:layout="@layout/fragment_seeall" />
+        android:id="@+id/categoryGroupFragment"
+        android:name="com.example.nearbylocator.fragments.CategoryGroupFragment"
+        android:label="fragment_category_group"
+        tools:layout="@layout/fragment_category_group" />
     <fragment
-        android:id="@+id/viewallFragment"
-        android:name="com.example.nearbylocator.fragments.ViewallFragment"
-        android:label="fragment_viewall"
-        tools:layout="@layout/fragment_viewall" />
+        android:id="@+id/categoryIndividualFragment"
+        android:name="com.example.nearbylocator.fragments.CategoryIndividualFragment"
+        android:label="fragment_category_individual"
+        tools:layout="@layout/fragment_category_individual" />
     <fragment
         android:id="@+id/choosePlaceFragment"
         android:name="com.example.nearbylocator.fragments.ChoosePlaceFragment"

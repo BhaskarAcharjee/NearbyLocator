@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutVertiImageAdapter
-import com.example.nearbylocator.databinding.FragmentViewallBinding
+import com.example.nearbylocator.databinding.FragmentCategoryIndividualBinding
 import com.example.nearbylocator.utils.dineoutMoreList
 
-class ViewallFragment : Fragment() {
+class CategoryIndividualFragment : Fragment() {
 
-    private lateinit var binding: FragmentViewallBinding
+    private lateinit var binding: FragmentCategoryIndividualBinding
     private lateinit var dineOutVertiAdapter: DineoutVertiImageAdapter
 
     private val hintStrings = arrayOf(
@@ -32,7 +32,7 @@ class ViewallFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentViewallBinding.inflate(layoutInflater)
+        binding = FragmentCategoryIndividualBinding.inflate(layoutInflater)
         return binding.root
     }
 
