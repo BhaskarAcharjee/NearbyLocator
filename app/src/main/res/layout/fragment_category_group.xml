@@ -56,7 +56,7 @@
                 <!--    Searchbar   -->
                 <include
                     android:id="@+id/place_searchbar"
-                    layout="@layout/layout_searchbar" />
+                    layout="@layout/view_searchbar" />
 
             </LinearLayout>
 

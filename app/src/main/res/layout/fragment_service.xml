@@ -15,9 +15,10 @@
         android:layout_height="wrap_content" />
 
     <!-- Searchbar -->
-    <include
-        android:id="@+id/service_searchbar"
-        layout="@layout/layout_searchbar" />
+    <com.example.nearbylocator.view.SearchBarView
+        android:id="@+id/search_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:id="@+id/sv_food"
