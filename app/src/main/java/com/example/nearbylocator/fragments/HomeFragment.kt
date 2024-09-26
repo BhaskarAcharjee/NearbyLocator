@@ -15,12 +15,22 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nearbylocator.R
-import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.adapters.ImageSlideAdapter
+import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
-import com.example.nearbylocator.utils.dineoutBestOffersList
+import com.example.nearbylocator.utils.educationList
+import com.example.nearbylocator.utils.entertainmentList
+import com.example.nearbylocator.utils.financialServicesList
+import com.example.nearbylocator.utils.fitnessWellnessList
+import com.example.nearbylocator.utils.foodAndDrinksList
+import com.example.nearbylocator.utils.healthCareList
+import com.example.nearbylocator.utils.personalCareList
 import com.example.nearbylocator.utils.places_hint_Strings
+import com.example.nearbylocator.utils.publicServicesList
+import com.example.nearbylocator.utils.religiousList
+import com.example.nearbylocator.utils.shoppingList
+import com.example.nearbylocator.utils.transportationList
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -56,7 +66,7 @@ class HomeFragment : Fragment() {
         // Access custom SearchBarView
         val searchBarView = binding.searchBarView
         // Update hints dynamically
-         searchBarView.setHints(places_hint_Strings)
+        searchBarView.setHints(places_hint_Strings)
 
         // Call setup methods for different sections
         setupViewPager() // Set up the image slider
@@ -161,7 +171,8 @@ class HomeFragment : Fragment() {
                 // Add selected categories
                 selectedCategories.forEach { chooseCategory ->
                     // Assuming chooseCategory is of type ChoosePlaceCategory
-                    val quickCategory = QuickPlaceCategoryDataClass(chooseCategory.title, chooseCategory.icon)
+                    val quickCategory =
+                        QuickPlaceCategoryDataClass(chooseCategory.title, chooseCategory.icon)
                     it.addCategory(quickCategory) // Add user-selected categories
                 }
             }
@@ -186,7 +197,7 @@ class HomeFragment : Fragment() {
     // Set up place categories with individual RecyclerViews (horizontal)
     private fun setupPlaceCategories() {
         // Food & Drinks Category
-        val foodAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val foodAdapter = PlaceCategoryGroupAdapter(foodAndDrinksList)
         binding.placeCategoryFoodDrinks.apply {
             setTitle("Food & Drinks")
             setDescription("Explore restaurants and cafes nearby")
@@ -195,7 +206,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryFoodDrinks.setSeeAllClickListener(findNavController())
 
         // Shopping Category
-        val shoppingAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val shoppingAdapter = PlaceCategoryGroupAdapter(shoppingList)
         binding.placeCategoryShopping.apply {
             setTitle("Shopping")
             setDescription("Find the best places to shop")
@@ -204,7 +215,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryShopping.setSeeAllClickListener(findNavController())
 
         // Transportation Category
-        val transportationAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val transportationAdapter = PlaceCategoryGroupAdapter(transportationList)
         binding.placeCategoryTransportation.apply {
             setTitle("Transportation")
             setDescription("Discover transport services around you")
@@ -213,7 +224,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryTransportation.setSeeAllClickListener(findNavController())
 
         // Health Care Category
-        val healthCareAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val healthCareAdapter = PlaceCategoryGroupAdapter(healthCareList)
         binding.placeCategoryHealthCare.apply {
             setTitle("Health Care")
             setDescription("Find clinics, hospitals, and healthcare services")
@@ -222,7 +233,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryHealthCare.setSeeAllClickListener(findNavController())
 
         // Financial Services Category
-        val financialServicesAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val financialServicesAdapter = PlaceCategoryGroupAdapter(financialServicesList)
         binding.placeCategoryFinancialServices.apply {
             setTitle("Financial Services")
             setDescription("Locate banks and ATMs near you")
@@ -231,7 +242,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryFinancialServices.setSeeAllClickListener(findNavController())
 
         // Public Services Category
-        val publicServicesAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val publicServicesAdapter = PlaceCategoryGroupAdapter(publicServicesList)
         binding.placeCategoryPublicServices.apply {
             setTitle("Public Services")
             setDescription("Explore public service offices nearby")
@@ -240,7 +251,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryPublicServices.setSeeAllClickListener(findNavController())
 
         // Fitness & Wellness Category
-        val fitnessWellnessAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val fitnessWellnessAdapter = PlaceCategoryGroupAdapter(fitnessWellnessList)
         binding.placeCategoryFitnessWellness.apply {
             setTitle("Fitness & Wellness")
             setDescription("Discover gyms, spas, and wellness centers")
@@ -249,7 +260,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryFitnessWellness.setSeeAllClickListener(findNavController())
 
         // Personal Care Category
-        val personalCareAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val personalCareAdapter = PlaceCategoryGroupAdapter(personalCareList)
         binding.placeCategoryPersonalCare.apply {
             setTitle("Personal Care")
             setDescription("Find beauty salons and personal care services")
@@ -258,7 +269,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryPersonalCare.setSeeAllClickListener(findNavController())
 
         // Entertainment Category
-        val entertainmentAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val entertainmentAdapter = PlaceCategoryGroupAdapter(entertainmentList)
         binding.placeCategoryEntertainment.apply {
             setTitle("Entertainment")
             setDescription("Explore cinemas, parks, and entertainment spots")
@@ -267,7 +278,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryEntertainment.setSeeAllClickListener(findNavController())
 
         // Education Category
-        val educationAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val educationAdapter = PlaceCategoryGroupAdapter(educationList)
         binding.placeCategoryEducation.apply {
             setTitle("Education")
             setDescription("Locate schools, colleges, and educational centers")
@@ -276,7 +287,7 @@ class HomeFragment : Fragment() {
         binding.placeCategoryEducation.setSeeAllClickListener(findNavController())
 
         // Religious Category
-        val religiousAdapter = PlaceCategoryGroupAdapter(dineoutBestOffersList)
+        val religiousAdapter = PlaceCategoryGroupAdapter(religiousList)
         binding.placeCategoryReligious.apply {
             setTitle("Religious")
             setDescription("Find religious places nearby")
@@ -284,4 +295,5 @@ class HomeFragment : Fragment() {
         }
         binding.placeCategoryReligious.setSeeAllClickListener(findNavController())
     }
+
 }

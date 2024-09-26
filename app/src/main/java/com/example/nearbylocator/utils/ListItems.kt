@@ -415,15 +415,8 @@ val genieSlideList = arrayListOf(
     R.drawable.genie_slide_6,
 )
 
-val dineoutSlideList = arrayListOf(
-    R.drawable.dineout_slide_1,
-    R.drawable.dineout_slide_2,
-    R.drawable.dineout_slide_3,
-    R.drawable.dineout_slide_4,
-    R.drawable.dineout_slide_5,
-)
-
-val dineoutBestOffersList = listOf(
+// Dummy Data for Food & Drinks Category
+val foodAndDrinksList = listOf(
     PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_1,
         "Palmshore",
@@ -441,33 +434,226 @@ val dineoutBestOffersList = listOf(
         "5.2 km",
         "India, South Indian",
         "₹1200 for three"
-    ),
+    )
+)
+
+// Dummy Data for Shopping Category
+val shoppingList = listOf(
     PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_3,
-        "The Cycler Gap",
-        "3.8",
-        "Pallikaranai",
-        "3.5 km",
-        "Italian, Lebanese",
-        "₹500 for four"
+        "Fashion Street",
+        "4.5",
+        "Anna Nagar",
+        "3.0 km",
+        "Clothing, Accessories",
+        "₹1500 for shopping"
     ),
     PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_4,
-        "Kobe Sizzlers",
-        "3.5",
-        "Medavakkam",
-        "1.2 km",
-        "North Indian, Pan India",
-        "₹700 for two"
+        "Tech Store",
+        "4.0",
+        "T. Nagar",
+        "2.0 km",
+        "Electronics, Gadgets",
+        "₹3000 for electronics"
+    )
+)
+
+// Dummy Data for Transportation Category
+val transportationList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_5,
+        "City Cabs",
+        "4.8",
+        "Koramangala",
+        "1.5 km",
+        "Taxi, Ride Sharing",
+        "₹300 for 10 km"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_1,
+        "Metro Station",
+        "4.6",
+        "MG Road",
+        "1.0 km",
+        "Metro Services",
+        "₹50 for one ride"
+    )
+)
+
+// Dummy Data for Health Care Category
+val healthCareList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_2,
+        "City Hospital",
+        "4.3",
+        "Indiranagar",
+        "3.5 km",
+        "General Health",
+        "₹1000 for consultation"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_3,
+        "Dental Care Clinic",
+        "4.7",
+        "Jayanagar",
+        "2.2 km",
+        "Dental Services",
+        "₹800 for check-up"
+    )
+)
+
+// Dummy Data for Financial Services Category
+val financialServicesList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_4,
+        "ABC Bank",
+        "4.5",
+        "Bangalore",
+        "3.8 km",
+        "Banking, Loans",
+        "Varies"
     ),
     PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_5,
-        "Oragne Work & BBQ",
+        "XYZ ATMs",
+        "4.0",
+        "Whitefield",
+        "1.5 km",
+        "ATM Services",
+        "Varies"
+    )
+)
+
+// Dummy Data for Public Services Category
+val publicServicesList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_1,
+        "City Hall",
+        "4.2",
+        "Cubbon Park",
+        "2.0 km",
+        "Public Administration",
+        "Varies"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_2,
+        "Passport Office",
+        "4.1",
+        "Brigade Road",
+        "1.8 km",
+        "Government Services",
+        "Varies"
+    )
+)
+
+// Dummy Data for Fitness & Wellness Category
+val fitnessWellnessList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_3,
+        "Fit Gym",
         "4.8",
-        "Keelkatalai",
-        "4.2 km",
-        "American, Mexixan",
-        "₹1500 for one"
+        "HSR Layout",
+        "1.5 km",
+        "Gym, Fitness Classes",
+        "₹1500 per month"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_4,
+        "Wellness Spa",
+        "4.9",
+        "BTM Layout",
+        "1.0 km",
+        "Spa Services",
+        "₹2000 for package"
+    )
+)
+
+// Dummy Data for Personal Care Category
+val personalCareList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_5,
+        "Beauty Salon",
+        "4.6",
+        "Koramangala",
+        "2.5 km",
+        "Hair, Skin",
+        "₹800 for services"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_1,
+        "Nail Bar",
+        "4.4",
+        "Indiranagar",
+        "1.8 km",
+        "Nail Art",
+        "₹500 for services"
+    )
+)
+
+// Dummy Data for Entertainment Category
+val entertainmentList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_2,
+        "Cinema X",
+        "4.5",
+        "Jayanagar",
+        "2.0 km",
+        "Movies, Events",
+        "₹300 for ticket"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_3,
+        "Fun Park",
+        "4.7",
+        "Brigade Road",
+        "3.5 km",
+        "Amusement Park",
+        "₹800 for entry"
+    )
+)
+
+// Dummy Data for Education Category
+val educationList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_4,
+        "XYZ School",
+        "4.3",
+        "BTM Layout",
+        "1.5 km",
+        "Primary Education",
+        "₹20000 per year"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_5,
+        "ABC College",
+        "4.6",
+        "Koramangala",
+        "2.2 km",
+        "Higher Education",
+        "₹50000 per year"
+    )
+)
+
+// Dummy Data for Religious Category
+val religiousList = listOf(
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_1,
+        "City Church",
+        "4.4",
+        "Indiranagar",
+        "2.0 km",
+        "Christian Place of Worship",
+        "N/A"
+    ),
+    PlaceCategoryGroupDataClass(
+        R.drawable.dineout_hori_2,
+        "Grand Mosque",
+        "4.5",
+        "Malleswaram",
+        "1.8 km",
+        "Islamic Place of Worship",
+        "N/A"
     )
 )
 
