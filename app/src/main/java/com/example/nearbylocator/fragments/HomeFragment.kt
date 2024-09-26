@@ -1,17 +1,12 @@
 package com.example.nearbylocator.fragments
 
 import QuickPlaceCategoryAdapter
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextSwitcher
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,8 +32,6 @@ class HomeFragment : Fragment() {
     private lateinit var handler: Handler
     private lateinit var imageList: ArrayList<Int>
     private lateinit var slideAdapter: ImageSlideAdapter
-    private lateinit var textSwitcher: TextSwitcher
-    private var currentHintIndex = 0
 
     // onCreateView inflates the layout and returns the root view
     override fun onCreateView(
@@ -54,14 +47,19 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Get reference to HeaderView
-        val headerView = binding.headerView as HeaderView
+        val headerView = binding.headerView
 
         // Set city and current location
         headerView.setCityLocation(getString(R.string.city_location))
         headerView.setCurrentLocation(getString(R.string.current_location))
+        headerView.setupProfileIconNavigation(R.id.action_homeFragment_to_profileFragment)
+
+        // Access custom SearchBarView
+        val searchBarView = binding.searchBarView
+        // Update hints dynamically
+         searchBarView.setHints(places_hint_Strings)
 
         // Call setup methods for different sections
-        setupTextSwitcher() // Set up the text switcher for hints
         setupViewPager() // Set up the image slider
         setupQuickCategoryNavigation() // Merge into one function
         setupChoosePlaceCategory()
@@ -113,34 +111,6 @@ class HomeFragment : Fragment() {
     // Runnable for automatic page sliding
     private val runnable = Runnable {
         viewPager2.currentItem += 1
-    }
-
-    // Set up a TextSwitcher for showing place hints that switch automatically
-    private fun setupTextSwitcher() {
-        val placeSearchbarLayout = binding.placeSearchbar
-        textSwitcher = placeSearchbarLayout.textSwitcher
-        textSwitcher.setFactory {
-            val textView = TextView(context)
-            textView.textSize = 16f
-            textView.typeface =
-                ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
-            textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
-            textView
-        }
-
-        switchText() // Start switching text hints
-    }
-
-    // Recursively switch between place hint strings
-    private fun switchText() {
-        textSwitcher.setText(places_hint_Strings[currentHintIndex])
-        currentHintIndex = (currentHintIndex + 1) % places_hint_Strings.size
-
-        // Post delay to change the hint every 1.5 seconds
-        textSwitcher.postDelayed(
-            { switchText() },
-            1500
-        )
     }
 
     // Merged Quick Category Navigation setup

@@ -3,10 +3,8 @@ package com.example.nearbylocator.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.RelativeLayout
 import androidx.navigation.findNavController
-import com.example.nearbylocator.R
 import com.example.nearbylocator.databinding.ViewHeaderBinding
 
 class HeaderView @JvmOverloads constructor(
@@ -19,13 +17,13 @@ class HeaderView @JvmOverloads constructor(
         ViewHeaderBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        setupProfileIconNavigation()
+        // You can call setupProfileIconNavigation() later with a destination ID
     }
 
-    private fun setupProfileIconNavigation() {
+    fun setupProfileIconNavigation(actionId: Int) {
         binding.profileIcon.setOnClickListener {
             val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_profileFragment)
+            navController.navigate(actionId)
         }
     }
 

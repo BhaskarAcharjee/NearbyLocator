@@ -36,7 +36,13 @@
         android:id="@+id/serviceFragment"
         android:name="com.example.nearbylocator.fragments.ServiceFragment"
         android:label="fragment_service"
-        tools:layout="@layout/fragment_service" />
+        tools:layout="@layout/fragment_service">
+        <action
+            android:id="@+id/action_serviceFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/serviceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/mapviewFragment"
         android:name="com.example.nearbylocator.fragments.MapViewFragment"

@@ -19,8 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Foods &amp; Drinks"
-            android:textStyle="bold"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -41,10 +41,11 @@
                 android:layout_height="wrap_content"
                 android:background="#fedbdc">
 
-                <!--    Hedaer  -->
-                <include
-                    android:id="@+id/rl_header"
-                    layout="@layout/view_header" />
+                <!--    Header  -->
+                <com.example.nearbylocator.view.HeaderView
+                    android:id="@+id/header_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </FrameLayout>
 
@@ -56,7 +57,7 @@
                 <!--    Searchbar   -->
                 <include
                     android:id="@+id/place_searchbar"
-                    layout="@layout/layout_searchbar" />
+                    layout="@layout/view_searchbar" />
 
             </LinearLayout>
 
@@ -70,8 +71,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Foods &amp; Drinks"
-                    android:textStyle="bold"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -160,31 +161,31 @@
 
             </LinearLayout>
 
-<!--            Advertisement -->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:paddingTop="20sp">-->
+            <!--            Advertisement -->
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:paddingTop="20sp">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/swiggy_font_extrabold"-->
-<!--                    android:paddingStart="10sp"-->
-<!--                    android:text="Brand with a buzz!"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18sp" />-->
-
-
-<!--                <ImageView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="350sp"-->
-<!--                    android:layout_marginTop="15sp"-->
-<!--                    android:src="@drawable/img_brand" />-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/swiggy_font_extrabold"-->
+            <!--                    android:paddingStart="10sp"-->
+            <!--                    android:text="Brand with a buzz!"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="18sp" />-->
 
 
-<!--            </LinearLayout>-->
+            <!--                <ImageView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="350sp"-->
+            <!--                    android:layout_marginTop="15sp"-->
+            <!--                    android:src="@drawable/img_brand" />-->
+
+
+            <!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

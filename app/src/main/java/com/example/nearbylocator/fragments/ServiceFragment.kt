@@ -6,10 +6,6 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextSwitcher
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,9 +34,6 @@ class ServiceFragment : Fragment() {
     private lateinit var topRatedAdapter: HoriImageAdapter
     private lateinit var getQuicklyAdapter: HoriImageAdapter
     private lateinit var exploreAdapter: VertiImageAdapter
-    private lateinit var textSwitcher: TextSwitcher
-
-    private var currentHintIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,6 +56,10 @@ class ServiceFragment : Fragment() {
         viewPager2.clipChildren = false
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
+        // Get reference to HeaderView
+        val headerView = binding.headerView
+        headerView.setupProfileIconNavigation(R.id.action_serviceFragment_to_profileFragment)
+
         setUpTransformer()
 
         viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -73,18 +70,10 @@ class ServiceFragment : Fragment() {
             }
         })
 
-        val serviceSearchbarLayout = binding.serviceSearchbar
-        textSwitcher = serviceSearchbarLayout.textSwitcher
-        textSwitcher.setFactory {
-            val textView = TextView(context)
-            textView.textSize = 16f
-            textView.typeface =
-                ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
-            textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
-            textView
-        }
-
-        switchText()
+        // Access custom SearchBarView
+        val searchBarView = binding.searchBarView
+        // Update hints dynamically
+        searchBarView.setHints(services_hint_Strings)
 
         binding.apply {
             rvToprated.layoutManager =
@@ -129,16 +118,6 @@ class ServiceFragment : Fragment() {
             page.scaleX = 0.85f + r * 0.4f
         }
         viewPager2.setPageTransformer(transfomer)
-    }
-
-    private fun switchText() {
-        textSwitcher.setText(services_hint_Strings[currentHintIndex])
-        currentHintIndex = (currentHintIndex + 1) % services_hint_Strings.size
-
-        textSwitcher.postDelayed(
-            { switchText() },
-            1500
-        ) // Delay between text switches (2 seconds in this example)
     }
 
     override fun onPause() {
