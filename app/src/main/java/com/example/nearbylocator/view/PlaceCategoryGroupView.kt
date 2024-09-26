@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
-import com.example.nearbylocator.adapters.DineoutHoriImageAdapter
+import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.ViewPlaceCategoryBinding
 
 class PlaceCategoryGroupView @JvmOverloads constructor(
@@ -30,7 +30,7 @@ class PlaceCategoryGroupView @JvmOverloads constructor(
     }
 
     // Set the adapter for the RecyclerView
-    fun setRecyclerViewAdapter(adapter: DineoutHoriImageAdapter) {
+    fun setRecyclerViewAdapter(adapter: PlaceCategoryGroupAdapter) {
         binding.rvCategoryItems.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvCategoryItems.adapter = adapter

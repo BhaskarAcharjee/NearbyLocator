@@ -8,7 +8,7 @@
     android:paddingBottom="25sp">
 
     <ImageView
-        android:id="@+id/iv_hotel"
+        android:id="@+id/iv_hotel_image"
         android:layout_width="match_parent"
         android:layout_height="320sp"
         android:src="@drawable/dineout_hori_1"/>

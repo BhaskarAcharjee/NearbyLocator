@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.EventDataClass
+import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 
-class DineoutVertiImageAdapter(private val horiImageList: List<EventDataClass>) :
+class DineoutVertiImageAdapter(private val horiImageList: List<PlaceCategoryGroupDataClass>) :
     RecyclerView.Adapter<DineoutVertiImageAdapter.DineoutVertiImageHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,15 +33,15 @@ class DineoutVertiImageAdapter(private val horiImageList: List<EventDataClass>) 
     }
 
     inner class DineoutVertiImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val ivFood: ImageView = itemView.findViewById(R.id.iv_hotel)
+        private val ivHotelImage: ImageView = itemView.findViewById(R.id.iv_hotel_image)
         private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
         private val tvHotelRating: TextView = itemView.findViewById(R.id.tv_hotel_rating)
         private val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_hotel_location)
         private val tvHotelDistance: TextView = itemView.findViewById(R.id.tv_hotel_distance)
         private val tvHotelType: TextView = itemView.findViewById(R.id.tv_hotel_type)
         private val tvHotelPrice: TextView = itemView.findViewById(R.id.tv_hotel_price)
-        fun bind(data: EventDataClass) {
-            ivFood.setImageResource(data.hotelImage)
+        fun bind(data: PlaceCategoryGroupDataClass) {
+            ivHotelImage.setImageResource(data.hotelImage)
             tvHotelName.text = data.hotelName
             tvHotelRating.text = data.hotelRating
             tvHotelLocation.text = data.hotelLocation

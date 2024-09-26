@@ -2,7 +2,7 @@ package com.example.nearbylocator.utils
 
 import com.example.nearbylocator.R
 import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
-import com.example.nearbylocator.model.EventDataClass
+import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.MapviewFavDataClass
@@ -424,7 +424,7 @@ val dineoutSlideList = arrayListOf(
 )
 
 val dineoutBestOffersList = listOf(
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_1,
         "Palmshore",
         "4.6",
@@ -433,7 +433,7 @@ val dineoutBestOffersList = listOf(
         "Chinese, North Indian",
         "₹1000 for two"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_2,
         "Smoke Hub Barbeque",
         "4.2",
@@ -442,7 +442,7 @@ val dineoutBestOffersList = listOf(
         "India, South Indian",
         "₹1200 for three"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_3,
         "The Cycler Gap",
         "3.8",
@@ -451,7 +451,7 @@ val dineoutBestOffersList = listOf(
         "Italian, Lebanese",
         "₹500 for four"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_4,
         "Kobe Sizzlers",
         "3.5",
@@ -460,7 +460,7 @@ val dineoutBestOffersList = listOf(
         "North Indian, Pan India",
         "₹700 for two"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_hori_5,
         "Oragne Work & BBQ",
         "4.8",
@@ -472,7 +472,7 @@ val dineoutBestOffersList = listOf(
 )
 
 val dineoutMoreList = listOf(
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_verti_1,
         "Palmshore",
         "4.6",
@@ -481,7 +481,7 @@ val dineoutMoreList = listOf(
         "Chinese, North Indian",
         "₹1000 for two"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_verti_2,
         "Smoke Hub Barbeque",
         "4.2",
@@ -490,7 +490,7 @@ val dineoutMoreList = listOf(
         "India, South Indian",
         "₹1200 for three"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_verti_3,
         "The Cycler Gap",
         "3.8",
@@ -499,7 +499,7 @@ val dineoutMoreList = listOf(
         "Italian, Lebanese",
         "₹500 for four"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_verti_4,
         "Kobe Sizzlers",
         "3.5",
@@ -508,7 +508,7 @@ val dineoutMoreList = listOf(
         "North Indian, Pan India",
         "₹700 for two"
     ),
-    EventDataClass(
+    PlaceCategoryGroupDataClass(
         R.drawable.dineout_verti_5,
         "Oragne Work & BBQ",
         "4.8",

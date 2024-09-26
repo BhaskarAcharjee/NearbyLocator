@@ -1,6 +1,6 @@
 package com.example.nearbylocator.model
 
-data class EventDataClass(
+data class PlaceCategoryGroupDataClass(
     var hotelImage: Int,
     var hotelName: String = "",
     var hotelRating: String = "",
