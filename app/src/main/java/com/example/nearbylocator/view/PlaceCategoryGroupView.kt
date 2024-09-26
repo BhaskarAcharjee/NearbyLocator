@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
-import com.example.nearbylocator.databinding.ViewPlaceCategoryBinding
+import com.example.nearbylocator.databinding.ViewPlaceCategoryGroupBinding
 
 class PlaceCategoryGroupView @JvmOverloads constructor(
     context: Context,
@@ -16,8 +16,8 @@ class PlaceCategoryGroupView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val binding: ViewPlaceCategoryBinding =
-        ViewPlaceCategoryBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding: ViewPlaceCategoryGroupBinding =
+        ViewPlaceCategoryGroupBinding.inflate(LayoutInflater.from(context), this, true)
 
     // Set the title of the category
     fun setTitle(title: String) {

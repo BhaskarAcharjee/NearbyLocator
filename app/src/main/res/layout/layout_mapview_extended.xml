@@ -7,19 +7,19 @@
     android:background="@drawable/background_mapview_extended"
     android:orientation="vertical"
     app:behavior_peekHeight="60dp"
-    app:layout_behavior="@string/bottom_sheet_behavior">
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <View
             android:id="@+id/textMiscellaneous"
             android:layout_width="140dp"
-            android:layout_height="10dp"
+            android:layout_height="8dp"
             android:background="@drawable/background_subtitle_indicator" />
     </LinearLayout>
 
@@ -89,7 +89,7 @@
             android:maxLines="1"
             android:text="Extended Salem RR Briyani"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <!-- Hotel type -->
@@ -164,6 +164,125 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/darker_gray" />
+
+    <!-- New feature: Call and directions buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btn_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Call"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_directions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Get Directions"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Horizontal scrollable transportation icons and times -->
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_transport"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Walking icon and time -->
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:contentDescription="Walking"
+                android:src="@drawable/walking_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="9 min"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <!-- Cycle icon and time -->
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:contentDescription="Cycling"
+                android:src="@drawable/cycling_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="7 min"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <!-- Car icon and time -->
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:contentDescription="Car"
+                android:src="@drawable/car_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="4 min"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <!-- Train icon and time -->
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:contentDescription="Train"
+                android:src="@drawable/bus_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="1 min"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Divider line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray" />
@@ -200,6 +319,49 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="“Affordable price and nice location.”"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+
+        <!-- New feature: Offers -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Special Offers"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20% off on first order!"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="16sp" />
+
+        <!-- New feature: Location info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Location Details"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Now: 10:00 AM - 11:00 PM"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address: 123 Foodie St, Medavakkam"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
     </LinearLayout>

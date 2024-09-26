@@ -4,51 +4,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!-- Toolbar for Navigation -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- Header -->
+    <com.example.nearbylocator.view.HeaderView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="Events"
-        app:titleTextColor="@android:color/white" />
+        android:layout_height="wrap_content" />
 
-    <!-- Search View for searching events -->
-    <androidx.appcompat.widget.SearchView
+    <!-- Search Bar for searching events -->
+    <com.example.nearbylocator.view.SearchBarView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:queryHint="Search events..." />
+        android:layout_height="wrap_content" />
 
     <!-- Upcoming Events Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Upcoming Events"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- Placeholder for event content -->
+    <!-- Event List -->
     <LinearLayout
+        android:id="@+id/eventList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Sample Event Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No events available."
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/event_card_background"
+            android:clipToPadding="false"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:contentDescription="Event Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dineout_hori_3" />
+
+            <TextView
+                android:id="@+id/event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Event Title"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date: 25th September 2024"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/event_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location: City Park"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_view_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableLeft="@android:drawable/ic_menu_more"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="View Details"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- Additional Event Cards can be added here dynamically -->
     </LinearLayout>
+
+    <!-- Placeholder for no events available -->
+    <TextView
+        android:id="@+id/no_events_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="No events available."
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:visibility="gone" />
 
 </LinearLayout>
