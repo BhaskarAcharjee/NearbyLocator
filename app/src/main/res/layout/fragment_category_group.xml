@@ -55,9 +55,10 @@
                 android:background="#fedbdc">
 
                 <!--    Searchbar   -->
-                <include
-                    android:id="@+id/place_searchbar"
-                    layout="@layout/view_searchbar" />
+                <com.example.nearbylocator.view.SearchBarView
+                    android:id="@+id/searchBarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 

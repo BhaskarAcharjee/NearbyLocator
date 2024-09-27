@@ -4,29 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.DineoutVertiImageAdapter
 import com.example.nearbylocator.databinding.FragmentCategoryIndividualBinding
 import com.example.nearbylocator.utils.dineoutMoreList
+import com.example.nearbylocator.utils.services_hint_Strings
 
 class CategoryIndividualFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoryIndividualBinding
     private lateinit var dineOutVertiAdapter: DineoutVertiImageAdapter
-
-    private val hintStrings = arrayOf(
-        "Buhari Hotel",
-        "Palmshore",
-        "Royal Le Meridian",
-        "Purva Windermare",
-        "The Orange Palace"
-    )
-    private var currentHintIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +27,12 @@ class CategoryIndividualFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize necessary components
+        setupSearchBar()
+        setupRecyclerViews()
+    }
+
+    private fun setupRecyclerViews() {
         binding.apply {
             // Setup vertical RecyclerView for more around you
             rvMorearoundyou.layoutManager =
@@ -47,7 +41,7 @@ class CategoryIndividualFragment : Fragment() {
             rvMorearoundyou.adapter = dineOutVertiAdapter
 
             svDineout.viewTreeObserver.addOnScrollChangedListener {
-                val linearLayoutHeight = llSearchbar.height + llMedian.height
+                val linearLayoutHeight = llSearchbar.height
                 val scrollY = svDineout.scrollY
 
                 if (scrollY >= linearLayoutHeight) {
@@ -57,26 +51,13 @@ class CategoryIndividualFragment : Fragment() {
                 }
             }
 
-            textSwitcher.setFactory {
-                val textView = TextView(context)
-                textView.textSize = 16f
-                textView.typeface =
-                    ResourcesCompat.getFont(requireContext(), R.font.swiggy_font_regular)
-                textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey))
-                textView
-            }
-
-            switchText()
         }
     }
 
-    private fun switchText() {
-        binding.textSwitcher.setText(hintStrings[currentHintIndex])
-        currentHintIndex = (currentHintIndex + 1) % hintStrings.size
-
-        binding.textSwitcher.postDelayed(
-            { switchText() },
-            1500
-        ) // Delay between text switches (2 seconds in this example)
+    private fun setupSearchBar() {
+        val searchBarView = binding.searchBarView
+        searchBarView.setHints(services_hint_Strings)   // Sets up the search bar hints dynamically
     }
+
 }
+

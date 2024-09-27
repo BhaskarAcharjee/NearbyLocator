@@ -20,18 +20,7 @@ import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
 import com.example.nearbylocator.repository.LocationRepository
-import com.example.nearbylocator.utils.educationList
-import com.example.nearbylocator.utils.entertainmentList
-import com.example.nearbylocator.utils.financialServicesList
-import com.example.nearbylocator.utils.fitnessWellnessList
-import com.example.nearbylocator.utils.foodAndDrinksList
-import com.example.nearbylocator.utils.healthCareList
-import com.example.nearbylocator.utils.personalCareList
-import com.example.nearbylocator.utils.places_hint_Strings
-import com.example.nearbylocator.utils.publicServicesList
-import com.example.nearbylocator.utils.religiousList
-import com.example.nearbylocator.utils.shoppingList
-import com.example.nearbylocator.utils.transportationList
+import com.example.nearbylocator.utils.*
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -68,29 +57,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupHeaderView() {
-        // Initialize LocationRepository
-        locationRepository = LocationRepository(requireContext())
-        // Get reference to HeaderView
-        val headerView = binding.headerView
-        // Observe location updates to update header views
-        headerView.observeLocationUpdates(locationRepository)
-        // Start requesting location updates
-        locationRepository.startLocationUpdates()
-        // Handle navigation for profile icon
-        headerView.setupProfileIconNavigation(R.id.action_homeFragment_to_profileFragment)
+        locationRepository = LocationRepository(requireContext())   // Initialize LocationRepository
+        val headerView = binding.headerView     // Get reference to HeaderView
+        headerView.observeLocationUpdates(locationRepository)   // Observe location updates to update header views
+        locationRepository.startLocationUpdates()   // Start requesting location updates
+        headerView.setupProfileIconNavigation(R.id.action_homeFragment_to_profileFragment)   // Handle navigation for profile icon
     }
 
     private fun setupSearchbarView() {
-        // Access custom SearchBarView
-        val searchBarView = binding.searchBarView
-        // Update hints dynamically
-        searchBarView.setHints(places_hint_Strings)
+        val searchBarView = binding.searchBarView   // Access custom SearchBarView
+        searchBarView.setHints(places_hint_Strings) // Update hints dynamically
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Stop location updates when the fragment is destroyed
-        locationRepository.stopLocationUpdates()
+        locationRepository.stopLocationUpdates()    // Stop location updates when the fragment is destroyed
     }
 
     // Setting up ViewPager2 for image slider with transformer

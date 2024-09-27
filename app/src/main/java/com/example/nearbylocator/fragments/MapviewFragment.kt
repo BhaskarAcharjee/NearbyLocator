@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -146,7 +145,10 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             // Request permissions if not granted
             ActivityCompat.requestPermissions(
                 requireActivity(),
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
                 1000
             )
             return
@@ -244,6 +246,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     }
 
 
+    // Lifecycle methods for MapView
     override fun onResume() {
         super.onResume()
         mapView.onResume()
