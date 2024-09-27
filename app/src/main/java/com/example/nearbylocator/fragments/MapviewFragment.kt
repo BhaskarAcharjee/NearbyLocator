@@ -52,7 +52,11 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_mapview, container, false)
+        return inflater.inflate(R.layout.fragment_mapview, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         mapView = view.findViewById(R.id.mapView)
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -71,20 +75,17 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         extendedType = view.findViewById(R.id.tv_type_extended)
         extendedLocation = view.findViewById(R.id.tv_hotel_location_extended)
 
-        setupRecyclerView()  // Setup RecyclerView with favorite cards
-        setupBottomSheet(view)  // Setup Bottom Sheet behavior
-
-        return view
+        setupRecyclerView()
+        setupBottomSheet(view)
     }
 
     private fun setupRecyclerView() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
         mapviewFavAdapter = MapviewFavAdapter(mapviewFavDataClasses) { position ->
             val selectedPlace = mapviewFavDataClasses[position]
-            expandBottomSheet()  // Expand the Bottom Sheet
-            populateExtendedCard(selectedPlace)  // Populate extended card
+            expandBottomSheet()
+            populateExtendedCard(selectedPlace)
         }
         recyclerView.adapter = mapviewFavAdapter
     }
@@ -119,9 +120,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                 }
             }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                // Optionally handle slide changes if needed
-            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         })
     }
 
@@ -162,52 +161,33 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             location?.let {
                 val userLocation = LatLng(it.latitude, it.longitude)
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-
-                // Add a marker for the current location
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(userLocation)
-                        .title("You are here")
-                )
+                googleMap.addMarker(MarkerOptions().position(userLocation).title("You are here"))
             }
         }
 
         // Set a click listener to add a marker at the clicked position
         googleMap.setOnMapClickListener { latLng ->
-            // Clear existing markers if needed (optional)
-            googleMap.clear()
-
-            // Reverse geocoding to get place name from latLng
+            googleMap.clear()   // Clear existing markers if needed (optional)
             val geocoder = Geocoder(requireContext(), Locale.getDefault())
             var addressText = "Selected Location"
 
             try {
                 // Get the address based on the latitude and longitude
                 val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
-
                 if (addresses != null && addresses.isNotEmpty()) {
-                    val address = addresses[0]
-                    // Concatenate address components for a readable format
-                    addressText = address.getAddressLine(0) ?: "Selected Location"
+                    addressText = addresses[0].getAddressLine(0) ?: "Selected Location"
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
 
-            // Add a new marker with the place name as title
-            googleMap.addMarker(
-                MarkerOptions()
-                    .position(latLng)
-                    .title(addressText)
-            )?.showInfoWindow() // Immediately show the info window with the place name
-
-            // Optionally, move the camera to the clicked location
+            googleMap.addMarker(MarkerOptions().position(latLng).title(addressText))
+                ?.showInfoWindow()
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         }
 
         // Handle clicking on the "My Location" button
         googleMap.setOnMyLocationButtonClickListener {
-            // Move the camera to the user's current location and add a marker
             moveToCurrentLocation()
             true
         }
@@ -231,16 +211,9 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             location?.let {
                 val userLocation = LatLng(it.latitude, it.longitude)
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-
-                // Clear any existing markers (optional)
                 googleMap.clear()
-
-                // Add a marker at the user's current location
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(userLocation)
-                        .title("You are here")
-                )?.showInfoWindow()
+                googleMap.addMarker(MarkerOptions().position(userLocation).title("You are here"))
+                    ?.showInfoWindow()
             }
         }
     }
@@ -259,11 +232,16 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
 
     override fun onDestroy() {
         super.onDestroy()
-        mapView.onDestroy()
+        if (::mapView.isInitialized) {
+            mapView.onDestroy()
+        }
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mapView.onLowMemory()
+        if (::mapView.isInitialized) {
+            mapView.onLowMemory()
+        }
     }
 }
+
