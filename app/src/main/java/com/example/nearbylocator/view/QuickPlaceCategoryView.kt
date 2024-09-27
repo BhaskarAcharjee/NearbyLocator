@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickPlaceCategoryAdapter
@@ -37,11 +38,15 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     // Set up the RecyclerView and adapter for the quick categories
     private fun setupRecyclerView() {
         quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(mutableListOf()) { category ->
-            // Handle item click, navigate or perform actions based on the category
+            // Handle item click, navigate to CategoryIndividualFragment
+            val navController = findNavController()
+            navController.navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
         }
         binding.rvCategories.adapter = quickPlaceCategoryAdapter
-        binding.rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
+
 
     // Display the default categories in the RecyclerView
     private fun displayDefaultCategories() {
