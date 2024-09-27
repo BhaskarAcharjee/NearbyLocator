@@ -1,6 +1,5 @@
 package com.example.nearbylocator.fragments
 
-import QuickPlaceCategoryAdapter
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -18,7 +16,6 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
-import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
 import com.example.nearbylocator.repository.LocationRepository
 import com.example.nearbylocator.utils.*
 import kotlin.math.abs
@@ -51,7 +48,6 @@ class HomeFragment : Fragment() {
         setupSearchbarView()
         setupViewPager() // Set up the image slider
         setupQuickCategoryNavigation() // Merge into one function
-        setupChoosePlaceCategory()
         updateQuickPlaceCategories() // Update quick categories when the fragment is created
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
     }
@@ -120,76 +116,21 @@ class HomeFragment : Fragment() {
         viewPager2.currentItem += 1
     }
 
-    // Merged Quick Category Navigation setup
+    // Set up the custom QuickPlaceCategoryView
     private fun setupQuickCategoryNavigation() {
-        // Define default category data
-        val defaultCategories = mutableListOf(
-            QuickPlaceCategoryDataClass("Restaurant", R.drawable.resturant_icon),
-            QuickPlaceCategoryDataClass("Bank", R.drawable.bank_icon),
-            QuickPlaceCategoryDataClass("Groceries", R.drawable.groceries_icon)
-        )
+        val quickPlaceCategoryView = binding.quickPlaceCategoryView
 
-        val quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(defaultCategories) { category ->
-            // Handle the click on a category, you can navigate to a new fragment based on category
-            when (category.title) {
-                "Restaurant" -> findNavController().navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
-                "Bank" -> findNavController().navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
-                // Add more cases as needed
-            }
+        // Handle "See All" click event to navigate to ChoosePlaceFragment
+        quickPlaceCategoryView.onSeeAllClicked = {
+            findNavController().navigate(R.id.action_homeFragment_to_choosePlaceFragment)
         }
-
-        binding.quickPlaceCategory.rvCategories.adapter = quickPlaceCategoryAdapter
-        binding.quickPlaceCategory.rvCategories.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
     }
 
     private fun updateQuickPlaceCategories() {
         val selectedCategories = ChoosePlaceFragment.selectedCategories
-        val quickPlaceCategoryAdapter =
-            binding.quickPlaceCategory.rvCategories.adapter as? QuickPlaceCategoryAdapter
 
-        quickPlaceCategoryAdapter?.let {
-            it.clearCategories() // Clear the existing categories
-
-            // If no categories are selected, return to avoid replacing with empty
-            if (selectedCategories.isEmpty()) {
-                // Re-add default categories to maintain at least some categories
-                val defaultCategories = mutableListOf(
-                    QuickPlaceCategoryDataClass("Restaurant", R.drawable.resturant_icon),
-                    QuickPlaceCategoryDataClass("Bank", R.drawable.bank_icon),
-                    QuickPlaceCategoryDataClass("Groceries", R.drawable.groceries_icon)
-                )
-                defaultCategories.forEach { category ->
-                    it.addCategory(category) // Re-add default categories
-                }
-            } else {
-                // Add selected categories
-                selectedCategories.forEach { chooseCategory ->
-                    // Assuming chooseCategory is of type ChoosePlaceCategory
-                    val quickCategory =
-                        QuickPlaceCategoryDataClass(chooseCategory.title, chooseCategory.icon)
-                    it.addCategory(quickCategory) // Add user-selected categories
-                }
-            }
-            it.notifyDataSetChanged()
-        }
-    }
-
-    // Setting up navigation for "Choose Place Category" to respective fragment
-    private fun setupChoosePlaceCategory() {
-        val quickPlaceCategoryLayout = binding.quickPlaceCategory
-        val placeIcon =
-            quickPlaceCategoryLayout.placeIcon // Access the profile icon from the included layout (layout_header)
-
-        // Set up click listener for profile icon
-        placeIcon.setOnClickListener {
-            // Navigate to ProfileFragment
-            val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_choosePlaceFragment)
-        }
+        // Use the custom view to update categories
+        binding.quickPlaceCategoryView.updateCategories(selectedCategories)
     }
 
     // Set up place categories with individual RecyclerViews (horizontal)

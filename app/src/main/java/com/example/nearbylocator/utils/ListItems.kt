@@ -1,7 +1,7 @@
 package com.example.nearbylocator.utils
 
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
+import com.example.nearbylocator.model.PlaceTypeIconDataClass
 import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.model.MapviewDataClass
@@ -69,16 +69,16 @@ val services_hint_Strings = arrayOf(
 )
 
 val choosePlaceCategories = listOf(
-    ChoosePlaceCategoryDataClass("Restaurant", R.drawable.resturant_icon),
-    ChoosePlaceCategoryDataClass("Bank", R.drawable.bank_icon),
-    ChoosePlaceCategoryDataClass("ATM", R.drawable.atm_icon),
-    ChoosePlaceCategoryDataClass("Hospital", R.drawable.hospital_icon),
-    ChoosePlaceCategoryDataClass("Groceries", R.drawable.groceries_icon),
-    ChoosePlaceCategoryDataClass("Parking", R.drawable.parking_icon),
-    ChoosePlaceCategoryDataClass("Post Office", R.drawable.postoffice_icon),
-    ChoosePlaceCategoryDataClass("Police Station", R.drawable.policestation_icon),
-    ChoosePlaceCategoryDataClass("Bus Stop", R.drawable.busstop_icon),
-    ChoosePlaceCategoryDataClass("Pharmacy", R.drawable.pharmacy_icon),
+    PlaceTypeIconDataClass("Restaurant", R.drawable.resturant_icon),
+    PlaceTypeIconDataClass("Bank", R.drawable.bank_icon),
+    PlaceTypeIconDataClass("ATM", R.drawable.atm_icon),
+    PlaceTypeIconDataClass("Hospital", R.drawable.hospital_icon),
+    PlaceTypeIconDataClass("Groceries", R.drawable.groceries_icon),
+    PlaceTypeIconDataClass("Parking", R.drawable.parking_icon),
+    PlaceTypeIconDataClass("Post Office", R.drawable.postoffice_icon),
+    PlaceTypeIconDataClass("Police Station", R.drawable.policestation_icon),
+    PlaceTypeIconDataClass("Bus Stop", R.drawable.busstop_icon),
+    PlaceTypeIconDataClass("Pharmacy", R.drawable.pharmacy_icon),
 )
 
 

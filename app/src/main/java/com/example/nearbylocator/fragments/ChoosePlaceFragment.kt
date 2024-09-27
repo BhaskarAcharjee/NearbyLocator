@@ -12,7 +12,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
 import com.example.nearbylocator.utils.choosePlaceCategories
-import com.example.nearbylocator.model.ChoosePlaceCategoryDataClass
+import com.example.nearbylocator.model.PlaceTypeIconDataClass
 
 class ChoosePlaceFragment : Fragment() {
 
@@ -21,7 +21,7 @@ class ChoosePlaceFragment : Fragment() {
 
     // Shared variable to hold selected categories
     companion object {
-        var selectedCategories: MutableSet<ChoosePlaceCategoryDataClass> = mutableSetOf()
+        var selectedCategories: MutableSet<PlaceTypeIconDataClass> = mutableSetOf()
     }
 
     override fun onCreateView(

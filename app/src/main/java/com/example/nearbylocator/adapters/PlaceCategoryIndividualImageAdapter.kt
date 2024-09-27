@@ -9,30 +9,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 
-class DineoutVertiImageAdapter(private val horiImageList: List<PlaceCategoryGroupDataClass>) :
-    RecyclerView.Adapter<DineoutVertiImageAdapter.DineoutVertiImageHolder>() {
+class PlaceCategoryIndividualImageAdapter(private val placeCategoryIndividualImageList: List<PlaceCategoryGroupDataClass>) :
+    RecyclerView.Adapter<PlaceCategoryIndividualImageAdapter.PlaceCategoryIndividualImageHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DineoutVertiImageAdapter.DineoutVertiImageHolder {
+    ): PlaceCategoryIndividualImageAdapter.PlaceCategoryIndividualImageHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.card_event_verti, parent, false)
-        return DineoutVertiImageHolder(view)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_place_category_individual, parent, false)
+        return PlaceCategoryIndividualImageHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: DineoutVertiImageAdapter.DineoutVertiImageHolder,
+        holder: PlaceCategoryIndividualImageAdapter.PlaceCategoryIndividualImageHolder,
         position: Int
     ) {
-        val data = horiImageList[position]
+        val data = placeCategoryIndividualImageList[position]
         holder.bind(data)
     }
 
     override fun getItemCount(): Int {
-        return horiImageList.size
+        return placeCategoryIndividualImageList.size
     }
 
-    inner class DineoutVertiImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PlaceCategoryIndividualImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivHotelImage: ImageView = itemView.findViewById(R.id.iv_hotel_image)
         private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
         private val tvHotelRating: TextView = itemView.findViewById(R.id.tv_hotel_rating)

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nearbylocator.adapters.DineoutVertiImageAdapter
+import com.example.nearbylocator.adapters.PlaceCategoryIndividualImageAdapter
 import com.example.nearbylocator.databinding.FragmentCategoryIndividualBinding
 import com.example.nearbylocator.utils.dineoutMoreList
 import com.example.nearbylocator.utils.services_hint_Strings
@@ -14,7 +14,7 @@ import com.example.nearbylocator.utils.services_hint_Strings
 class CategoryIndividualFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoryIndividualBinding
-    private lateinit var dineOutVertiAdapter: DineoutVertiImageAdapter
+    private lateinit var placeCategoryIndividualImageAdapter: PlaceCategoryIndividualImageAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +37,8 @@ class CategoryIndividualFragment : Fragment() {
             // Setup vertical RecyclerView for more around you
             rvMorearoundyou.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            dineOutVertiAdapter = DineoutVertiImageAdapter(dineoutMoreList)
-            rvMorearoundyou.adapter = dineOutVertiAdapter
+            placeCategoryIndividualImageAdapter = PlaceCategoryIndividualImageAdapter(dineoutMoreList)
+            rvMorearoundyou.adapter = placeCategoryIndividualImageAdapter
 
             svDineout.viewTreeObserver.addOnScrollChangedListener {
                 val linearLayoutHeight = llSearchbar.height

@@ -1,3 +1,5 @@
+package com.example.nearbylocator.adapters
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -5,18 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.QuickPlaceCategoryDataClass
+import com.example.nearbylocator.model.PlaceTypeIconDataClass
 
 class QuickPlaceCategoryAdapter(
-    private val categories: MutableList<QuickPlaceCategoryDataClass>, // Change to MutableList
-    private val onItemClick: (QuickPlaceCategoryDataClass) -> Unit
+    private val categories: MutableList<PlaceTypeIconDataClass>, // Change to MutableList
+    private val onItemClick: (PlaceTypeIconDataClass) -> Unit
 ) : RecyclerView.Adapter<QuickPlaceCategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.iv_category_icon)
         private val title: TextView = itemView.findViewById(R.id.tv_category_name)
 
-        fun bind(category: QuickPlaceCategoryDataClass) {
+        fun bind(category: PlaceTypeIconDataClass) {
             icon.setImageResource(category.icon)
             title.text = category.title
             itemView.setOnClickListener { onItemClick(category) }
@@ -42,7 +44,7 @@ class QuickPlaceCategoryAdapter(
     }
 
     // Add a new category and notify the adapter
-    fun addCategory(category: QuickPlaceCategoryDataClass) {
+    fun addCategory(category: PlaceTypeIconDataClass) {
         categories.add(category)
         notifyItemInserted(categories.size - 1) // Notify that a new item was inserted
     }

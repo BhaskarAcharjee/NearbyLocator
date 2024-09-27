@@ -21,5 +21,6 @@
     <string name="place_category1_tagline">Restaurants, Cafe to hang out in your area</string>
     <string name="place_category1"><![CDATA[Food & Drinks]]></string>
     <string name="crafted_by">Crafted with ❤️ by Bhaskar Acharjee</string>
+    <string name="discover_nearby">DISCOVER NEARBY</string>
 
 </resources>
