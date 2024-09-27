@@ -9,6 +9,7 @@ appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
 play-services-maps = "19.0.0"
+firebase-crashlytics-buildtools = "3.0.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -19,6 +20,7 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebase-crashlytics-buildtools" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

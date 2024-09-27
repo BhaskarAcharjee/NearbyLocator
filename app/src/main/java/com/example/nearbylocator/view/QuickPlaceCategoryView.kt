@@ -31,23 +31,29 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
         binding = LayoutQuickPlaceCategoryBinding.inflate(LayoutInflater.from(context), this, true)
         setupRecyclerView()
         setupSeeAllClickListener()
+        displayDefaultCategories() // Display the default categories on initialization
     }
 
     // Set up the RecyclerView and adapter for the quick categories
     private fun setupRecyclerView() {
-        quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(defaultCategories) { category ->
+        quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(mutableListOf()) { category ->
             // Handle item click, navigate or perform actions based on the category
-            // This can be customized based on navigation needs
         }
         binding.rvCategories.adapter = quickPlaceCategoryAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
+    // Display the default categories in the RecyclerView
+    private fun displayDefaultCategories() {
+        quickPlaceCategoryAdapter.clearCategories() // Clear any existing categories
+        defaultCategories.forEach { category ->
+            quickPlaceCategoryAdapter.addCategory(category)
+        }
+    }
+
     // Click listener for "See All" button to navigate to ChoosePlaceFragment
     private fun setupSeeAllClickListener() {
         binding.placeIcon.setOnClickListener {
-            // Assuming there is a fragment manager or activity to handle this navigation
-            // Can use a callback or directly navigate
             onSeeAllClicked?.invoke() // Trigger the click event for the parent fragment to handle
         }
     }
@@ -57,21 +63,15 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
         quickPlaceCategoryAdapter.clearCategories()
 
         if (selectedCategories.isEmpty()) {
-            // Re-add default categories if no selection
-            defaultCategories.forEach { category ->
-                quickPlaceCategoryAdapter.addCategory(category)
-            }
+            displayDefaultCategories() // Re-display default categories if no selection
         } else {
-            // Convert and add the selected categories from ChoosePlaceFragment
             selectedCategories.forEach { category ->
-                // Convert ChoosePlaceCategoryDataClass to QuickPlaceCategoryDataClass
-                val quickCategory = PlaceTypeIconDataClass(category.title, category.icon) // Ensure these properties exist
+                val quickCategory = PlaceTypeIconDataClass(category.title, category.icon)
                 quickPlaceCategoryAdapter.addCategory(quickCategory)
             }
         }
         quickPlaceCategoryAdapter.notifyDataSetChanged() // Notify adapter about the data change
     }
-
 
     // Optional callback for handling "See All" button click
     var onSeeAllClicked: (() -> Unit)? = null
