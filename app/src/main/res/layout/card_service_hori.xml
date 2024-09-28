@@ -23,7 +23,7 @@
 
 
     <TextView
-        android:id="@+id/tv_hotel_name"
+        android:id="@+id/tv_place_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"

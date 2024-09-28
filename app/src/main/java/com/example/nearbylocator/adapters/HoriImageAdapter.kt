@@ -31,7 +31,7 @@ class HoriImageAdapter(private val horiImageList: List<HoriServicesDataClass>) :
 
     inner class HoriImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivFood: ImageView = itemView.findViewById(R.id.iv_food)
-        private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
+        private val tvHotelName: TextView = itemView.findViewById(R.id.tv_place_name)
         private val tvRating: TextView = itemView.findViewById(R.id.tv_rating)
         private val tvTime: TextView = itemView.findViewById(R.id.tv_time)
         private val tvType: TextView = itemView.findViewById(R.id.tv_type)

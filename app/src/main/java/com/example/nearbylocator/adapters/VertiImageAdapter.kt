@@ -31,11 +31,11 @@ class VertiImageAdapter(private val vertiImageList: List<VertiServicesDataClass>
 
     inner class VertiImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivFood: ImageView = itemView.findViewById(R.id.iv_food)
-        private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
+        private val tvHotelName: TextView = itemView.findViewById(R.id.tv_place_name)
         private val tvRating: TextView = itemView.findViewById(R.id.tv_rating)
         private val tvTime: TextView = itemView.findViewById(R.id.tv_time)
         private val tvType: TextView = itemView.findViewById(R.id.tv_type)
-        private val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_hotel_location)
+        private val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_place_location)
         private val ivOffer: ImageView = itemView.findViewById(R.id.iv_offer)
         fun bind(data: VertiServicesDataClass) {
             ivFood.setImageResource(data.imageName)

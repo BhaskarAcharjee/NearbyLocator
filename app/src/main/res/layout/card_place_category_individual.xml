@@ -8,7 +8,7 @@
     android:paddingBottom="25sp">
 
     <ImageView
-        android:id="@+id/iv_hotel_image"
+        android:id="@+id/iv_place_image"
         android:layout_width="match_parent"
         android:layout_height="320sp"
         android:src="@drawable/dineout_hori_1"/>
@@ -20,7 +20,7 @@
         android:paddingEnd="5sp">
 
         <TextView
-            android:id="@+id/tv_hotel_name"
+            android:id="@+id/tv_place_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -48,7 +48,7 @@
                 android:textSize="16sp"/>
 
             <TextView
-                android:id="@+id/tv_hotel_rating"
+                android:id="@+id/tv_place_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -69,7 +69,7 @@
         android:paddingEnd="5sp">
 
         <TextView
-            android:id="@+id/tv_hotel_location"
+            android:id="@+id/tv_place_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -83,7 +83,7 @@
             android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tv_hotel_distance"
+            android:id="@+id/tv_place_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -107,7 +107,7 @@
         android:paddingEnd="5sp">
 
         <TextView
-            android:id="@+id/tv_hotel_type"
+            android:id="@+id/tv_place_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -120,7 +120,7 @@
             android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/tv_hotel_price"
+            android:id="@+id/tv_place_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

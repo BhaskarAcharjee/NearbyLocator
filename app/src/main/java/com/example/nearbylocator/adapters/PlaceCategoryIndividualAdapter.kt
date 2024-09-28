@@ -33,21 +33,21 @@ class PlaceCategoryIndividualAdapter(private val placeCategoryIndividualList: Li
     }
 
     inner class PlaceCategoryIndividualHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val ivHotelImage: ImageView = itemView.findViewById(R.id.iv_hotel_image)
-        private val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
-        private val tvHotelRating: TextView = itemView.findViewById(R.id.tv_hotel_rating)
-        private val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_hotel_location)
-        private val tvHotelDistance: TextView = itemView.findViewById(R.id.tv_hotel_distance)
-        private val tvHotelType: TextView = itemView.findViewById(R.id.tv_hotel_type)
-        private val tvHotelPrice: TextView = itemView.findViewById(R.id.tv_hotel_price)
+        private val ivPlaceImage: ImageView = itemView.findViewById(R.id.iv_place_image)
+        private val tvPlaceName: TextView = itemView.findViewById(R.id.tv_place_name)
+        private val tvPlaceRating: TextView = itemView.findViewById(R.id.tv_place_rating)
+        private val tvPlaceLocation: TextView = itemView.findViewById(R.id.tv_place_location)
+        private val tvPlaceDistance: TextView = itemView.findViewById(R.id.tv_place_distance)
+        private val tvPlaceType: TextView = itemView.findViewById(R.id.tv_place_type)
+        private val tvPlacePrice: TextView = itemView.findViewById(R.id.tv_place_price)
         fun bind(data: PlaceCategoryGroupDataClass) {
-            ivHotelImage.setImageResource(data.hotelImage)
-            tvHotelName.text = data.hotelName
-            tvHotelRating.text = data.hotelRating
-            tvHotelLocation.text = data.hotelLocation
-            tvHotelDistance.text = data.hotelDistance
-            tvHotelType.text = data.hotelType
-            tvHotelPrice.text = data.hotelPrice
+            ivPlaceImage.setImageResource(data.placeImage)
+            tvPlaceName.text = data.placeName
+            tvPlaceRating.text = data.placeRating
+            tvPlaceLocation.text = data.placeLocation
+            tvPlaceDistance.text = data.placeDistance
+            tvPlaceType.text = data.placeType
+            tvPlacePrice.text = data.placePrice
         }
     }
 

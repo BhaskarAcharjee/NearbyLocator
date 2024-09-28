@@ -46,11 +46,11 @@ class MapviewFavAdapter(
 
     class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivFood: ImageView = itemView.findViewById(R.id.iv_food)
-        val tvHotelName: TextView = itemView.findViewById(R.id.tv_hotel_name)
+        val tvHotelName: TextView = itemView.findViewById(R.id.tv_place_name)
         val tvRating: TextView = itemView.findViewById(R.id.tv_rating)
         val tvTime: TextView = itemView.findViewById(R.id.tv_time)
         val tvType: TextView = itemView.findViewById(R.id.tv_type)
-        val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_hotel_location)
+        val tvHotelLocation: TextView = itemView.findViewById(R.id.tv_place_location)
 //        val ivOffer: ImageView = itemView.findViewById(R.id.iv_offer)
     }
 }

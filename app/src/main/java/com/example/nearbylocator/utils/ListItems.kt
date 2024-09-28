@@ -8,7 +8,7 @@ import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.MapviewFavDataClass
 import com.example.nearbylocator.model.VertiServicesDataClass
 
-//Search hints
+//--------------------Search hints------------------------
 val places_hint_Strings = arrayOf(
     "Restaurant",
     "Cafe",
