@@ -6,15 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nearbylocator.adapters.PlaceCategoryIndividualImageAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.nearbylocator.adapters.PlaceCategoryIndividualAdapter
 import com.example.nearbylocator.databinding.FragmentCategoryIndividualBinding
-import com.example.nearbylocator.utils.dineoutMoreList
-import com.example.nearbylocator.utils.services_hint_Strings
+import com.example.nearbylocator.utils.*
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 
-class CategoryIndividualFragment : Fragment() {
+class CategoryIndividualFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var binding: FragmentCategoryIndividualBinding
-    private lateinit var placeCategoryIndividualImageAdapter: PlaceCategoryIndividualImageAdapter
+    private lateinit var placeCategoryIndividualAdapter: PlaceCategoryIndividualAdapter
+    private lateinit var mapView: MapView
+    private lateinit var googleMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +32,22 @@ class CategoryIndividualFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize necessary components
+        // Initialize components
+        setupMapView(savedInstanceState)
         setupSearchBar()
         setupRecyclerViews()
+        setupScrollBehavior()
+    }
+
+    private fun setupMapView(savedInstanceState: Bundle?) {
+        mapView = binding.mapView
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)  // Asynchronously initialize the map
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+        // Set map features (e.g., markers, UI settings, etc.)
     }
 
     private fun setupRecyclerViews() {
@@ -37,27 +55,56 @@ class CategoryIndividualFragment : Fragment() {
             // Setup vertical RecyclerView for more around you
             rvMorearoundyou.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            placeCategoryIndividualImageAdapter = PlaceCategoryIndividualImageAdapter(dineoutMoreList)
-            rvMorearoundyou.adapter = placeCategoryIndividualImageAdapter
-
-            svDineout.viewTreeObserver.addOnScrollChangedListener {
-                val linearLayoutHeight = llSearchbar.height
-                val scrollY = svDineout.scrollY
-
-                if (scrollY >= linearLayoutHeight) {
-                    llSearchbar.visibility = View.VISIBLE
-                } else {
-                    llSearchbar.visibility = View.GONE
-                }
-            }
-
+            placeCategoryIndividualAdapter =
+                PlaceCategoryIndividualAdapter(restaurantList)
+            rvMorearoundyou.adapter = placeCategoryIndividualAdapter
         }
     }
+
+    private fun setupScrollBehavior() {
+        binding.rvMorearoundyou.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                // Get the height of rl_header to use as a threshold
+                val linearLayoutHeight = binding.rlHeader.height
+                val scrollY = recyclerView.computeVerticalScrollOffset()
+
+                // Toggle visibility based on scroll position
+                if (scrollY >= linearLayoutHeight) {
+                    binding.llHeader.visibility = View.VISIBLE
+                    binding.rlHeader.visibility = View.GONE
+                } else {
+                    binding.llHeader.visibility = View.GONE
+                    binding.rlHeader.visibility = View.VISIBLE
+                }
+            }
+        })
+    }
+
 
     private fun setupSearchBar() {
         val searchBarView = binding.searchBarView
         searchBarView.setHints(services_hint_Strings)   // Sets up the search bar hints dynamically
     }
 
-}
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+}
