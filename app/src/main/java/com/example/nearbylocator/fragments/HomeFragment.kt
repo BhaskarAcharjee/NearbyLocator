@@ -142,7 +142,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore restaurants and cafes nearby")
             setRecyclerViewAdapter(foodAdapter)
         }
-        binding.placeCategoryFoodDrinks.setSeeAllClickListener(findNavController())
+        binding.placeCategoryFoodDrinks.setSeeAllClickListener(findNavController(),"Food & Drinks")
 
         // Shopping Category
         val shoppingAdapter = PlaceCategoryGroupAdapter(shoppingList)
@@ -151,7 +151,7 @@ class HomeFragment : Fragment() {
             setDescription("Find the best places to shop")
             setRecyclerViewAdapter(shoppingAdapter)
         }
-        binding.placeCategoryShopping.setSeeAllClickListener(findNavController())
+        binding.placeCategoryShopping.setSeeAllClickListener(findNavController(), "Shopping")
 
         // Transportation Category
         val transportationAdapter = PlaceCategoryGroupAdapter(transportationList)
@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
             setDescription("Discover transport services around you")
             setRecyclerViewAdapter(transportationAdapter)
         }
-        binding.placeCategoryTransportation.setSeeAllClickListener(findNavController())
+        binding.placeCategoryTransportation.setSeeAllClickListener(findNavController(), "Transportation")
 
         // Health Care Category
         val healthCareAdapter = PlaceCategoryGroupAdapter(healthCareList)
@@ -169,7 +169,7 @@ class HomeFragment : Fragment() {
             setDescription("Find clinics, hospitals, and healthcare services")
             setRecyclerViewAdapter(healthCareAdapter)
         }
-        binding.placeCategoryHealthCare.setSeeAllClickListener(findNavController())
+        binding.placeCategoryHealthCare.setSeeAllClickListener(findNavController(), "Health Care")
 
         // Financial Services Category
         val financialServicesAdapter = PlaceCategoryGroupAdapter(financialServicesList)
@@ -178,7 +178,7 @@ class HomeFragment : Fragment() {
             setDescription("Locate banks and ATMs near you")
             setRecyclerViewAdapter(financialServicesAdapter)
         }
-        binding.placeCategoryFinancialServices.setSeeAllClickListener(findNavController())
+        binding.placeCategoryFinancialServices.setSeeAllClickListener(findNavController(), "Financial Services")
 
         // Public Services Category
         val publicServicesAdapter = PlaceCategoryGroupAdapter(publicServicesList)
@@ -187,7 +187,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore public service offices nearby")
             setRecyclerViewAdapter(publicServicesAdapter)
         }
-        binding.placeCategoryPublicServices.setSeeAllClickListener(findNavController())
+        binding.placeCategoryPublicServices.setSeeAllClickListener(findNavController(),"Public Services")
 
         // Fitness & Wellness Category
         val fitnessWellnessAdapter = PlaceCategoryGroupAdapter(fitnessWellnessList)
@@ -196,7 +196,7 @@ class HomeFragment : Fragment() {
             setDescription("Discover gyms, spas, and wellness centers")
             setRecyclerViewAdapter(fitnessWellnessAdapter)
         }
-        binding.placeCategoryFitnessWellness.setSeeAllClickListener(findNavController())
+        binding.placeCategoryFitnessWellness.setSeeAllClickListener(findNavController(),"Fitness & Wellness")
 
         // Personal Care Category
         val personalCareAdapter = PlaceCategoryGroupAdapter(personalCareList)
@@ -205,7 +205,7 @@ class HomeFragment : Fragment() {
             setDescription("Find beauty salons and personal care services")
             setRecyclerViewAdapter(personalCareAdapter)
         }
-        binding.placeCategoryPersonalCare.setSeeAllClickListener(findNavController())
+        binding.placeCategoryPersonalCare.setSeeAllClickListener(findNavController(),"Personal Care")
 
         // Entertainment Category
         val entertainmentAdapter = PlaceCategoryGroupAdapter(entertainmentList)
@@ -214,7 +214,7 @@ class HomeFragment : Fragment() {
             setDescription("Explore cinemas, parks, and entertainment spots")
             setRecyclerViewAdapter(entertainmentAdapter)
         }
-        binding.placeCategoryEntertainment.setSeeAllClickListener(findNavController())
+        binding.placeCategoryEntertainment.setSeeAllClickListener(findNavController(),"Entertainment")
 
         // Education Category
         val educationAdapter = PlaceCategoryGroupAdapter(educationList)
@@ -223,7 +223,7 @@ class HomeFragment : Fragment() {
             setDescription("Locate schools, colleges, and educational centers")
             setRecyclerViewAdapter(educationAdapter)
         }
-        binding.placeCategoryEducation.setSeeAllClickListener(findNavController())
+        binding.placeCategoryEducation.setSeeAllClickListener(findNavController(),"Education")
 
         // Religious Category
         val religiousAdapter = PlaceCategoryGroupAdapter(religiousList)
@@ -232,7 +232,7 @@ class HomeFragment : Fragment() {
             setDescription("Find religious places nearby")
             setRecyclerViewAdapter(religiousAdapter)
         }
-        binding.placeCategoryReligious.setSeeAllClickListener(findNavController())
+        binding.placeCategoryReligious.setSeeAllClickListener(findNavController(),"Religious")
     }
 
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.ViewPlaceCategoryGroupBinding
+import com.example.nearbylocator.fragments.HomeFragmentDirections
 
 class PlaceCategoryGroupView @JvmOverloads constructor(
     context: Context,
@@ -37,11 +38,18 @@ class PlaceCategoryGroupView @JvmOverloads constructor(
     }
 
     // Handle the "See All" click and navigate to MapviewFragment
-    fun setSeeAllClickListener(navController: NavController) {
+//    fun setSeeAllClickListener(navController: NavController) {
+//        binding.tvSeeAll.setOnClickListener {
+//            // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
+//            navController.navigate(R.id.action_homeFragment_to_categoryGroupFragment)
+//        }
+//    }
+    fun setSeeAllClickListener(navController: NavController, categoryTitle: String) {
         binding.tvSeeAll.setOnClickListener {
-            // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
-            navController.navigate(R.id.action_homeFragment_to_categoryGroupFragment)
+            val action = HomeFragmentDirections.actionHomeFragmentToCategoryGroupFragment(categoryTitle)
+            navController.navigate(action)
         }
     }
+
 
 }

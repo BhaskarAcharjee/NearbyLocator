@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/swiggy_font_extrabold"
             android:textColor="@color/black"
+            android:text="Category Title"
             android:textSize="18sp" />
 
         <TextView

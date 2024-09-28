@@ -44,6 +44,13 @@ class CategoryGroupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Retrieve the category title from arguments
+        val categoryTitle = arguments?.getString("categoryTitle") ?: "Category"
+
+        // Set the category title in the view
+        binding.tvCategoryHeading.text = categoryTitle
+        binding.tvCategoryHeadingTop.text = categoryTitle
+
         // Initialize components
         initializeComponents()
 

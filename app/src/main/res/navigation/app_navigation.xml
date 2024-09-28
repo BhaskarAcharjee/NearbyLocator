@@ -64,7 +64,11 @@
         android:id="@+id/categoryGroupFragment"
         android:name="com.example.nearbylocator.fragments.CategoryGroupFragment"
         android:label="fragment_category_group"
-        tools:layout="@layout/fragment_category_group" />
+        tools:layout="@layout/fragment_category_group" >
+        <argument
+            android:name="categoryTitle"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/categoryIndividualFragment"
         android:name="com.example.nearbylocator.fragments.CategoryIndividualFragment"
