@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickPlaceCategoryAdapter
 import com.example.nearbylocator.databinding.LayoutQuickPlaceCategoryBinding
+import com.example.nearbylocator.fragments.HomeFragmentDirections
 import com.example.nearbylocator.model.PlaceTypeIconDataClass
 
 class QuickPlaceCategoryView @JvmOverloads constructor(
@@ -38,9 +39,9 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     // Set up the RecyclerView and adapter for the quick categories
     private fun setupRecyclerView() {
         quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(mutableListOf()) { category ->
-            // Handle item click, navigate to CategoryIndividualFragment
-            val navController = findNavController()
-            navController.navigate(R.id.action_homeFragment_to_categoryIndividualFragment)
+            // Handle item click, navigate to CategoryIndividualFragment with category type
+            val action = HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(category.title)
+            findNavController().navigate(action)
         }
         binding.rvCategories.adapter = quickPlaceCategoryAdapter
         binding.rvCategories.layoutManager =

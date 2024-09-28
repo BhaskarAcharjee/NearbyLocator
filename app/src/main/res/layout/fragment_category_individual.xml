@@ -70,7 +70,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/swiggy_font_extrabold"
         android:padding="10dp"
-        android:text="More restaurants around you"
+        android:text="Check Out Places Around You"
         android:textColor="@color/black"
         android:textSize="18sp" />
 

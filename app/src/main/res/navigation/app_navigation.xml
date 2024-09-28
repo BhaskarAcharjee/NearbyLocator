@@ -69,7 +69,11 @@
         android:id="@+id/categoryIndividualFragment"
         android:name="com.example.nearbylocator.fragments.CategoryIndividualFragment"
         android:label="fragment_category_individual"
-        tools:layout="@layout/fragment_category_individual" />
+        tools:layout="@layout/fragment_category_individual" >
+        <argument
+            android:name="categoryType"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/choosePlaceFragment"
         android:name="com.example.nearbylocator.fragments.ChoosePlaceFragment"

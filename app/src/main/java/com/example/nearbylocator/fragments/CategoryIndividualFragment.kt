@@ -20,6 +20,7 @@ class CategoryIndividualFragment : Fragment(), OnMapReadyCallback {
     private lateinit var placeCategoryIndividualAdapter: PlaceCategoryIndividualAdapter
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
+    private lateinit var categoryType: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +32,11 @@ class CategoryIndividualFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Retrieve the category type from arguments
+        arguments?.let {
+            categoryType = it.getString("categoryType") ?: ""
+        }
 
         // Initialize components
         setupMapView(savedInstanceState)
@@ -55,11 +61,60 @@ class CategoryIndividualFragment : Fragment(), OnMapReadyCallback {
             // Setup vertical RecyclerView for more around you
             rvMorearoundyou.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            placeCategoryIndividualAdapter =
-                PlaceCategoryIndividualAdapter(restaurantList)
+
+            // Set the appropriate adapter based on the category type
+            placeCategoryIndividualAdapter = when (categoryType) {
+                "Restaurant" -> {
+                    tvMoreAroundYou.text = "Check Out Restaurants Around You"
+                    PlaceCategoryIndividualAdapter(restaurantList)
+                }
+                "Bank" -> {
+                    tvMoreAroundYou.text = "Check Out Banks Around You"
+                    PlaceCategoryIndividualAdapter(bankList)
+                }
+                "ATM" -> {
+                    tvMoreAroundYou.text = "Check Out ATMs Around You"
+                    PlaceCategoryIndividualAdapter(atmList)
+                }
+                "Hospital" -> {
+                    tvMoreAroundYou.text = "Check Out Hospitals Around You"
+                    PlaceCategoryIndividualAdapter(hospitalList)
+                }
+                "Groceries" -> {
+                    tvMoreAroundYou.text = "Check Out Grocery Stores Around You"
+                    PlaceCategoryIndividualAdapter(groceriesList)
+                }
+                "Parking" -> {
+                    tvMoreAroundYou.text = "Check Out Parkings Around You"
+                    PlaceCategoryIndividualAdapter(parkingList)
+                }
+                "Post Office" -> {
+                    tvMoreAroundYou.text = "Check Out Post Offices Around You"
+                    PlaceCategoryIndividualAdapter(postOfficeList)
+                }
+                "Police Station" -> {
+                    tvMoreAroundYou.text = "Check Out Police Stations Around You"
+                    PlaceCategoryIndividualAdapter(policeStationList)
+                }
+                "Bus Stop" -> {
+                    tvMoreAroundYou.text = "Check Out Bus Stops Around You"
+                    PlaceCategoryIndividualAdapter(busStopList)
+                }
+                "Pharmacy" -> {
+                    tvMoreAroundYou.text = "Check Out Pharmacies Around You"
+                    PlaceCategoryIndividualAdapter(pharmacyList)
+                }
+                // Add more categories as needed
+                else -> {
+                    tvMoreAroundYou.text = "Check Out Places Around You" // Default fallback
+                    PlaceCategoryIndividualAdapter(emptyList())
+                }
+            }
+
             rvMorearoundyou.adapter = placeCategoryIndividualAdapter
         }
     }
+
 
     private fun setupScrollBehavior() {
         binding.rvMorearoundyou.addOnScrollListener(object : RecyclerView.OnScrollListener() {
