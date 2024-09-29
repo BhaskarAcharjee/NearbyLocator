@@ -1,7 +1,9 @@
 package com.example.nearbylocator.utils
 
 import com.example.nearbylocator.R
-import com.example.nearbylocator.model.PlaceTypeIconDataClass
+import com.example.nearbylocator.constants.*
+import com.example.nearbylocator.model.CategoryInfo
+import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.model.MapviewDataClass
@@ -75,31 +77,31 @@ object PlaceCategoryItems {
             // Food & Drinks
             PlaceItem.Header("Food & Drinks"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Restaurant",
                     R.drawable.place_category_icon_restaurant
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Cafe",
                     R.drawable.place_category_icon_cafe
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Bar",
                     R.drawable.place_category_icon_bar
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Grocery Store",
                     R.drawable.place_category_icon_groceries
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Supermarket",
                     R.drawable.place_category_icon_supermarket
                 )
@@ -108,13 +110,13 @@ object PlaceCategoryItems {
             // Financial Services
             PlaceItem.Header("Financial Services"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Bank",
                     R.drawable.place_category_icon_bank
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "ATM",
                     R.drawable.place_category_icon_atm
                 )
@@ -123,25 +125,25 @@ object PlaceCategoryItems {
             // Health & Wellness
             PlaceItem.Header("Health & Wellness"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Hospital",
                     R.drawable.place_category_icon_hospital
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Clinic",
                     R.drawable.place_category_icon_clinic
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Pharmacy",
                     R.drawable.place_category_icon_pharmacy
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Gym",
                     R.drawable.place_category_icon_gym
                 )
@@ -150,13 +152,13 @@ object PlaceCategoryItems {
             // Personal Care
             PlaceItem.Header("Personal Care"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Salon",
                     R.drawable.place_category_icon_saloon
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Laundry",
                     R.drawable.place_category_icon_laundry
                 )
@@ -165,19 +167,19 @@ object PlaceCategoryItems {
             // Transportation
             PlaceItem.Header("Transportation"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Bus Stop",
                     R.drawable.place_category_icon_busstop
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Train Station",
                     R.drawable.place_category_icon_train_station
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Airport",
                     R.drawable.place_category_icon_airport
                 )
@@ -186,19 +188,19 @@ object PlaceCategoryItems {
             // Public Services
             PlaceItem.Header("Public Services"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Police Station",
                     R.drawable.place_category_icon_policestation
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Post Office",
                     R.drawable.place_category_icon_postoffice
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Parking",
                     R.drawable.place_category_icon_parking
                 )
@@ -207,38 +209,38 @@ object PlaceCategoryItems {
             // Entertainment
             PlaceItem.Header("Entertainment"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Park",
                     R.drawable.place_category_icon_park
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Movie Theater",
                     R.drawable.place_category_icon_theater
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Shopping Mall",
                     R.drawable.place_category_icon_shoppingmall
 
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Library",
                     R.drawable.place_category_icon_library
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Museum",
                     R.drawable.place_category_icon_museum
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Zoo",
                     R.drawable.place_category_icon_zoo
                 )
@@ -247,13 +249,13 @@ object PlaceCategoryItems {
             // Education
             PlaceItem.Header("Education"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "School",
                     R.drawable.place_category_icon_school
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "University",
                     R.drawable.place_category_icon_university
                 )
@@ -262,19 +264,19 @@ object PlaceCategoryItems {
             // Religious
             PlaceItem.Header("Religious"),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Church",
                     R.drawable.place_category_icon_church
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Temple",
                     R.drawable.place_category_icon_temple
                 )
             ),
             PlaceItem.CategoryItem(
-                PlaceTypeIconDataClass(
+                PlaceTypeIcon(
                     "Mosque",
                     R.drawable.place_category_icon_mosque
                 )
@@ -282,6 +284,40 @@ object PlaceCategoryItems {
         )
     }
 }
+
+val categoryMap = mapOf(
+    "Restaurant" to CategoryInfo("Check Out Restaurants Around You", restaurantList),
+    "Cafe" to CategoryInfo("Check Out Cafes Around You", cafeList),
+    "Bar" to CategoryInfo("Check Out Bars Around You", barList),
+    "Grocery Store" to CategoryInfo("Check Out Grocery Stores Around You", groceryStoreList),
+    "Supermarket" to CategoryInfo("Check Out Supermarkets Around You", supermarketList),
+    "Bank" to CategoryInfo("Check Out Banks Around You", bankList),
+    "ATM" to CategoryInfo("Check Out ATMs Around You", atmList),
+    "Hospital" to CategoryInfo("Check Out Hospitals Around You", hospitalList),
+    "Clinic" to CategoryInfo("Check Out Clinics Around You", clinicList),
+    "Pharmacy" to CategoryInfo("Check Out Pharmacies Around You", pharmacyList),
+    "Gym" to CategoryInfo("Check Out Gyms Around You", gymList),
+    "Salon" to CategoryInfo("Check Out Salons Around You", salonList),
+    "Laundry" to CategoryInfo("Check Out Laundry Services Around You", laundryList),
+    "Bus Stop" to CategoryInfo("Check Out Bus Stops Around You", busStopList),
+    "Train Station" to CategoryInfo("Check Out Train Stations Around You", trainStationList),
+    "Airport" to CategoryInfo("Check Out Airports Around You", airportList),
+    "Police Station" to CategoryInfo("Check Out Police Stations Around You", policeStationList),
+    "Post Office" to CategoryInfo("Check Out Post Offices Around You", postOfficeList),
+    "Parking" to CategoryInfo("Check Out Parking Spots Around You", parkingList),
+    "Park" to CategoryInfo("Check Out Parks Around You", parkList),
+    "Movie Theater" to CategoryInfo("Check Out Movie Theaters Around You", theaterList),
+    "Shopping Mall" to CategoryInfo("Check Out Shopping Malls Around You", shoppingMallList),
+    "Library" to CategoryInfo("Check Out Libraries Around You", libraryList),
+    "Museum" to CategoryInfo("Check Out Museums Around You", museumList),
+    "Zoo" to CategoryInfo("Check Out Zoos Around You", zooList),
+    "School" to CategoryInfo("Check Out Schools Around You", schoolList),
+    "University" to CategoryInfo("Check Out Universities Around You", collegeList),
+    "Church" to CategoryInfo("Check Out Churches Around You", churchList),
+    "Temple" to CategoryInfo("Check Out Temples Around You", templeList),
+    "Mosque" to CategoryInfo("Check Out Mosques Around You", mosqueList)
+)
+
 
 //----------------------- Image Slider ---------------------------------
 val homeOfferImages = arrayListOf(

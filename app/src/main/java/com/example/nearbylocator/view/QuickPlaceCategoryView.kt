@@ -10,7 +10,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickPlaceCategoryAdapter
 import com.example.nearbylocator.databinding.LayoutQuickPlaceCategoryBinding
 import com.example.nearbylocator.fragments.HomeFragmentDirections
-import com.example.nearbylocator.model.PlaceTypeIconDataClass
+import com.example.nearbylocator.model.PlaceTypeIcon
 
 class QuickPlaceCategoryView @JvmOverloads constructor(
     context: Context,
@@ -23,9 +23,9 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
 
     // Default categories that show initially
     private val defaultCategories = mutableListOf(
-        PlaceTypeIconDataClass("Restaurant", R.drawable.place_category_icon_restaurant),
-        PlaceTypeIconDataClass("Bank", R.drawable.place_category_icon_bank),
-        PlaceTypeIconDataClass("Groceries", R.drawable.place_category_icon_groceries)
+        PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
+        PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+        PlaceTypeIcon("Groceries", R.drawable.place_category_icon_groceries)
     )
 
     init {
@@ -65,14 +65,14 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     }
 
     // Public method to update categories with selected ones
-    fun updateCategories(selectedCategories: MutableSet<PlaceTypeIconDataClass>) {
+    fun updateCategories(selectedCategories: MutableSet<PlaceTypeIcon>) {
         quickPlaceCategoryAdapter.clearCategories()
 
         if (selectedCategories.isEmpty()) {
             displayDefaultCategories() // Re-display default categories if no selection
         } else {
             selectedCategories.forEach { category ->
-                val quickCategory = PlaceTypeIconDataClass(category.title, category.icon)
+                val quickCategory = PlaceTypeIcon(category.title, category.icon)
                 quickPlaceCategoryAdapter.addCategory(quickCategory)
             }
         }

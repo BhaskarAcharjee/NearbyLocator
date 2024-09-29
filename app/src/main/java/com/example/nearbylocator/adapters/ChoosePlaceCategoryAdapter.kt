@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 import com.example.nearbylocator.model.PlaceItem
-import com.example.nearbylocator.model.PlaceTypeIconDataClass
+import com.example.nearbylocator.model.PlaceTypeIcon
 
 class ChoosePlaceCategoryAdapter(
     private val items: List<PlaceItem>,
-    private val onItemClick: (PlaceTypeIconDataClass) -> Unit
+    private val onItemClick: (PlaceTypeIcon) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val selectedCategories = mutableSetOf<PlaceTypeIconDataClass>()
+    private val selectedCategories = mutableSetOf<PlaceTypeIcon>()
 
     // Define view types
     companion object {
@@ -38,7 +38,7 @@ class ChoosePlaceCategoryAdapter(
         private val name: TextView = itemView.findViewById(R.id.categoryName)
         private val tickIcon: ImageView = itemView.findViewById(R.id.tickIcon)
 
-        fun bind(category: PlaceTypeIconDataClass) {
+        fun bind(category: PlaceTypeIcon) {
             icon.setImageResource(category.icon)
             name.text = category.title
 
@@ -104,7 +104,7 @@ class ChoosePlaceCategoryAdapter(
     }
 
     // Public method to get selected categories
-    fun getSelectedCategories(): Set<PlaceTypeIconDataClass> {
+    fun getSelectedCategories(): Set<PlaceTypeIcon> {
         return selectedCategories
     }
 }

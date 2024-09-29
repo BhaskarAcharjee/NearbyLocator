@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
-import com.example.nearbylocator.model.PlaceTypeIconDataClass
+import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.utils.PlaceCategoryItems
 
 class ChoosePlaceFragment : Fragment() {
@@ -21,7 +21,7 @@ class ChoosePlaceFragment : Fragment() {
 
     // Shared variable to hold selected categories
     companion object {
-        var selectedCategories: MutableSet<PlaceTypeIconDataClass> = mutableSetOf()
+        var selectedCategories: MutableSet<PlaceTypeIcon> = mutableSetOf()
     }
 
     override fun onCreateView(
