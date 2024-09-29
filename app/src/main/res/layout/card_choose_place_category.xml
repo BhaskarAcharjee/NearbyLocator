@@ -1,28 +1,36 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
+    <!-- Category Icon -->
     <ImageView
         android:id="@+id/categoryIcon"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/bank_icon"
-        android:background="@drawable/rounded_corner"
-        android:contentDescription="Category Icon"
-        android:padding="10dp"
-        android:scaleType="centerCrop" />
+        android:layout_centerInParent="true"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bank_icon" />
 
+    <!-- Category Name -->
     <TextView
         android:id="@+id/categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Category"
+        android:layout_below="@id/categoryIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Category Name"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <!-- Tick Icon (Transparent) -->
+    <ImageView
+        android:id="@+id/tickIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/tick_icon"
+        android:visibility="gone" />
+</RelativeLayout>

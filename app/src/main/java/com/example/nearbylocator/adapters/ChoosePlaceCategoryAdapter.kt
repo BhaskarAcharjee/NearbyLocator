@@ -19,27 +19,35 @@ class ChoosePlaceCategoryAdapter(
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.categoryIcon)
         private val name: TextView = itemView.findViewById(R.id.categoryName)
+        private val tickIcon: ImageView = itemView.findViewById(R.id.tickIcon)
 
         fun bind(category: PlaceTypeIconDataClass) {
             icon.setImageResource(category.icon)
             name.text = category.title
 
-            // Handle the background change based on selection state
+            // Handle background and tick icon visibility based on selection state
             if (selectedCategories.contains(category)) {
                 icon.setBackgroundResource(R.drawable.rounded_corner_active)
+                tickIcon.visibility = View.VISIBLE
+                icon.alpha = 0.5f  // Apply slight opacity for blur effect
             } else {
                 icon.setBackgroundResource(R.drawable.rounded_corner)
+                tickIcon.visibility = View.GONE
+                icon.alpha = 1.0f  // Reset opacity
             }
 
             itemView.setOnClickListener {
-                // Add or remove from selected categories based on current state
                 if (selectedCategories.contains(category)) {
                     selectedCategories.remove(category)
+                    tickIcon.visibility = View.GONE
                     icon.setBackgroundResource(R.drawable.rounded_corner)
+                    icon.alpha = 1.0f  // Reset opacity
                 } else {
                     if (selectedCategories.size < 5) {
                         selectedCategories.add(category)
+                        tickIcon.visibility = View.VISIBLE
                         icon.setBackgroundResource(R.drawable.rounded_corner_active)
+                        icon.alpha = 0.5f  // Apply blur effect
                     }
                 }
 
