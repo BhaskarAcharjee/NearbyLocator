@@ -38,12 +38,6 @@ class PlaceCategoryGroupView @JvmOverloads constructor(
     }
 
     // Handle the "See All" click and navigate to MapviewFragment
-//    fun setSeeAllClickListener(navController: NavController) {
-//        binding.tvSeeAll.setOnClickListener {
-//            // findNavController() needs to reference a view that is part of a NavHost. Since PlaceCategoryView is a custom view, calling findNavController() directly on tvSeeAll may not work. Instead, pass the fragment’s navigation controller to the custom view
-//            navController.navigate(R.id.action_homeFragment_to_categoryGroupFragment)
-//        }
-//    }
     fun setSeeAllClickListener(navController: NavController, categoryTitle: String) {
         binding.tvSeeAll.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToCategoryGroupFragment(categoryTitle)

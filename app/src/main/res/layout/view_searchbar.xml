@@ -1,55 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10sp"
-    android:elevation="0dp">
+    android:background="@drawable/background_searchbar"
+    android:padding="10sp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <!-- Search TextView -->
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#f1f1f4"
-        android:padding="10sp">
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:fontFamily="@font/swiggy_font_regular"
+        android:maxLines="1"
+        android:text="Search for "
+        android:textColor="@color/grey"
+        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="center"
-            android:ellipsize="end"
-            android:fontFamily="@font/swiggy_font_regular"
-            android:maxLines="1"
-            android:text="Search for "
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+    <!-- TextSwitcher for dynamic hints -->
+    <TextSwitcher
+        android:id="@+id/textSwitcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/tv_search"
+        android:ellipsize="end"
+        android:fontFamily="@font/swiggy_font_regular"
+        android:inAnimation="@anim/text_slide_to_top"
+        android:outAnimation="@anim/text_slide_from_bottom"
+        android:textColor="@color/grey" />
 
-        <TextSwitcher
-            android:id="@+id/textSwitcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/tv_search"
-            android:ellipsize="end"
-            android:fontFamily="@font/swiggy_font_regular"
-            android:inAnimation="@anim/text_slide_to_top"
-            android:outAnimation="@anim/text_slide_from_bottom"
-            android:textColor="@color/grey" />
+    <!-- Search Icon -->
+    <ImageView
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginEnd="10sp"
+        android:layout_toStartOf="@id/iv_mic"
+        android:src="@drawable/icon_search" />
 
-        <ImageView
-            android:layout_width="20sp"
-            android:layout_height="20sp"
-            android:layout_marginEnd="10sp"
-            android:layout_toStartOf="@id/iv_mic"
-            android:src="@drawable/icon_search" />
+    <!-- Microphone Icon -->
+    <ImageView
+        android:id="@+id/iv_mic"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/icon_mic" />
 
-        <ImageView
-            android:id="@+id/iv_mic"
-            android:layout_width="20sp"
-            android:layout_height="20sp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/icon_mic" />
-
-    </RelativeLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

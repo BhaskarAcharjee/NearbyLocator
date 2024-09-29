@@ -8,149 +8,86 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
-import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.InstamartImageAdapter
 import com.example.nearbylocator.databinding.FragmentCategoryGroupBinding
-import com.example.nearbylocator.utils.*
-import kotlin.math.abs
+import com.example.nearbylocator.utils.hotDealsList
+import com.example.nearbylocator.utils.instamartSlide1
+import com.example.nearbylocator.utils.instamartSlide2
+import com.example.nearbylocator.utils.services_hint_Strings
+import com.example.nearbylocator.utils.topPicksList
 
 class CategoryGroupFragment : Fragment() {
 
-    // Variables for image slides and adapters
+    // Declare necessary variables
     private lateinit var handler: Handler
-    private lateinit var slideAdapter1: ImageSlideAdapter
-    private lateinit var slideAdapter2: ImageSlideAdapter
     private lateinit var hotDealsAdapter: InstamartImageAdapter
     private lateinit var topPicksAdapter: InstamartImageAdapter
-    private lateinit var imageList1: ArrayList<Int>
-    private lateinit var imageList2: ArrayList<Int>
-    private lateinit var viewPager1: ViewPager2
-    private lateinit var viewPager2: ViewPager2
     private lateinit var binding: FragmentCategoryGroupBinding
 
+    // Inflate the layout using view binding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout using view binding
         binding = FragmentCategoryGroupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    // Initialize the fragment view and set up all components
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Retrieve the category title from arguments
-        val categoryTitle = arguments?.getString("categoryTitle") ?: "Category"
+        initializeComponents()// Initialize all UI components
+        setCategoryTitle()// Set the category title (from arguments or default)
+        setupRecyclerViews()// Set up the RecyclerViews for Hot Deals and Top Picks
+        setupScrollView()// Handle scrolling to toggle header visibility
+        setupSearchBar()// Set up the search bar with dynamic hints
+        setupOffersView()// Set up the offers ViewPager for sliding images
+    }
 
-        // Set the category title in the view
+    // Set the category title in both the main and top headers
+    private fun setCategoryTitle() {
+        val categoryTitle = arguments?.getString("categoryTitle") ?: "Category"
         binding.tvCategoryHeading.text = categoryTitle
         binding.tvCategoryHeadingTop.text = categoryTitle
-
-        // Initialize components
-        initializeComponents()
-
-        // Setup image sliders (ViewPagers)
-        setupViewPagers()
-
-        // Setup Hot Deals and Top Picks RecyclerViews
-        setupRecyclerViews()
-
-        // Handle scroll changes in the scroll view for banner visibility
-        setupScrollView()
-
-        setupSearchBar()
-
     }
 
-    // Initialize necessary components (e.g., handler, lists, adapters)
+    // Initialize handler and other necessary components
     private fun initializeComponents() {
         handler = Handler(Looper.myLooper()!!)
-        imageList1 = instamartSlide1
-        imageList2 = instamartSlide2
     }
 
-    // Setup ViewPagers for image sliders
-    private fun setupViewPagers() {
-        viewPager1 = binding.viewpager1
-        viewPager2 = binding.viewpager2
-
-        // Initialize slide adapters
-        slideAdapter1 = ImageSlideAdapter(imageList1, viewPager1)
-        slideAdapter2 = ImageSlideAdapter(imageList2, viewPager2)
-
-        // Set adapters and basic settings for both ViewPagers
-        viewPager1.adapter = slideAdapter1
-        viewPager2.adapter = slideAdapter2
-
-        configureViewPager(viewPager1)
-        configureViewPager(viewPager2)
-
-        // Add a page change listener to auto-slide images
-        setupAutoSlide(viewPager1)
-        setupAutoSlide(viewPager2)
-
-        // Set up custom page transformer for both ViewPagers
-        setUpPageTransformer()
-    }
-
-    // Common configurations for both ViewPagers (disable overscroll, set offscreen limit)
-    private fun configureViewPager(viewPager: ViewPager2) {
-        viewPager.offscreenPageLimit = 3
-        viewPager.clipToPadding = false
-        viewPager.clipChildren = false
-        viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-    }
-
-    // Set up a composite page transformer to create the scaling effect while swiping
-    private fun setUpPageTransformer() {
-        val transformer = CompositePageTransformer().apply {
-            addTransformer(MarginPageTransformer(90))  // Set page margins
-            addTransformer { page, position ->
-                val scaleFactor = 1 - abs(position)
-                page.scaleY = 0.85f + scaleFactor * 0.14f  // Scale vertically
-                page.scaleX = 0.85f + scaleFactor * 0.4f   // Scale horizontally
-            }
-        }
-        viewPager1.setPageTransformer(transformer)
-        viewPager2.setPageTransformer(transformer)
-    }
-
-    // Auto-slide functionality: automatically moves to the next page after a delay
-    private fun setupAutoSlide(viewPager: ViewPager2) {
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                handler.removeCallbacks(slideRunnable)  // Stop any previous callback
-                handler.postDelayed(slideRunnable, 2500)  // Slide after 2.5 seconds
-            }
-        })
-    }
-
-    // Runnable to change pages in ViewPagers automatically
-    private val slideRunnable = Runnable {
-        viewPager1.currentItem += 1
-        viewPager2.currentItem += 1
+    // Set up the offers ViewPager (or custom OffersView) with image lists
+    private fun setupOffersView() {
+        // For first set of images
+        binding.offersView.setImageList(instamartSlide1)
+        // For second set of images
+        binding.offersView2.setImageList(instamartSlide2)
     }
 
     // Set up RecyclerViews for Hot Deals and Top Picks sections
     private fun setupRecyclerViews() {
-        // Hot Deals section
+        setupHotDealsRecyclerView()   // Set up Hot Deals section
+        setupTopPicksRecyclerView()   // Set up Top Picks section
+    }
+
+    // Set up Hot Deals RecyclerView with horizontal scrolling
+    private fun setupHotDealsRecyclerView() {
         binding.rvHotdeals.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
             hotDealsAdapter = InstamartImageAdapter(hotDealsList)
             adapter = hotDealsAdapter
         }
+    }
 
-        // Top Picks section
+    // Set up Top Picks RecyclerView with horizontal scrolling
+    private fun setupTopPicksRecyclerView() {
         binding.rvTopPicks.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
             topPicksAdapter = InstamartImageAdapter(topPicksList)
             adapter = topPicksAdapter
         }

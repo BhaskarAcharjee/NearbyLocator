@@ -81,8 +81,14 @@ val choosePlaceCategories = listOf(
     PlaceTypeIconDataClass("Pharmacy", R.drawable.pharmacy_icon),
 )
 
+val homeOfferImages = arrayListOf(
+    R.drawable.homeslide1,
+    R.drawable.homeslide2,
+    R.drawable.homeslide3,
+    R.drawable.homeslide4
+)
 
-val homeSlideImages = arrayListOf(
+val serviceOfferImages = arrayListOf(
     R.drawable.homeslide5,
     R.drawable.homeslide6,
     R.drawable.homeslide1,

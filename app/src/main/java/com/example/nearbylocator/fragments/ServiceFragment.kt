@@ -2,15 +2,11 @@ package com.example.nearbylocator.fragments
 
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.HoriImageAdapter
@@ -20,10 +16,9 @@ import com.example.nearbylocator.databinding.FragmentServiceBinding
 import com.example.nearbylocator.repository.LocationRepository
 import com.example.nearbylocator.utils.exploreFoodsList
 import com.example.nearbylocator.utils.getQuicklyFoodsList
-import com.example.nearbylocator.utils.homeSlideImages
+import com.example.nearbylocator.utils.serviceOfferImages
 import com.example.nearbylocator.utils.services_hint_Strings
 import com.example.nearbylocator.utils.topRatedFoodsList
-import kotlin.math.abs
 
 class ServiceFragment : Fragment() {
 
@@ -51,10 +46,16 @@ class ServiceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize necessary components
-        setupViewPager()
         setupRecyclerViews()
         setupSearchBar()
         setupHeaderView()
+        setupOffersView()
+    }
+
+    // Set up the OffersView with the image list
+    private fun setupOffersView() {
+        val offersView = binding.offersView
+        offersView.setImageList(serviceOfferImages)  // Pass the image list to the OffersView
     }
 
     // Sets up the search bar hints dynamically
@@ -74,37 +75,6 @@ class ServiceFragment : Fragment() {
         headerView.setupProfileIconNavigation(R.id.action_serviceFragment_to_profileFragment)
     }
 
-    // Runnable that moves to the next page in ViewPager
-    private val runnable = Runnable {
-        viewPager2.currentItem += 1
-    }
-
-    // Sets up the ViewPager and its transformer
-    private fun setupViewPager() {
-        viewPager2 = binding.viewpager2
-        handler = Handler(Looper.myLooper()!!)
-        imageList = homeSlideImages
-        slideAdapter = ImageSlideAdapter(imageList, viewPager2)
-        viewPager2.adapter = slideAdapter
-
-        // Adjust page padding and clip settings for proper visibility
-        viewPager2.offscreenPageLimit = 3
-        viewPager2.clipToPadding = false
-        viewPager2.clipChildren = false
-        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
-        // Setup page transformation animations
-        setUpPageTransformer()
-
-        // Auto-slide the view pager every 2.5 seconds
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                handler.removeCallbacks(runnable)
-                handler.postDelayed(runnable, 2500)
-            }
-        })
-    }
 
     // Configures the RecyclerViews for horizontal and vertical lists
     private fun setupRecyclerViews() {
@@ -127,30 +97,5 @@ class ServiceFragment : Fragment() {
             exploreAdapter = VertiImageAdapter(exploreFoodsList)
             rvExplore.adapter = exploreAdapter
         }
-    }
-
-    // Configures the page transformer for the ViewPager
-    private fun setUpPageTransformer() {
-        val transformer = CompositePageTransformer().apply {
-            addTransformer(MarginPageTransformer(90))
-            addTransformer { page, position ->
-                val scaleFactor = 1 - abs(position)
-                page.scaleY = 0.85f + scaleFactor * 0.14f
-                page.scaleX = 0.85f + scaleFactor * 0.4f
-            }
-        }
-        viewPager2.setPageTransformer(transformer)
-    }
-
-    // Stop automatic sliding when fragment is paused
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(runnable)
-    }
-
-    // Resume automatic sliding when fragment is resumed
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(runnable, 2500)
     }
 }
