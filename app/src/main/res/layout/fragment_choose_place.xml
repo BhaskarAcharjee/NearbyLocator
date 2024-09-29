@@ -1,68 +1,40 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/chooseQuickPlaceCategoryLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".fragments.ChoosePlaceFragment">
 
-    <!-- Back Button -->
-    <ImageButton
+    <!-- Your back and done buttons -->
+    <Button
         android:id="@+id/backButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/back_icon"
-        android:contentDescription="Back" />
-
-    <!-- Heading -->
-    <TextView
-        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/backButton"
-        android:layout_marginBottom="8dp"
-        android:text="Choose Place Category"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black" />
+        android:layout_margin="8dp"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Short Description -->
-    <TextView
-        android:id="@+id/shortDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/heading"
-        android:layout_marginBottom="24dp"
-        android:text="Select a category to find nearby places."
-        android:textSize="16sp"
-        android:textColor="@android:color/darker_gray" />
-
-    <!-- RecyclerView for Category Grid -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@id/doneButton"
-        android:layout_below="@id/shortDescription"
-        android:layout_weight="1"
-        android:paddingVertical="8dp" />
-
-    <!-- Done Button -->
     <Button
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:drawablePadding="8dp"
-        android:padding="12dp"
+        android:layout_margin="8dp"
         android:text="Done"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <!-- RecyclerView for the categories -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

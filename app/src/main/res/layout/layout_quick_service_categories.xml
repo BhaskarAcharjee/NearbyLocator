@@ -117,7 +117,7 @@
                     android:layout_width="80sp"
                     android:layout_height="80sp"
                     android:background="@drawable/rounded_corner"
-                    android:src="@drawable/saloon_icon" />
+                    android:src="@drawable/place_category_icon_saloon" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -7,18 +7,32 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIconDataClass
 
 class ChoosePlaceCategoryAdapter(
-    private val categories: List<PlaceTypeIconDataClass>,
+    private val items: List<PlaceItem>,
     private val onItemClick: (PlaceTypeIconDataClass) -> Unit
-) : RecyclerView.Adapter<ChoosePlaceCategoryAdapter.CategoryViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val selectedCategories = mutableSetOf<PlaceTypeIconDataClass>()
 
-    // Callback for when trying to select more than 5 categories
-    var onMaxSelectionReached: (() -> Unit)? = null
+    // Define view types
+    companion object {
+        const val VIEW_TYPE_HEADER = 0
+        const val VIEW_TYPE_CATEGORY = 1
+    }
 
+    // ViewHolder for Header
+    inner class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val headerText: TextView = itemView.findViewById(R.id.headerText)
+
+        fun bind(title: String) {
+            headerText.text = title
+        }
+    }
+
+    // ViewHolder for CategoryItem
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.categoryIcon)
         private val name: TextView = itemView.findViewById(R.id.categoryName)
@@ -28,7 +42,6 @@ class ChoosePlaceCategoryAdapter(
             icon.setImageResource(category.icon)
             name.text = category.title
 
-            // Handle background and tick icon visibility based on selection state
             if (selectedCategories.contains(category)) {
                 icon.setBackgroundResource(R.drawable.rounded_corner_active)
                 tickIcon.visibility = View.VISIBLE
@@ -41,21 +54,18 @@ class ChoosePlaceCategoryAdapter(
 
             itemView.setOnClickListener {
                 if (selectedCategories.contains(category)) {
-                    // Deselect category
                     selectedCategories.remove(category)
                     tickIcon.visibility = View.GONE
                     icon.setBackgroundResource(R.drawable.rounded_corner)
                     icon.alpha = 1.0f  // Reset opacity
                 } else {
                     if (selectedCategories.size < 5) {
-                        // Select new category
                         selectedCategories.add(category)
                         tickIcon.visibility = View.VISIBLE
                         icon.setBackgroundResource(R.drawable.rounded_corner_active)
                         icon.alpha = 0.5f  // Apply blur effect
                     } else {
-                        // Show max selection limit reached
-                        onMaxSelectionReached?.invoke()  // Trigger max selection callback
+//                        onMaxSelectionReached?.invoke()
                     }
                 }
 
@@ -64,17 +74,34 @@ class ChoosePlaceCategoryAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_choose_place_category, parent, false)
-        return CategoryViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VIEW_TYPE_HEADER) {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.header_layout, parent, false)
+            HeaderViewHolder(view)
+        } else {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.card_choose_place_category, parent, false)
+            CategoryViewHolder(view)
+        }
     }
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.bind(categories[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = items[position]) {
+            is PlaceItem.Header -> (holder as HeaderViewHolder).bind(item.title)
+            is PlaceItem.CategoryItem -> (holder as CategoryViewHolder).bind(item.place)
+        }
     }
 
-    override fun getItemCount(): Int = categories.size
+    override fun getItemCount(): Int = items.size
+
+    // Determine view type based on item
+    override fun getItemViewType(position: Int): Int {
+        return when (items[position]) {
+            is PlaceItem.Header -> VIEW_TYPE_HEADER
+            is PlaceItem.CategoryItem -> VIEW_TYPE_CATEGORY
+        }
+    }
 
     // Public method to get selected categories
     fun getSelectedCategories(): Set<PlaceTypeIconDataClass> {

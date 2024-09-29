@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:padding="5dp"
         android:background="@drawable/rounded_corner"
-        android:src="@drawable/bank_icon" />
+        android:src="@drawable/place_category_icon_bank" />
 
     <TextView
         android:id="@+id/tv_category_name"

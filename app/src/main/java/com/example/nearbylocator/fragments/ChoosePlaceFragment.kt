@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
-import com.example.nearbylocator.utils.choosePlaceCategories
 import com.example.nearbylocator.model.PlaceTypeIconDataClass
+import com.example.nearbylocator.utils.PlaceCategoryItems
 
 class ChoosePlaceFragment : Fragment() {
 
@@ -71,22 +71,24 @@ class ChoosePlaceFragment : Fragment() {
     }
 
     private fun setupCategoryGrid() {
-        adapter = ChoosePlaceCategoryAdapter(choosePlaceCategories) { category ->
-            // You can handle individual category click here if needed
+        val categoryItems = PlaceCategoryItems.getPlaceCategories()
+
+        adapter = ChoosePlaceCategoryAdapter(categoryItems) { category ->
+            // Handle category click
         }
 
-        // Handle max selection limit reached
-        adapter.onMaxSelectionReached = {
-            Toast.makeText(
-                requireContext(),
-                "You can select up to 5 categories only.",
-                Toast.LENGTH_SHORT
-            ).show()
+        binding.categoryRecyclerView.layoutManager = GridLayoutManager(context, 3).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when (adapter.getItemViewType(position)) {
+                        ChoosePlaceCategoryAdapter.VIEW_TYPE_HEADER -> 3  // Header takes all 3 columns
+                        ChoosePlaceCategoryAdapter.VIEW_TYPE_CATEGORY -> 1  // Category takes 1 column
+                        else -> 1
+                    }
+                }
+            }
         }
 
-        binding.categoryRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 3)
-            adapter = this@ChoosePlaceFragment.adapter
-        }
+        binding.categoryRecyclerView.adapter = adapter
     }
 }
