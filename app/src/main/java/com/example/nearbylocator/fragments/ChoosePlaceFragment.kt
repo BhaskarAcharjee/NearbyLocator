@@ -72,7 +72,16 @@ class ChoosePlaceFragment : Fragment() {
 
     private fun setupCategoryGrid() {
         adapter = ChoosePlaceCategoryAdapter(choosePlaceCategories) { category ->
+            // You can handle individual category click here if needed
+        }
 
+        // Handle max selection limit reached
+        adapter.onMaxSelectionReached = {
+            Toast.makeText(
+                requireContext(),
+                "You can select up to 5 categories only.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         binding.categoryRecyclerView.apply {

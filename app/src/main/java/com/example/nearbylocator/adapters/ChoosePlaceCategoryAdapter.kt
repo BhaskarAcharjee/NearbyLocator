@@ -16,6 +16,9 @@ class ChoosePlaceCategoryAdapter(
 
     private val selectedCategories = mutableSetOf<PlaceTypeIconDataClass>()
 
+    // Callback for when trying to select more than 5 categories
+    var onMaxSelectionReached: (() -> Unit)? = null
+
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.categoryIcon)
         private val name: TextView = itemView.findViewById(R.id.categoryName)
@@ -38,16 +41,21 @@ class ChoosePlaceCategoryAdapter(
 
             itemView.setOnClickListener {
                 if (selectedCategories.contains(category)) {
+                    // Deselect category
                     selectedCategories.remove(category)
                     tickIcon.visibility = View.GONE
                     icon.setBackgroundResource(R.drawable.rounded_corner)
                     icon.alpha = 1.0f  // Reset opacity
                 } else {
                     if (selectedCategories.size < 5) {
+                        // Select new category
                         selectedCategories.add(category)
                         tickIcon.visibility = View.VISIBLE
                         icon.setBackgroundResource(R.drawable.rounded_corner_active)
                         icon.alpha = 0.5f  // Apply blur effect
+                    } else {
+                        // Show max selection limit reached
+                        onMaxSelectionReached?.invoke()  // Trigger max selection callback
                     }
                 }
 
