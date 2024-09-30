@@ -42,7 +42,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="3sp"
-        android:background="@drawable/top_shadow_gradient"
+        android:background="@drawable/gradient_top_shadow"
         android:translationZ="100sp"
         app:layout_constraintBottom_toTopOf="@id/ll_navbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,7 +195,7 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/view_profile"
+                android:id="@+id/view_travel_planner"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
                 android:background="@color/orange"
@@ -205,14 +205,14 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_marginTop="3sp"
-                android:src="@drawable/icon_profile" />
+                android:src="@drawable/icon_travel_planner" />
 
             <TextView
-                android:id="@+id/tv_profile"
+                android:id="@+id/tv_travel_planner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/swiggy_font_medium"
-                android:text="Profile"
+                android:text="Planner"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
 

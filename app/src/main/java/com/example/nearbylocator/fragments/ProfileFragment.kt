@@ -12,6 +12,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.nearbylocator.R
+import kotlin.math.abs
 
 class ProfileFragment : Fragment() {
 
@@ -33,7 +34,7 @@ class ProfileFragment : Fragment() {
 
         val appBarLayout = rootView.findViewById<AppBarLayout>(R.id.app_bar)
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (Math.abs(verticalOffset) == appBarLayout.totalScrollRange) {
+            if (abs(verticalOffset) == appBarLayout.totalScrollRange) {
                 collapsingToolbarLayout.title = getString(R.string.profile_title)
             } else {
                 collapsingToolbarLayout.title = ""
@@ -58,13 +59,4 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        // Revert the status bar color back to default when the fragment is destroyed
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor =
-                ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark)
-        }
-    }
 }

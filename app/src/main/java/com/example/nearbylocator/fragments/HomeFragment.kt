@@ -1,15 +1,12 @@
 package com.example.nearbylocator.fragments
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.example.nearbylocator.R
-import com.example.nearbylocator.adapters.ImageSlideAdapter
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.repository.LocationRepository
@@ -31,10 +28,6 @@ class HomeFragment : Fragment() {
 
     // Declare variables for views, adapters, and handlers
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewPager2: ViewPager2
-    private lateinit var handler: Handler
-    private lateinit var imageList: ArrayList<Int>
-    private lateinit var slideAdapter: ImageSlideAdapter
     private lateinit var locationRepository: LocationRepository
 
     // onCreateView inflates the layout and returns the root view

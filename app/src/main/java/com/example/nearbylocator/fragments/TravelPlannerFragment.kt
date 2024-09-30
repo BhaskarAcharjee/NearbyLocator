@@ -5,17 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.nearbylocator.databinding.FragmentEventBinding
+import com.example.nearbylocator.databinding.FragmentTravelPlannerBinding
 
-class EventFragment : Fragment() {
-
-    private lateinit var binding: FragmentEventBinding
+class TravelPlannerFragment : Fragment() {
+    private lateinit var binding: FragmentTravelPlannerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEventBinding.inflate(inflater, container, false)
+        binding = FragmentTravelPlannerBinding.inflate(inflater, container, false)
         return binding.root
     }
 

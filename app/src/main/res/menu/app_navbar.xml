@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:title="Event" />
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/travelPlannerFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Profile" />
+        android:title="Travel Planner" />
 
 </menu>

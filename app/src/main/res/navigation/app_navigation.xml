@@ -54,6 +54,11 @@
         android:label="fragment_event"
         tools:layout="@layout/fragment_event" />
     <fragment
+        android:id="@+id/travelPlannerFragment"
+        android:name="com.example.nearbylocator.fragments.TravelPlannerFragment"
+        android:label="fragment_travel_planner"
+        tools:layout="@layout/fragment_travel_planner" />
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.nearbylocator.fragments.ProfileFragment"
         android:label="fragment_profile"

@@ -1,7 +1,6 @@
 package com.example.nearbylocator.activities
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleFragmentChange(destinationId: Int) {
         val textViews = arrayOf(
-            binding.tvHome, binding.tvService, binding.tvMapview, binding.tvEvent, binding.tvProfile
+            binding.tvHome, binding.tvService, binding.tvMapview, binding.tvEvent, binding.tvTravelPlanner
         )
 
         resetTextStyles(textViews)
@@ -63,40 +62,58 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.mapviewFragment -> {
-                updateStatusBar(R.color.white, true)
+                updateStatusBar(R.color.white, false)
                 updateViewVisibility(binding.viewMapview)
                 updateSelectedTextView(binding.tvMapview)
             }
 
             R.id.eventFragment -> {
-                updateStatusBar(R.color.white, false)
+                updateStatusBar(R.color.white, true)
                 updateViewVisibility(binding.viewEvent)
                 updateSelectedTextView(binding.tvEvent)
             }
 
-            R.id.profileFragment -> {
-                updateStatusBar(R.color.bg_violet, true)
-                updateViewVisibility(binding.viewProfile)
-                updateSelectedTextView(binding.tvProfile)
+            R.id.travelPlannerFragment -> {
+                updateStatusBar(R.color.white, true)
+                updateViewVisibility(binding.viewTravelPlanner)
+                updateSelectedTextView(binding.tvTravelPlanner)
             }
 
             R.id.categoryGroupFragment -> {
                 updateStatusBar(R.color.pale_pink, true)
             }
+            R.id.profileFragment -> {
+                updateStatusBar(R.color.bg_violet, true)
+            }
+
         }
     }
 
     @SuppressLint("NewApi")
     private fun updateStatusBar(colorResId: Int, isLightStatusBar: Boolean) {
         window.statusBarColor = getColor(colorResId)
-        if (isLightStatusBar) {
-            window.decorView.windowInsetsController?.setSystemBarsAppearance(
-                APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS
-            )
-        } else {
-            window.decorView.windowInsetsController?.setSystemBarsAppearance(
-                0, APPEARANCE_LIGHT_STATUS_BARS
-            )
+
+        val nightModeFlags = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+
+        when (nightModeFlags) {
+            android.content.res.Configuration.UI_MODE_NIGHT_YES -> {
+                // Dark mode: set icons to white (remove APPEARANCE_LIGHT_STATUS_BARS)
+                window.decorView.windowInsetsController?.setSystemBarsAppearance(
+                    0, APPEARANCE_LIGHT_STATUS_BARS
+                )
+            }
+            android.content.res.Configuration.UI_MODE_NIGHT_NO -> {
+                // Light mode: set icons to black (enable APPEARANCE_LIGHT_STATUS_BARS)
+                if (isLightStatusBar) {
+                    window.decorView.windowInsetsController?.setSystemBarsAppearance(
+                        APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS
+                    )
+                } else {
+                    window.decorView.windowInsetsController?.setSystemBarsAppearance(
+                        0, APPEARANCE_LIGHT_STATUS_BARS
+                    )
+                }
+            }
         }
     }
 
@@ -106,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewService.visibility = View.GONE
         binding.viewMapview.visibility = View.GONE
         binding.viewEvent.visibility = View.GONE
-        binding.viewProfile.visibility = View.GONE
+        binding.viewTravelPlanner.visibility = View.GONE
 
         // Show only the selected view
         visibleView.visibility = View.VISIBLE

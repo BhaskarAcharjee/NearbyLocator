@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.TravelPlannerFragment">
 
     <!-- Header -->
     <com.example.nearbylocator.view.HeaderView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- Search Bar for searching events -->
+    <!-- Search Bar for searching destinations -->
     <com.example.nearbylocator.view.SearchBarView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- Upcoming Events Section -->
+    <!-- Suggested Destinations Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Upcoming Events"
+        android:text="Suggested Destinations"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- Event List -->
+    <!-- Destination List -->
     <LinearLayout
-        android:id="@+id/eventList"
+        android:id="@+id/destinationList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
-        <!-- Sample Event Card -->
+        <!-- Sample Destination Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,65 +49,64 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/event_image"
+                android:id="@+id/destination_image"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:contentDescription="Event Image"
+                android:contentDescription="Destination Image"
                 android:scaleType="centerCrop"
                 android:src="@drawable/dineout_hori_3" />
 
             <TextView
-                android:id="@+id/event_title"
+                android:id="@+id/destination_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Event Title"
+                android:text="Destination Title"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_date"
+                android:id="@+id/destination_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date: 25th September 2024"
+                android:text="Description of the destination."
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/event_location"
+                android:id="@+id/destination_distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location: City Park"
+                android:text="Distance: 50 km"
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/btn_view_details"
+                android:id="@+id/btn_plan_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@android:drawable/ic_menu_more"
+                android:drawableLeft="@android:drawable/ic_menu_directions"
                 android:paddingStart="16dp"
                 android:paddingTop="8dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                android:text="View Details"
+                android:text="Plan Trip"
                 android:textColor="@android:color/white" />
-
         </LinearLayout>
 
-        <!-- Additional Event Cards can be added here dynamically -->
+        <!-- Additional Destination Cards can be added here dynamically -->
     </LinearLayout>
 
-    <!-- Placeholder for no events available -->
+    <!-- Placeholder for no destinations available -->
     <TextView
-        android:id="@+id/no_events_text"
+        android:id="@+id/no_destinations_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="No events available."
+        android:text="No suggested destinations available."
         android:textColor="@color/grey"
         android:textSize="16sp"
         android:visibility="gone" />
