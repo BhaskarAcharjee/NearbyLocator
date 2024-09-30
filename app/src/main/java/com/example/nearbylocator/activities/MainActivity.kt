@@ -1,5 +1,6 @@
 package com.example.nearbylocator.activities
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
@@ -29,109 +30,97 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = navHostFragment.navController
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
-        navController.addOnDestinationChangedListener{ _, destination, _ ->
-            var textViewId: TextView = binding.tvHome
-            when (destination.id){
-                R.id.homeFragment -> {
-                    window.statusBarColor = getColor(R.color.white)
-                    window.decorView.windowInsetsController?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS)
-                    textViewId = binding.tvHome
-                    binding.viewHome.visibility = View.VISIBLE
-                    binding.viewFood.visibility = View.GONE
-                    binding.viewInstamart.visibility = View.GONE
-                    binding.viewDineout.visibility = View.GONE
-                    binding.viewGenie.visibility = View.GONE
-                    binding.tvFood.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvFood.typeface, Typeface.NORMAL)
-                    binding.tvInstamart.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvInstamart.typeface, Typeface.NORMAL)
-                    binding.tvDineout.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvDineout.typeface, Typeface.NORMAL)
-                    binding.tvGenie.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvGenie.typeface, Typeface.NORMAL)
-                }
-                R.id.serviceFragment -> {
-                    window.statusBarColor = getColor(R.color.white)
-                    window.decorView.windowInsetsController?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS)
-                    textViewId = binding.tvFood
-                    binding.viewHome.visibility = View.GONE
-                    binding.viewFood.visibility = View.VISIBLE
-                    binding.viewInstamart.visibility = View.GONE
-                    binding.viewDineout.visibility = View.GONE
-                    binding.viewGenie.visibility = View.GONE
-                    binding.tvHome.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvHome.typeface, Typeface.NORMAL)
-                    binding.tvInstamart.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvInstamart.typeface, Typeface.NORMAL)
-                    binding.tvDineout.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvDineout.typeface, Typeface.NORMAL)
-                    binding.tvGenie.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvGenie.typeface, Typeface.NORMAL)
-                }
-                R.id.mapviewFragment -> {
-                    window.statusBarColor = getColor(R.color.bg_pink)
-                    window.decorView.windowInsetsController?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS)
-                    textViewId = binding.tvInstamart
-                    binding.viewHome.visibility = View.GONE
-                    binding.viewFood.visibility = View.GONE
-                    binding.viewInstamart.visibility = View.VISIBLE
-                    binding.viewDineout.visibility = View.GONE
-                    binding.viewGenie.visibility = View.GONE
-                    binding.tvHome.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvHome.typeface, Typeface.NORMAL)
-                    binding.tvFood.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvFood.typeface, Typeface.NORMAL)
-                    binding.tvDineout.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvDineout.typeface, Typeface.NORMAL)
-                    binding.tvGenie.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvGenie.typeface, Typeface.NORMAL)
-                }
-                R.id.eventFragment -> {
-                    window.statusBarColor = getColor(R.color.black)
-                    window.decorView.windowInsetsController?.setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS)
-                    textViewId = binding.tvDineout
-                    binding.viewHome.visibility = View.GONE
-                    binding.viewFood.visibility = View.GONE
-                    binding.viewInstamart.visibility = View.GONE
-                    binding.viewDineout.visibility = View.VISIBLE
-                    binding.viewGenie.visibility = View.GONE
-                    binding.tvHome.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvHome.typeface, Typeface.NORMAL)
-                    binding.tvFood.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvFood.typeface, Typeface.NORMAL)
-                    binding.tvInstamart.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvInstamart.typeface, Typeface.NORMAL)
-                    binding.tvGenie.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvGenie.typeface, Typeface.NORMAL)
-                }
-                R.id.profileFragment -> {
-                    window.statusBarColor = getColor(R.color.bg_violet)
-                    window.decorView.windowInsetsController?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS)
-                    textViewId = binding.tvGenie
-                    binding.viewHome.visibility = View.GONE
-                    binding.viewFood.visibility = View.GONE
-                    binding.viewInstamart.visibility = View.GONE
-                    binding.viewDineout.visibility = View.GONE
-                    binding.viewGenie.visibility = View.VISIBLE
-                    binding.tvHome.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvHome.typeface, Typeface.NORMAL)
-                    binding.tvFood.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvFood.typeface, Typeface.NORMAL)
-                    binding.tvInstamart.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvInstamart.typeface, Typeface.NORMAL)
-                    binding.tvDineout.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
-                    textViewId.typeface = Typeface.create(binding.tvDineout.typeface, Typeface.NORMAL)
-                }
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            handleFragmentChange(destination.id)
+        }
+    }
+
+    private fun handleFragmentChange(destinationId: Int) {
+        val textViews = arrayOf(
+            binding.tvHome, binding.tvService, binding.tvMapview, binding.tvEvent, binding.tvProfile
+        )
+
+        resetTextStyles(textViews)
+
+        when (destinationId) {
+            R.id.homeFragment -> {
+                updateStatusBar(R.color.white, true)
+                updateViewVisibility(binding.viewHome)
+                updateSelectedTextView(binding.tvHome)
             }
 
-            textViewId.setTextColor(Color.BLACK)
-            textViewId.typeface = Typeface.create(binding.tvHome.typeface, Typeface.BOLD)
+            R.id.serviceFragment -> {
+                updateStatusBar(R.color.white, true)
+                updateViewVisibility(binding.viewService)
+                updateSelectedTextView(binding.tvService)
+            }
+
+            R.id.mapviewFragment -> {
+                updateStatusBar(R.color.white, true)
+                updateViewVisibility(binding.viewMapview)
+                updateSelectedTextView(binding.tvMapview)
+            }
+
+            R.id.eventFragment -> {
+                updateStatusBar(R.color.white, false)
+                updateViewVisibility(binding.viewEvent)
+                updateSelectedTextView(binding.tvEvent)
+            }
+
+            R.id.profileFragment -> {
+                updateStatusBar(R.color.bg_violet, true)
+                updateViewVisibility(binding.viewProfile)
+                updateSelectedTextView(binding.tvProfile)
+            }
+
+            R.id.categoryGroupFragment -> {
+                updateStatusBar(R.color.pale_pink, true)
+            }
         }
+    }
+
+    @SuppressLint("NewApi")
+    private fun updateStatusBar(colorResId: Int, isLightStatusBar: Boolean) {
+        window.statusBarColor = getColor(colorResId)
+        if (isLightStatusBar) {
+            window.decorView.windowInsetsController?.setSystemBarsAppearance(
+                APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS
+            )
+        } else {
+            window.decorView.windowInsetsController?.setSystemBarsAppearance(
+                0, APPEARANCE_LIGHT_STATUS_BARS
+            )
+        }
+    }
+
+    private fun updateViewVisibility(visibleView: View) {
+        // Hide all views
+        binding.viewHome.visibility = View.GONE
+        binding.viewService.visibility = View.GONE
+        binding.viewMapview.visibility = View.GONE
+        binding.viewEvent.visibility = View.GONE
+        binding.viewProfile.visibility = View.GONE
+
+        // Show only the selected view
+        visibleView.visibility = View.VISIBLE
+    }
+
+    private fun resetTextStyles(textViews: Array<TextView>) {
+        for (textView in textViews) {
+            textView.setTextColor(ContextCompat.getColor(this, R.color.dark_grey))
+            textView.typeface = Typeface.create(textView.typeface, Typeface.NORMAL)
+        }
+    }
+
+    private fun updateSelectedTextView(selectedTextView: TextView) {
+        selectedTextView.setTextColor(ContextCompat.getColor(this,R.color.blackTextColor))
+        selectedTextView.typeface = Typeface.create(selectedTextView.typeface, Typeface.BOLD)
     }
 }

@@ -14,7 +14,7 @@
         android:label="Nearby Locator"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SwiggyCloneApp"
+        android:theme="@style/Theme.NearbyLocator"
         tools:targetApi="31">
 
         <meta-data

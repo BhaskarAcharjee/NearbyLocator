@@ -70,7 +70,7 @@
                 android:id="@+id/view_home"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
-                android:background="@color/swiggy_orange"
+                android:background="@color/orange"
                 android:visibility="gone" />
 
             <ImageView
@@ -99,10 +99,10 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/view_food"
+                android:id="@+id/view_service"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
-                android:background="@color/swiggy_orange"
+                android:background="@color/orange"
                 android:visibility="gone" />
 
             <ImageView
@@ -112,7 +112,7 @@
                 android:src="@drawable/icon_service" />
 
             <TextView
-                android:id="@+id/tv_food"
+                android:id="@+id/tv_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/swiggy_font_medium"
@@ -131,10 +131,10 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/view_instamart"
+                android:id="@+id/view_mapview"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
-                android:background="@color/swiggy_orange"
+                android:background="@color/orange"
                 android:visibility="gone" />
 
             <ImageView
@@ -144,7 +144,7 @@
                 android:src="@drawable/icon_mapview" />
 
             <TextView
-                android:id="@+id/tv_instamart"
+                android:id="@+id/tv_mapview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/swiggy_font_medium"
@@ -163,10 +163,10 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/view_dineout"
+                android:id="@+id/view_event"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
-                android:background="@color/swiggy_orange"
+                android:background="@color/orange"
                 android:visibility="gone" />
 
             <ImageView
@@ -176,7 +176,7 @@
                 android:src="@drawable/icon_event" />
 
             <TextView
-                android:id="@+id/tv_dineout"
+                android:id="@+id/tv_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/swiggy_font_medium"
@@ -195,10 +195,10 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/view_genie"
+                android:id="@+id/view_profile"
                 android:layout_width="match_parent"
                 android:layout_height="2sp"
-                android:background="@color/swiggy_orange"
+                android:background="@color/orange"
                 android:visibility="gone" />
 
             <ImageView
@@ -208,7 +208,7 @@
                 android:src="@drawable/icon_profile" />
 
             <TextView
-                android:id="@+id/tv_genie"
+                android:id="@+id/tv_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/swiggy_font_medium"

@@ -3,7 +3,7 @@
     <color name="black">#FFFFFFFF
     </color> <!-- Switch black to white for dark background contrast -->
     <color name="white">#FF121212</color> <!-- Darken white to black for night mode background -->
-    <color name="swiggy_orange">#FFAB68</color> <!-- Softer version of orange for night mode -->
+    <color name="orange">#FFAB68</color> <!-- Softer version of orange for night mode -->
     <color name="grey">#B0B0B0</color> <!-- Light grey tone for text on dark backgrounds -->
     <color name="light_grey">#2E2E2E</color> <!-- Darken the light grey for background elements -->
     <color name="dark_grey">#909090</color> <!-- Keep dark grey but soften it for readability -->
@@ -22,7 +22,7 @@
     <color name="profileAccentColor">#202020
     </color> <!-- Dark background color for profile sections -->
     <color name="whiteTextColor">#FFFFFF</color> <!-- Pure white for text in dark mode -->
-    <color name="profileBackground">#121212Im
+    <color name="profileBackground">#121212
     </color> <!-- Dark background color for profile section -->
     <color name="blackTextColor">#FFFFFF
     </color> <!-- Switch black to white for readability on dark backgrounds -->
@@ -33,5 +33,6 @@
     <color name="light_blue_400">#82B1FF</color> <!-- Soft light blue for night mode highlights -->
     <color name="light_blue_600">#448AFF</color> <!-- Slightly darker blue for night accents -->
     <color name="gray_400">#9E9E9E</color> <!-- Neutral grey for dividers or inactive elements -->
-    <color name="gray_600">#6E6E6E</color> <!-- Darker grey for subdued elements -->
+    <color name="gray_600">#6E6E6E</color>
+    <color name="pale_pink">#fedbdc</color> <!-- Darker grey for subdued elements -->
 </resources>

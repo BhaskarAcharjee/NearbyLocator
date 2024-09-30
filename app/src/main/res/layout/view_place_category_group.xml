@@ -28,7 +28,7 @@
             android:fontFamily="@font/swiggy_font_medium"
             android:gravity="end"
             android:text="SEE ALL"
-            android:textColor="@color/swiggy_orange"
+            android:textColor="@color/orange"
             android:textSize="14sp" />
 
     </LinearLayout>
