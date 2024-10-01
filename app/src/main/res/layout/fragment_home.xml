@@ -32,8 +32,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Quick Place Category -->
             <com.example.nearbylocator.view.QuickPlaceCategoryView
                 android:id="@+id/quick_place_category_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Quick Discover Category -->
+            <com.example.nearbylocator.view.QuickDiscoverCategoryView
+                android:id="@+id/quick_discover_category_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

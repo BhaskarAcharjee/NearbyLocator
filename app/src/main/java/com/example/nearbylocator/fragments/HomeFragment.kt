@@ -10,6 +10,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.repository.LocationRepository
+import com.example.nearbylocator.utils.DiscoverCategories
 import com.example.nearbylocator.utils.educationList
 import com.example.nearbylocator.utils.entertainmentList
 import com.example.nearbylocator.utils.financialServicesList
@@ -23,6 +24,7 @@ import com.example.nearbylocator.utils.publicServicesList
 import com.example.nearbylocator.utils.religiousList
 import com.example.nearbylocator.utils.shoppingList
 import com.example.nearbylocator.utils.transportationList
+import com.example.nearbylocator.view.QuickDiscoverCategoryView
 
 class HomeFragment : Fragment() {
 
@@ -43,10 +45,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val quickDiscoverCategoryView = view.findViewById<QuickDiscoverCategoryView>(R.id.quick_discover_category_view)
+        quickDiscoverCategoryView.setCategoryIcons(DiscoverCategories)
+
         // Call setup methods for different sections
         setupHeaderView()
         setupSearchbarView()
-        setupQuickCategoryNavigation() // Merge into one function
+        setupQuickCategoryNavigation()
         updateQuickPlaceCategories() // Update quick categories when the fragment is created
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
         setupOffersView()   // Set up the OffersView with the image list

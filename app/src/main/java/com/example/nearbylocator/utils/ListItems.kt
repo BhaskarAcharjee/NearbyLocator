@@ -70,6 +70,39 @@ val services_hint_Strings = arrayOf(
     "Moving Company"
 )
 
+val DiscoverCategories = listOf(
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
+    PlaceTypeIcon("Hospital", R.drawable.place_category_icon_hospital),
+    PlaceTypeIcon("Gas Station", R.drawable.place_category_icon_groceries),
+    PlaceTypeIcon("Pharmacy", R.drawable.place_category_icon_pharmacy),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    // Add more categories here
+)
 
 object PlaceCategoryItems {
     fun getPlaceCategories(): List<PlaceItem> {
