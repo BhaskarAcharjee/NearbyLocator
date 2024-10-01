@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10sp"
+    android:layout_margin="10dp"
     android:background="@drawable/background_searchbar"
-    android:padding="10sp">
+    android:padding="10dp">
 
     <!-- Search TextView -->
     <TextView
@@ -32,6 +31,22 @@
         android:inAnimation="@anim/text_slide_to_top"
         android:outAnimation="@anim/text_slide_from_bottom"
         android:textColor="@color/grey" />
+
+    <!-- EditText for user input -->
+    <EditText
+        android:id="@+id/et_search_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/iv_mic"
+        android:layout_toEndOf="@id/tv_search"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/swiggy_font_regular"
+        android:hint="Type here..."
+        android:singleLine="true"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <!-- Search Icon -->
     <ImageView

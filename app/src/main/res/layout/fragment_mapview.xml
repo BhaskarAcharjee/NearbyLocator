@@ -1,5 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,19 +14,20 @@
             android:layout_height="match_parent" />
 
         <!-- Custom Search Bar layout -->
-        <include
-            android:id="@+id/customSearchBar"
-            layout="@layout/view_searchbar"
+        <com.example.nearbylocator.view.SearchBarView
+            android:id="@+id/search_bar_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/icon_container"
-            android:layout_margin="16dp" />
+            android:backgroundTint="@android:color/transparent"
+            android:outlineAmbientShadowColor="@android:color/transparent"
+            android:outlineSpotShadowColor="@android:color/transparent" />
 
         <LinearLayout
             android:id="@+id/icon_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/recyclerView"
+            android:layout_above="@id/favoriteCardsRecyclerView"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
@@ -66,7 +66,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/favoriteCardsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -88,7 +88,9 @@
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <!-- Include the extended layout here -->
-        <include layout="@layout/layout_mapview_extended" />
+        <include
+            android:id="@+id/layout_mapview_extended"
+            layout="@layout/layout_mapview_extended" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

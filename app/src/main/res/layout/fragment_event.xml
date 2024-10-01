@@ -13,9 +13,12 @@
 
     <!-- Search Bar for searching events -->
     <com.example.nearbylocator.view.SearchBarView
-        android:id="@+id/searchView"
+        android:id="@+id/search_bar_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:outlineAmbientShadowColor="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent" />
 
     <!-- Upcoming Events Section -->
     <TextView

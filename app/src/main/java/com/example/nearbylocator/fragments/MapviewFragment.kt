@@ -15,9 +15,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.databinding.FragmentMapviewBinding
 import com.example.nearbylocator.model.MapviewFavDataClass
 import com.example.nearbylocator.utils.mapviewFavDataClasses
+import com.example.nearbylocator.utils.places_hint_Strings
 import com.example.nearbylocator.view.MapviewFavAdapter
+import com.example.nearbylocator.view.SearchBarView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -31,14 +34,14 @@ import java.util.Locale
 
 class MapViewFragment : Fragment(), OnMapReadyCallback {
 
+    private lateinit var binding: FragmentMapviewBinding
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var recyclerView: RecyclerView
     private lateinit var mapviewFavAdapter: MapviewFavAdapter
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
-    private lateinit var searchBar: View
-    private lateinit var favoriteCards: RecyclerView
+    private lateinit var searchBar: SearchBarView
+    private lateinit var favoriteCardsRecyclerView: RecyclerView
 
     // Declare views for the extended card
     private lateinit var extendedHotelName: TextView
@@ -51,46 +54,52 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_mapview, container, false)
+    ): View {
+        binding = FragmentMapviewBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mapView = view.findViewById(R.id.mapView)
-        recyclerView = view.findViewById(R.id.recyclerView)
-        searchBar = view.findViewById(R.id.customSearchBar)
-        favoriteCards = view.findViewById(R.id.recyclerView)
+        mapView = binding.mapView
+        favoriteCardsRecyclerView = binding.favoriteCardsRecyclerView
+        searchBar = binding.searchBarView
 
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        // Initialize the extended card views
-        extendedHotelName = view.findViewById(R.id.tv_hotel_name_extended)
-        extendedRating = view.findViewById(R.id.tv_rating_extended)
-        extendedTime = view.findViewById(R.id.tv_time_extended)
-        extendedType = view.findViewById(R.id.tv_type_extended)
-        extendedLocation = view.findViewById(R.id.tv_hotel_location_extended)
-
         setupRecyclerView()
         setupBottomSheet(view)
+        setupSearchbarView()
+    }
+
+    private fun setupSearchbarView() {
+        searchBar.setHints(places_hint_Strings) // Update hints dynamically
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager =
+        favoriteCardsRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         mapviewFavAdapter = MapviewFavAdapter(mapviewFavDataClasses) { position ->
             val selectedPlace = mapviewFavDataClasses[position]
             expandBottomSheet()
             populateExtendedCard(selectedPlace)
         }
-        recyclerView.adapter = mapviewFavAdapter
+        favoriteCardsRecyclerView.adapter = mapviewFavAdapter
     }
 
     private fun populateExtendedCard(selectedPlace: MapviewFavDataClass) {
+        // Initialize the extended card views
+        val layoutMapviewExtended = binding.layoutMapviewExtended
+        extendedHotelName = layoutMapviewExtended.tvHotelNameExtended
+        extendedRating = layoutMapviewExtended.tvRatingExtended
+        extendedTime = layoutMapviewExtended.tvTimeExtended
+        extendedType = layoutMapviewExtended.tvTypeExtended
+        extendedLocation = layoutMapviewExtended.tvHotelLocationExtended
+
         extendedHotelName.text = selectedPlace.name
         extendedRating.text = selectedPlace.rating.toString()
         extendedTime.text = selectedPlace.time
@@ -110,12 +119,12 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
                         searchBar.visibility = View.GONE
-                        favoriteCards.visibility = View.GONE
+                        favoriteCardsRecyclerView.visibility = View.GONE
                     }
 
                     BottomSheetBehavior.STATE_COLLAPSED, BottomSheetBehavior.STATE_HIDDEN -> {
                         searchBar.visibility = View.VISIBLE
-                        favoriteCards.visibility = View.VISIBLE
+                        favoriteCardsRecyclerView.visibility = View.VISIBLE
                     }
                 }
             }
@@ -174,7 +183,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             try {
                 // Get the address based on the latitude and longitude
                 val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
-                if (addresses != null && addresses.isNotEmpty()) {
+                if (!addresses.isNullOrEmpty()) {
                     addressText = addresses[0].getAddressLine(0) ?: "Selected Location"
                 }
             } catch (e: Exception) {

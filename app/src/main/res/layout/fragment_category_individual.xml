@@ -89,7 +89,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/white"
         android:elevation="100dp"
         android:orientation="vertical"
         android:visibility="gone">
@@ -99,9 +98,10 @@
             android:layout_height="wrap_content" />
 
         <com.example.nearbylocator.view.SearchBarView
-            android:id="@+id/searchBarView"
+            android:id="@+id/search_bar_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
     </LinearLayout>
 
 </RelativeLayout>

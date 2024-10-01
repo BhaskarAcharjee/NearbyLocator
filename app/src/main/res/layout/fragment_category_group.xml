@@ -39,19 +39,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--    Added FrameLayout that acts as a container for the included layout. The background color is applied to the FrameLayout, effectively changing the background of the included layout. -->
-            <FrameLayout
+
+            <!--    Header  -->
+            <com.example.nearbylocator.view.HeaderView
+                android:id="@+id/header_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/pale_pink">
+                android:background="@color/pale_pink" />
 
-                <!--    Header  -->
-                <com.example.nearbylocator.view.HeaderView
-                    android:id="@+id/header_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,9 +55,12 @@
 
                 <!--    Searchbar   -->
                 <com.example.nearbylocator.view.SearchBarView
-                    android:id="@+id/searchBarView"
+                    android:id="@+id/search_bar_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:outlineAmbientShadowColor="@android:color/transparent"
+                    android:outlineSpotShadowColor="@android:color/transparent" />
 
             </LinearLayout>
 
