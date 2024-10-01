@@ -10,7 +10,6 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.repository.LocationRepository
-import com.example.nearbylocator.utils.DiscoverCategories
 import com.example.nearbylocator.utils.educationList
 import com.example.nearbylocator.utils.entertainmentList
 import com.example.nearbylocator.utils.financialServicesList
@@ -24,7 +23,6 @@ import com.example.nearbylocator.utils.publicServicesList
 import com.example.nearbylocator.utils.religiousList
 import com.example.nearbylocator.utils.shoppingList
 import com.example.nearbylocator.utils.transportationList
-import com.example.nearbylocator.view.QuickDiscoverCategoryView
 
 class HomeFragment : Fragment() {
 
@@ -45,9 +43,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val quickDiscoverCategoryView = view.findViewById<QuickDiscoverCategoryView>(R.id.quick_discover_category_view)
-        quickDiscoverCategoryView.setCategoryIcons(DiscoverCategories)
-
         // Call setup methods for different sections
         setupHeaderView()
         setupSearchbarView()
@@ -55,6 +50,7 @@ class HomeFragment : Fragment() {
         updateQuickPlaceCategories() // Update quick categories when the fragment is created
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
         setupOffersView()   // Set up the OffersView with the image list
+        updateQuickPlaceCategories2() // Update quick categories when the fragment is created
     }
 
     // Set up the OffersView with the image list
@@ -97,6 +93,13 @@ class HomeFragment : Fragment() {
 
         // Use the custom view to update categories
         binding.quickPlaceCategoryView.updateCategories(selectedCategories)
+    }
+
+    private fun updateQuickPlaceCategories2() {
+        val selectedCategories = ChoosePlaceFragment.selectedCategories
+
+        // Use the custom view to update categories
+        binding.quickDiscoverCategoryView.updateCategories(selectedCategories)
     }
 
     // Set up place categories with individual RecyclerViews (horizontal)

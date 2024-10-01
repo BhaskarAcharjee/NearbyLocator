@@ -12,7 +12,8 @@ import com.example.nearbylocator.model.PlaceTypeIcon
 
 class ChoosePlaceCategoryAdapter(
     private val items: List<PlaceItem>,
-    private val onItemClick: (PlaceTypeIcon) -> Unit
+    private val onItemClick: (PlaceTypeIcon) -> Unit,
+    private val onMaxSelectionReached: (() -> Unit)? = null // Callback for max selection reached
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val selectedCategories = mutableSetOf<PlaceTypeIcon>()
@@ -59,13 +60,14 @@ class ChoosePlaceCategoryAdapter(
                     icon.setBackgroundResource(R.drawable.rounded_corner)
                     icon.alpha = 1.0f  // Reset opacity
                 } else {
-                    if (selectedCategories.size < 5) {
+                    if (selectedCategories.size < 12) {
                         selectedCategories.add(category)
                         tickIcon.visibility = View.VISIBLE
                         icon.setBackgroundResource(R.drawable.rounded_corner_active)
                         icon.alpha = 0.5f  // Apply blur effect
                     } else {
-//                        onMaxSelectionReached?.invoke()
+                        // Notify the fragment that the max selection limit has been reached
+                        onMaxSelectionReached?.invoke()
                     }
                 }
 

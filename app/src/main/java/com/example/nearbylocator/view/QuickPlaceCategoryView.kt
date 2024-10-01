@@ -25,7 +25,7 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     private val defaultCategories = mutableListOf(
         PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
         PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
-        PlaceTypeIcon("Groceries", R.drawable.place_category_icon_groceries)
+        PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries)
     )
 
     init {

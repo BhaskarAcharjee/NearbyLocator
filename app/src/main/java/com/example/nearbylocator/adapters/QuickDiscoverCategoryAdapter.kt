@@ -12,25 +12,46 @@ import com.example.nearbylocator.model.PlaceTypeIcon
 
 class QuickDiscoverCategoryAdapter(
     private val context: Context,
-    private val categoryList: List<PlaceTypeIcon>
-) : RecyclerView.Adapter<QuickDiscoverCategoryAdapter.CategoryViewHolder>() {
+    private val categories: MutableList<PlaceTypeIcon>,
+    private val onItemClick: ((PlaceTypeIcon) -> Unit)? = null // Add the click listener
+) : RecyclerView.Adapter<QuickDiscoverCategoryAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val categoryIcon: ImageView = itemView.findViewById(R.id.iv_category_icon)
+        private val categoryName: TextView = itemView.findViewById(R.id.tv_category_name)
+
+        fun bind(category: PlaceTypeIcon) {
+            categoryIcon.setImageResource(category.icon)
+            categoryName.text = category.title
+
+            // Handle item click
+            itemView.setOnClickListener {
+                onItemClick?.invoke(category) // Trigger the callback
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
             .inflate(R.layout.card_quick_place_category, parent, false)
-        return CategoryViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val category = categoryList[position]
-        holder.icon.setImageResource(category.icon)
-        holder.name.text = category.title
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(categories[position])
     }
 
-    override fun getItemCount(): Int = categoryList.size
+    override fun getItemCount(): Int = categories.size
 
-    class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val icon: ImageView = itemView.findViewById(R.id.iv_category_icon)
-        val name: TextView = itemView.findViewById(R.id.tv_category_name)
+    fun clearCategories() {
+        categories.clear()
+        notifyDataSetChanged()
+    }
+
+    // Add a new category and notify the adapter
+    fun addCategory(category: PlaceTypeIcon) {
+        categories.add(category)
+        notifyItemInserted(categories.size - 1)
     }
 }
+

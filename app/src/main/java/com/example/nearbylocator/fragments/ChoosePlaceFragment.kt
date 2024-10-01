@@ -44,18 +44,10 @@ class ChoosePlaceFragment : Fragment() {
         binding.doneButton.setOnClickListener {
             val selectedCategories = adapter.getSelectedCategories()
             when {
-                selectedCategories.size < 3 -> {
+                selectedCategories.size < 8 -> {
                     Toast.makeText(
                         requireContext(),
-                        "Please select at least 3 categories.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                selectedCategories.size > 5 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "You can select up to 5 categories.",
+                        "Please select at least 8 categories.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -73,8 +65,13 @@ class ChoosePlaceFragment : Fragment() {
     private fun setupCategoryGrid() {
         val categoryItems = PlaceCategoryItems.getPlaceCategories()
 
-        adapter = ChoosePlaceCategoryAdapter(categoryItems) { category ->
-            // Handle category click
+        adapter = ChoosePlaceCategoryAdapter(categoryItems, ::onCategorySelected) {
+            // Callback when the user selects more than 12 categories
+            Toast.makeText(
+                requireContext(),
+                "You can select up to 12 categories.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         binding.categoryRecyclerView.layoutManager = GridLayoutManager(context, 3).apply {
@@ -91,4 +88,9 @@ class ChoosePlaceFragment : Fragment() {
 
         binding.categoryRecyclerView.adapter = adapter
     }
+
+    private fun onCategorySelected(category: PlaceTypeIcon) {
+        // Handle category selection if needed
+    }
 }
+
