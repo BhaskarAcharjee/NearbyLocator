@@ -110,7 +110,9 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private fun setupBottomSheet(view: View) {
         val bottomSheet: LinearLayout = view.findViewById(R.id.layoutMiscellaneous)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+        // No need to set the initial state here since it's gone in XML
+        // bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN // This is not needed now
         bottomSheetBehavior.peekHeight = 0
 
         bottomSheetBehavior.addBottomSheetCallback(object :
@@ -134,6 +136,8 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun expandBottomSheet() {
+        // Set the visibility to VISIBLE before expanding the bottom sheet
+        binding.layoutMiscellaneous.visibility = View.VISIBLE
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 

@@ -3,91 +3,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Google Maps View occupying the whole screen -->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- RelativeLayout for other components -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
 
-        <!-- MapView for the native Google Maps -->
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!-- Custom Search Bar layout -->
+        <!-- Custom Search Bar layout positioned at the top -->
         <com.example.nearbylocator.view.SearchBarView
             android:id="@+id/search_bar_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/icon_container"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:backgroundTint="@android:color/transparent"
             android:outlineAmbientShadowColor="@android:color/transparent"
             android:outlineSpotShadowColor="@android:color/transparent" />
 
-        <LinearLayout
-            android:id="@+id/icon_container"
+        <!-- Use the custom view instead of the inline LinearLayout -->
+        <com.example.nearbylocator.view.MapviewHorizontalContainerView
+            android:id="@+id/horizontal_container_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/search_bar_view" />
+
+        <!-- Icon container moved to a vertical arrangement, near the left side -->
+        <LinearLayout
+            android:id="@+id/icon_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_above="@id/favoriteCardsRecyclerView"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_compass" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_compass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_compass"
+                app:tint="@color/colorPrimary" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_saved" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_saved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_weather"
+                app:tint="@color/colorPrimary" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_category" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_direction" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_current_location" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_category"
+                app:tint="@color/colorPrimary" />
 
         </LinearLayout>
 
+        <!-- Icon container 2 for actions on the right side -->
+        <LinearLayout
+            android:id="@+id/icon_container2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/favoriteCardsRecyclerView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_current_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_current_location"
+                app:tint="@color/colorPrimary" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_directions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_direction"
+                app:tint="@color/colorPrimary" />
+        </LinearLayout>
+
+        <!-- RecyclerView for favorite locations at the bottom -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoriteCardsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="16dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:padding="8dp" />
-
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
     </RelativeLayout>
 
+    <!-- Bottom Sheet for additional actions or information -->
     <LinearLayout
         android:id="@+id/layoutMiscellaneous"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/background_mapview_extended"
         android:elevation="16dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <!-- Include the extended layout here -->
+        <!-- Include your extended layout for more details or actions -->
         <include
             android:id="@+id/layout_mapview_extended"
             layout="@layout/layout_mapview_extended" />
