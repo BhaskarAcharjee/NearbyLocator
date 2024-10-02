@@ -10,6 +10,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickPlaceCategoryAdapter
 import com.example.nearbylocator.databinding.LayoutQuickPlaceCategoryBinding
 import com.example.nearbylocator.fragments.HomeFragmentDirections
+import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
 
 class QuickPlaceCategoryView @JvmOverloads constructor(
@@ -23,9 +24,9 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
 
     // Default categories that show initially
     private val defaultCategories = mutableListOf(
-        PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
-        PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
-        PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries)
+        PlaceItem.Header("Food & Drinks", R.drawable.place_category_icon_restaurant),
+        PlaceItem.Header("Financial Services", R.drawable.place_category_icon_bank),
+        PlaceItem.Header("Health & Wellness", R.drawable.place_category_icon_hospital)
     )
 
     init {
@@ -40,7 +41,8 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     private fun setupRecyclerView() {
         quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(mutableListOf()) { category ->
             // Handle item click, navigate to CategoryIndividualFragment with category type
-            val action = HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(category.title)
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(category.title)
             findNavController().navigate(action)
         }
         binding.rvCategories.adapter = quickPlaceCategoryAdapter
@@ -64,6 +66,18 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
         }
     }
 
+    fun updateHeaders(selectedHeaders: Set<PlaceItem.Header>) {
+        quickPlaceCategoryAdapter.clearCategories()
+
+        if (selectedHeaders.isEmpty()) {
+            displayDefaultCategories() // Show default if no header is selected
+        } else {
+            selectedHeaders.forEach { header ->
+                quickPlaceCategoryAdapter.addCategory(header) // Now it supports headers
+            }
+        }
+    }
+
     // Public method to update categories with selected ones
     fun updateCategories(selectedCategories: MutableSet<PlaceTypeIcon>) {
         quickPlaceCategoryAdapter.clearCategories()
@@ -72,12 +86,11 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
             displayDefaultCategories() // Re-display default categories if no selection
         } else {
             selectedCategories.forEach { category ->
-                val quickCategory = PlaceTypeIcon(category.title, category.icon)
-                quickPlaceCategoryAdapter.addCategory(quickCategory)
+                quickPlaceCategoryAdapter.addCategory(category) // Pass PlaceTypeIcon
             }
         }
-        quickPlaceCategoryAdapter.notifyDataSetChanged() // Notify adapter about the data change
     }
+
 
     // Optional callback for handling "See All" button click
     var onSeeAllClicked: (() -> Unit)? = null

@@ -6,6 +6,6 @@ data class PlaceTypeIcon(
 )
 
 sealed class PlaceItem {
-    data class Header(val title: String) : PlaceItem()
-    data class CategoryItem(val place: PlaceTypeIcon) : PlaceItem()
+    data class Header(val title: String, val headerIcon: Int) : PlaceItem()
+    data class CategoryItem(val place: PlaceTypeIcon, val header: Header) : PlaceItem()
 }

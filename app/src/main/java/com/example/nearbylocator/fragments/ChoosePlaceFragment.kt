@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
+import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.utils.PlaceCategoryItems
 
@@ -22,6 +23,7 @@ class ChoosePlaceFragment : Fragment() {
     // Shared variable to hold selected categories
     companion object {
         var selectedCategories: MutableSet<PlaceTypeIcon> = mutableSetOf()
+        var selectedHeaders: MutableSet<PlaceItem.Header> = mutableSetOf() // Added this line
     }
 
     override fun onCreateView(
@@ -63,10 +65,11 @@ class ChoosePlaceFragment : Fragment() {
     }
 
     private fun setupCategoryGrid() {
-        val categoryItems = PlaceCategoryItems.getPlaceCategories()
+        val categoryItems =
+            PlaceCategoryItems.getPlaceCategories() // Assume this returns headers and categories
 
         adapter = ChoosePlaceCategoryAdapter(categoryItems, ::onCategorySelected) {
-            // Callback when the user selects more than 12 categories
+            // Handle max selection reached
             Toast.makeText(
                 requireContext(),
                 "You can select up to 12 categories.",
@@ -78,8 +81,8 @@ class ChoosePlaceFragment : Fragment() {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return when (adapter.getItemViewType(position)) {
-                        ChoosePlaceCategoryAdapter.VIEW_TYPE_HEADER -> 3  // Header takes all 3 columns
-                        ChoosePlaceCategoryAdapter.VIEW_TYPE_CATEGORY -> 1  // Category takes 1 column
+                        ChoosePlaceCategoryAdapter.VIEW_TYPE_HEADER -> 3
+                        ChoosePlaceCategoryAdapter.VIEW_TYPE_CATEGORY -> 1
                         else -> 1
                     }
                 }
@@ -90,7 +93,29 @@ class ChoosePlaceFragment : Fragment() {
     }
 
     private fun onCategorySelected(category: PlaceTypeIcon) {
-        // Handle category selection if needed
+        // Handle category selection
+        val selectedHeader = findHeaderForCategory(category)
+        selectedHeaders.add(selectedHeader) // Track headers in a Set to avoid duplicates
     }
-}
 
+    private fun findHeaderForCategory(category: PlaceTypeIcon): PlaceItem.Header {
+        // Implement logic to find and return the header associated with the category
+        return PlaceCategoryItems.getPlaceCategories()
+            .filterIsInstance<PlaceItem.CategoryItem>()
+            .first { it.place == category }
+            .header
+    }
+
+
+    private fun getCategoryHeader(category: PlaceTypeIcon): PlaceItem.Header? {
+        // Find and return the header associated with the selected category
+        val categoryItems = PlaceCategoryItems.getPlaceCategories()
+        for (item in categoryItems) {
+            if (item is PlaceItem.Header && item.title == category.title) {
+                return item // Return header that matches the category
+            }
+        }
+        return null
+    }
+
+}

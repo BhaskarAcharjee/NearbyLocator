@@ -9,7 +9,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.PlaceCategoryGroupAdapter
 import com.example.nearbylocator.databinding.FragmentHomeBinding
+import com.example.nearbylocator.model.PlaceItem
+import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.repository.LocationRepository
+import com.example.nearbylocator.utils.PlaceCategoryItems
 import com.example.nearbylocator.utils.educationList
 import com.example.nearbylocator.utils.entertainmentList
 import com.example.nearbylocator.utils.financialServicesList
@@ -50,7 +53,7 @@ class HomeFragment : Fragment() {
         updateQuickPlaceCategories() // Update quick categories when the fragment is created
         setupPlaceCategories() // Set up multiple place categories like Food & Drinks, Shopping, etc.
         setupOffersView()   // Set up the OffersView with the image list
-        updateQuickPlaceCategories2() // Update quick categories when the fragment is created
+        updateDiscoverPlaceCategories() // Update quick categories when the fragment is created
     }
 
     // Set up the OffersView with the image list
@@ -89,20 +92,39 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateQuickPlaceCategories() {
+        // Extract selected categories from ChoosePlaceFragment
         val selectedCategories = ChoosePlaceFragment.selectedCategories
 
-        // Use the custom view to update categories
-        binding.quickPlaceCategoryView.updateCategories(selectedCategories)
+        // Map to unique headers
+        val selectedHeaders = selectedCategories
+            .mapNotNull { category -> getCategoryHeaderForCategory(category) }  // Convert categories to headers
+            .toSet()  // Ensure uniqueness
+
+        // Use the custom view to update headers
+        binding.quickPlaceCategoryView.updateHeaders(selectedHeaders)
     }
 
-    private fun updateQuickPlaceCategories2() {
+    private fun getCategoryHeaderForCategory(category: PlaceTypeIcon): PlaceItem.Header? {
+        // Find and return the header associated with the selected category
+        val allCategories =
+            PlaceCategoryItems.getPlaceCategories()  // Fetch all categories and headers
+        for (item in allCategories) {
+            if (item is PlaceItem.CategoryItem && item.place == category) {
+                return item.header  // Return the header for this category
+            }
+        }
+        return null
+    }
+
+
+    private fun updateDiscoverPlaceCategories() {
         val selectedCategories = ChoosePlaceFragment.selectedCategories
 
         // Use the custom view to update categories
         binding.quickDiscoverCategoryView.updateCategories(selectedCategories)
     }
 
-    // Set up place categories with individual RecyclerViews (horizontal)
+    // ---------------------- Set up place categories with individual RecyclerViews (horizontal) ----------------------
     private fun setupPlaceCategories() {
         // Food & Drinks Category
         val foodAdapter = PlaceCategoryGroupAdapter(foodAndDrinksList)

@@ -7,21 +7,31 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
+import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
 
 class QuickPlaceCategoryAdapter(
-    private val categories: MutableList<PlaceTypeIcon>, // Change to MutableList
-    private val onItemClick: (PlaceTypeIcon) -> Unit
+    private val categories: MutableList<Any>, // Can be PlaceTypeIcon or PlaceItem.Header
+    private val onItemClick: (PlaceTypeIcon) -> Unit // Still handles category clicks
 ) : RecyclerView.Adapter<QuickPlaceCategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.iv_category_icon)
         private val title: TextView = itemView.findViewById(R.id.tv_category_name)
 
-        fun bind(category: PlaceTypeIcon) {
-            icon.setImageResource(category.icon)
-            title.text = category.title
-            itemView.setOnClickListener { onItemClick(category) }
+        fun bind(item: Any) {
+            when (item) {
+                is PlaceTypeIcon -> {
+                    icon.setImageResource(item.icon) // Set category icon
+                    title.text = item.title // Set category title
+                    itemView.setOnClickListener { onItemClick(item) }
+                }
+
+                is PlaceItem.Header -> {
+                    icon.setImageResource(item.headerIcon) // Set header icon
+                    title.text = item.title // Set header title
+                }
+            }
         }
     }
 
@@ -37,15 +47,13 @@ class QuickPlaceCategoryAdapter(
 
     override fun getItemCount(): Int = categories.size
 
-    // Clear the current categories and notify the adapter
     fun clearCategories() {
         categories.clear()
-        notifyDataSetChanged() // Notify the adapter that the data has changed
+        notifyDataSetChanged()
     }
 
-    // Add a new category and notify the adapter
-    fun addCategory(category: PlaceTypeIcon) {
-        categories.add(category)
-        notifyItemInserted(categories.size - 1) // Notify that a new item was inserted
+    fun addCategory(item: Any) {
+        categories.add(item)
+        notifyItemInserted(categories.size - 1)
     }
 }
