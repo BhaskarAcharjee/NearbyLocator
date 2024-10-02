@@ -1,5 +1,6 @@
 package com.example.nearbylocator.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.nearbylocator.model.PlaceTypeIcon
 
 class QuickPlaceCategoryAdapter(
     private val categories: MutableList<Any>, // Can be PlaceTypeIcon or PlaceItem.Header
-    private val onItemClick: (PlaceTypeIcon) -> Unit // Still handles category clicks
+    private val onItemClick: (Any) -> Unit // Change type to Any to handle both types
 ) : RecyclerView.Adapter<QuickPlaceCategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,12 +25,13 @@ class QuickPlaceCategoryAdapter(
                 is PlaceTypeIcon -> {
                     icon.setImageResource(item.icon) // Set category icon
                     title.text = item.title // Set category title
-                    itemView.setOnClickListener { onItemClick(item) }
+                    itemView.setOnClickListener { onItemClick(item) } // Handle click for PlaceTypeIcon
                 }
 
                 is PlaceItem.Header -> {
                     icon.setImageResource(item.headerIcon) // Set header icon
                     title.text = item.title // Set header title
+                    itemView.setOnClickListener { onItemClick(item) }   // Handle click for PlaceItem.Header
                 }
             }
         }

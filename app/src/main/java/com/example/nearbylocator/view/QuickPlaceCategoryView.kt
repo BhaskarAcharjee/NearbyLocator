@@ -40,10 +40,21 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     // Set up the RecyclerView and adapter for the quick categories
     private fun setupRecyclerView() {
         quickPlaceCategoryAdapter = QuickPlaceCategoryAdapter(mutableListOf()) { category ->
-            // Handle item click, navigate to CategoryIndividualFragment with category type
-            val action =
-                HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(category.title)
-            findNavController().navigate(action)
+            when (category) {
+                is PlaceTypeIcon -> {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(
+                            category.title
+                        )
+                    findNavController().navigate(action)
+                }
+
+                is PlaceItem.Header -> {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToCategoryGroupFragment(category.title)
+                    findNavController().navigate(action)
+                }
+            }
         }
         binding.rvCategories.adapter = quickPlaceCategoryAdapter
         binding.rvCategories.layoutManager =
@@ -77,20 +88,6 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
             }
         }
     }
-
-    // Public method to update categories with selected ones
-    fun updateCategories(selectedCategories: MutableSet<PlaceTypeIcon>) {
-        quickPlaceCategoryAdapter.clearCategories()
-
-        if (selectedCategories.isEmpty()) {
-            displayDefaultCategories() // Re-display default categories if no selection
-        } else {
-            selectedCategories.forEach { category ->
-                quickPlaceCategoryAdapter.addCategory(category) // Pass PlaceTypeIcon
-            }
-        }
-    }
-
 
     // Optional callback for handling "See All" button click
     var onSeeAllClicked: (() -> Unit)? = null

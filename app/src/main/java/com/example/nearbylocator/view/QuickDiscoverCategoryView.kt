@@ -73,15 +73,5 @@ class QuickDiscoverCategoryView @JvmOverloads constructor(
         }
     }
 
-    fun setCategoryIcons(categoryList: MutableList<PlaceTypeIcon>) {
-        quickDiscoverCategoryAdapter.clearCategories()
-        quickDiscoverCategoryAdapter = QuickDiscoverCategoryAdapter(context, categoryList) { category ->
-            // Handle item click and navigate to CategoryIndividualFragment
-            val action = HomeFragmentDirections.actionHomeFragmentToCategoryIndividualFragment(category.title)
-            findNavController().navigate(action)
-        }
-        recyclerView.adapter = quickDiscoverCategoryAdapter
-        quickDiscoverCategoryAdapter.notifyDataSetChanged()
-    }
 }
 
