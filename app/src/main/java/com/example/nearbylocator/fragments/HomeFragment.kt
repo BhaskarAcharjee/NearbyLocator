@@ -12,7 +12,7 @@ import com.example.nearbylocator.databinding.FragmentHomeBinding
 import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.repository.LocationRepository
-import com.example.nearbylocator.utils.PlaceCategoryItems
+import com.example.nearbylocator.constants.PlaceCategoryItems
 import com.example.nearbylocator.utils.educationList
 import com.example.nearbylocator.utils.entertainmentList
 import com.example.nearbylocator.utils.financialServicesList

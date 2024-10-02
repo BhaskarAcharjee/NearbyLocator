@@ -7,22 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nearbylocator.adapters.InstamartImageAdapter
 import com.example.nearbylocator.databinding.FragmentCategoryGroupBinding
-import com.example.nearbylocator.utils.hotDealsList
-import com.example.nearbylocator.utils.instamartSlide1
 import com.example.nearbylocator.utils.instamartSlide2
 import com.example.nearbylocator.utils.services_hint_Strings
-import com.example.nearbylocator.utils.topPicksList
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 
-class CategoryGroupFragment : Fragment() {
+class CategoryGroupFragment : Fragment(), OnMapReadyCallback { // Implement OnMapReadyCallback
 
     // Declare necessary variables
     private lateinit var handler: Handler
-    private lateinit var hotDealsAdapter: InstamartImageAdapter
-    private lateinit var topPicksAdapter: InstamartImageAdapter
     private lateinit var binding: FragmentCategoryGroupBinding
+    private lateinit var mapView: MapView
+    private lateinit var googleMap: GoogleMap
 
     // Inflate the layout using view binding
     override fun onCreateView(
@@ -37,12 +37,17 @@ class CategoryGroupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeComponents()// Initialize all UI components
-        setCategoryTitle()// Set the category title (from arguments or default)
-        setupRecyclerViews()// Set up the RecyclerViews for Hot Deals and Top Picks
-        setupScrollView()// Handle scrolling to toggle header visibility
-        setupSearchBar()// Set up the search bar with dynamic hints
-        setupOffersView()// Set up the offers ViewPager for sliding images
+        initializeComponents() // Initialize all UI components
+
+        // Initialize MapView
+        mapView = binding.mapView
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this) // Register the map ready callback
+
+        setCategoryTitle() // Set the category title (from arguments or default)
+        setupScrollView() // Handle scrolling to toggle header visibility
+        setupSearchBar() // Set up the search bar with dynamic hints
+        setupOffersView() // Set up the offers ViewPager for sliding images
     }
 
     // Set the category title in both the main and top headers
@@ -59,38 +64,7 @@ class CategoryGroupFragment : Fragment() {
 
     // Set up the offers ViewPager (or custom OffersView) with image lists
     private fun setupOffersView() {
-        // For first set of images
-        binding.offersView.setImageList(instamartSlide1)
-        // For second set of images
-        binding.offersView2.setImageList(instamartSlide2)
-    }
-
-    // Set up RecyclerViews for Hot Deals and Top Picks sections
-    private fun setupRecyclerViews() {
-        setupHotDealsRecyclerView()   // Set up Hot Deals section
-        setupTopPicksRecyclerView()   // Set up Top Picks section
-    }
-
-    // Set up Hot Deals RecyclerView with horizontal scrolling
-    private fun setupHotDealsRecyclerView() {
-        binding.rvHotdeals.apply {
-            layoutManager = LinearLayoutManager(
-                requireContext(), LinearLayoutManager.HORIZONTAL, false
-            )
-            hotDealsAdapter = InstamartImageAdapter(hotDealsList)
-            adapter = hotDealsAdapter
-        }
-    }
-
-    // Set up Top Picks RecyclerView with horizontal scrolling
-    private fun setupTopPicksRecyclerView() {
-        binding.rvTopPicks.apply {
-            layoutManager = LinearLayoutManager(
-                requireContext(), LinearLayoutManager.HORIZONTAL, false
-            )
-            topPicksAdapter = InstamartImageAdapter(topPicksList)
-            adapter = topPicksAdapter
-        }
+        binding.offersView2.setImageList(instamartSlide2) // For second set of images
     }
 
     // Toggle header visibility based on scroll position in ScrollView
@@ -108,5 +82,38 @@ class CategoryGroupFragment : Fragment() {
     private fun setupSearchBar() {
         val searchBarView = binding.searchBarView
         searchBarView.setHints(services_hint_Strings)  // Set hints dynamically
+    }
+
+    // Set up the MapView when the map is ready
+    override fun onMapReady(googleMap: GoogleMap) {
+        this.googleMap = googleMap
+        val location = LatLng(-34.0, 151.0) // Example coordinates
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
+    }
+
+    // Ensure you call the appropriate MapView lifecycle methods
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
     }
 }

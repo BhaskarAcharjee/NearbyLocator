@@ -82,115 +82,25 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="100sp"
-                android:layout_height="50sp"
-                android:layout_gravity="center"
-                android:paddingTop="10sp"
-                android:src="@drawable/img_offerzone" />
+            <!-- Mapview -->
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:contentDescription="Mapview" />
 
-            <!-- Offers Section -->
-            <com.example.nearbylocator.view.OffersView
-                android:id="@+id/offers_view"
+            <!--  Discover Sub Category -->
+            <com.example.nearbylocator.view.QuickDiscoverCategoryView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="18sp"
-                android:layout_gravity="center"
-                android:src="@drawable/img_graboffer" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="20sp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/swiggy_font_extrabold"
-                    android:paddingStart="10sp"
-                    android:text="Food &amp; Drinks Categories"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="650sp"
-                    android:src="@drawable/instamart_all" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="20sp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/swiggy_font_extrabold"
-                    android:paddingStart="10sp"
-                    android:text="Hot Deals!"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/swiggy_font_light"
-                    android:maxLines="1"
-                    android:paddingStart="10sp"
-                    android:text="Grab upto 30% off, exclusively for you"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_hotdeals"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp" />
-
-            </LinearLayout>
-
-            <!--            Advertisement -->
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical"-->
-            <!--                android:paddingTop="20sp">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:fontFamily="@font/swiggy_font_extrabold"-->
-            <!--                    android:paddingStart="10sp"-->
-            <!--                    android:text="Brand with a buzz!"-->
-            <!--                    android:textColor="@color/black"-->
-            <!--                    android:textSize="18sp" />-->
-
-
-            <!--                <ImageView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="350sp"-->
-            <!--                    android:layout_marginTop="15sp"-->
-            <!--                    android:src="@drawable/img_brand" />-->
-
-
-            <!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="280sp"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
-                android:background="#f1f1f4"
+                android:background="@color/light_grey"
                 android:orientation="vertical"
                 android:paddingTop="20sp"
                 android:paddingBottom="20sp">
@@ -238,45 +148,11 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="20sp"
-                android:paddingBottom="20sp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/swiggy_font_extrabold"
-                    android:paddingStart="10sp"
-                    android:text="Top picks for you"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/swiggy_font_light"
-                    android:maxLines="1"
-                    android:paddingStart="10sp"
-                    android:text="Based on what's popular around you"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_top_picks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15sp" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#f1f1f4"
+                android:background="@color/light_grey"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="30sp">

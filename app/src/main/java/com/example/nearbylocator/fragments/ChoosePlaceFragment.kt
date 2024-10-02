@@ -13,7 +13,7 @@ import com.example.nearbylocator.adapters.ChoosePlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentChoosePlaceBinding
 import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
-import com.example.nearbylocator.utils.PlaceCategoryItems
+import com.example.nearbylocator.constants.PlaceCategoryItems
 
 class ChoosePlaceFragment : Fragment() {
 

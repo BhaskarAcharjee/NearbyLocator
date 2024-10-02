@@ -79,7 +79,7 @@ class ChoosePlaceCategoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_HEADER) {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.header_layout, parent, false)
+                .inflate(R.layout.layout_header_choose_place_category, parent, false)
             HeaderViewHolder(view)
         } else {
             val view = LayoutInflater.from(parent.context)
