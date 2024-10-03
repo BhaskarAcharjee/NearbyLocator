@@ -14,14 +14,12 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nearbylocator.R
-import com.example.nearbylocator.adapters.MapviewFilterPlaceCategoryAdapter
 import com.example.nearbylocator.databinding.FragmentMapviewBinding
 import com.example.nearbylocator.model.MapviewFavDataClass
-import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.utils.mapviewFavDataClasses
 import com.example.nearbylocator.utils.places_hint_Strings
 import com.example.nearbylocator.view.MapviewFavAdapter
+import com.example.nearbylocator.view.MapviewHorizontalContainerView
 import com.example.nearbylocator.view.SearchBarView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -47,6 +45,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private lateinit var searchBar: SearchBarView
     private lateinit var favoriteCardsRecyclerView: RecyclerView
+    private lateinit var horizontalContainerView: MapviewHorizontalContainerView
 
     // Extended card views
     private lateinit var extendedHotelName: TextView
@@ -76,13 +75,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         setupLocationButton()
     }
 
-    // Set up and initialize the required UI components
-    private fun setupUIComponents(view: View) {
-        mapView = binding.mapView
-        favoriteCardsRecyclerView = binding.favoriteCardsRecyclerView
-        searchBar = binding.searchBarView
-    }
-
     // Set up the map view and location services
     private fun setupMapView(savedInstanceState: Bundle?) {
         mapView.onCreate(savedInstanceState)
@@ -90,7 +82,15 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
     }
 
-    // Set up the RecyclerView to display favorite places
+    // Update setupUIComponents method
+    private fun setupUIComponents(view: View) {
+        mapView = binding.mapView
+        favoriteCardsRecyclerView = binding.favoriteCardsRecyclerView
+        searchBar = binding.searchBarView
+        horizontalContainerView = binding.mapviewHorizontalContainerView
+    }
+
+    // Update the setupRecyclerView method
     private fun setupRecyclerView() {
         favoriteCardsRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -102,46 +102,10 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         }
         favoriteCardsRecyclerView.adapter = mapviewFavAdapter
 
-        val recyclerView = binding.recyclerViewHorizontalFilter
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val categoriesToDisplay = getCategoriesToDisplay()
-        val adapter = MapviewFilterPlaceCategoryAdapter(categoriesToDisplay)
-        recyclerView.adapter = adapter
+        // Setup custom horizontal container view
+        horizontalContainerView.setupRecyclerView(ChoosePlaceFragment.selectedCategories)
     }
 
-    // Helper method to get the categories to display
-    private fun getCategoriesToDisplay(): List<PlaceTypeIcon> {
-        return if (ChoosePlaceFragment.selectedCategories.isNotEmpty()) {
-            ChoosePlaceFragment.selectedCategories.toList()
-        } else {
-            listOf(
-                PlaceTypeIcon("Hospital", R.drawable.place_category_icon_hospital),
-                PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
-                PlaceTypeIcon("Supermarket", R.drawable.place_category_icon_supermarket),
-                PlaceTypeIcon("Gym", R.drawable.place_category_icon_gym),
-                PlaceTypeIcon("Bus Stop", R.drawable.place_category_icon_busstop),
-                PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
-                PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
-                PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries),
-            )
-        }
-    }
-
-    // Set up bottom sheet behavior to expand/collapse details
-    private fun setupBottomSheetBehavior() {
-        val bottomSheet: LinearLayout = binding.layoutMiscellaneous
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.peekHeight = 0
-
-        bottomSheetBehavior.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                toggleSearchBarVisibility(newState)
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
-    }
 
     // Set up hints for the search bar
     private fun setupSearchBarHints() {
@@ -161,6 +125,22 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
                 favoriteCardsRecyclerView.visibility = View.VISIBLE
             }
         }
+    }
+
+    // Set up bottom sheet behavior to expand/collapse details
+    private fun setupBottomSheetBehavior() {
+        val bottomSheet: LinearLayout = binding.layoutMiscellaneous
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.peekHeight = 0
+
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                toggleSearchBarVisibility(newState)
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
     }
 
     // Populate extended card with selected place details

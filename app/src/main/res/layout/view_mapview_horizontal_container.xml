@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/horizontal_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
     android:orientation="horizontal"
     android:paddingStart="8dp"
-    android:paddingEnd="8dp">
+    android:paddingEnd="8dp"
+    android:layout_marginBottom="16dp">
 
     <!-- Fixed image container on the left -->
     <LinearLayout
@@ -28,12 +27,12 @@
             android:src="@drawable/ic_expand" />
     </LinearLayout>
 
-    <!-- Scrollable images with ImageView + TextView in rounded background, aligned horizontally -->
+    <!-- Scrollable images with ImageView + TextView in rounded background -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHorizontalFilter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:scrollbars="none"/>
+        android:scrollbars="none" />
 </LinearLayout>
