@@ -15,16 +15,19 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/saved_image_view"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_saved" />
 
         <ImageView
+            android:id="@+id/expand_image_view"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_expand" />
+
     </LinearLayout>
 
     <!-- Scrollable images with ImageView + TextView in rounded background -->

@@ -9,15 +9,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 import com.example.nearbylocator.model.PlaceTypeIcon
 
-class MapviewFilterPlaceCategoryAdapter(private var items: List<PlaceTypeIcon>) : RecyclerView.Adapter<MapviewFilterPlaceCategoryAdapter.PlaceViewHolder>() {
+class MapviewFilterPlaceCategoryAdapter(
+    private var items: List<PlaceTypeIcon>,
+    private val onItemClick: (Int) -> Unit // Callback for item click
+) : RecyclerView.Adapter<MapviewFilterPlaceCategoryAdapter.PlaceViewHolder>() {
+
+    private var selectedPosition: Int = RecyclerView.NO_POSITION // Track selected position
 
     class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.place_icon)
         private val title: TextView = itemView.findViewById(R.id.place_title)
 
-        fun bind(placeTypeIcon: PlaceTypeIcon) {
+        fun bind(placeTypeIcon: PlaceTypeIcon, isSelected: Boolean) {
             icon.setImageResource(placeTypeIcon.icon)
             title.text = placeTypeIcon.title
+
+            // Set background based on selection state
+            itemView.background = if (isSelected) {
+                itemView.context.getDrawable(R.drawable.rounded_corner_active) // Use itemView.context
+            } else {
+                itemView.context.getDrawable(R.drawable.rounded_corner) // Use itemView.context
+            }
         }
     }
 
@@ -28,7 +40,16 @@ class MapviewFilterPlaceCategoryAdapter(private var items: List<PlaceTypeIcon>) 
     }
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
-        holder.bind(items[position])
+        val isSelected = position == selectedPosition // Determine if the item is selected
+        holder.bind(items[position], isSelected)
+
+        // Handle item clicks
+        holder.itemView.setOnClickListener {
+            // Update the selected position
+            selectedPosition = position
+            onItemClick(position) // Notify the click event
+            notifyDataSetChanged() // Refresh the list to update backgrounds
+        }
     }
 
     override fun getItemCount(): Int = items.size
