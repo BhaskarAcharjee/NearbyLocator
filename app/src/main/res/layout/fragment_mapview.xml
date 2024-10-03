@@ -28,11 +28,53 @@
             android:outlineSpotShadowColor="@android:color/transparent" />
 
         <!-- Use the custom view instead of the inline LinearLayout -->
-        <com.example.nearbylocator.view.MapviewHorizontalContainerView
-            android:id="@+id/horizontal_container_view"
+<!--        <com.example.nearbylocator.view.MapviewHorizontalContainerView-->
+<!--            android:id="@+id/horizontal_container_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/search_bar_view"-->
+<!--            android:scrollbars="none" />-->
+
+        <LinearLayout
+            android:id="@+id/horizontal_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/search_bar_view" />
+            android:layout_marginBottom="16dp"
+            android:layout_below="@id/search_bar_view"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <!-- Fixed image container on the left -->
+            <LinearLayout
+                android:id="@+id/fixed_image_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_saved" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_expand" />
+            </LinearLayout>
+
+            <!-- Scrollable images with ImageView + TextView in rounded background, aligned horizontally -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHorizontalFilter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:scrollbars="none"/>
+        </LinearLayout>
+
 
         <!-- Icon container moved to a vertical arrangement, near the left side -->
         <LinearLayout
