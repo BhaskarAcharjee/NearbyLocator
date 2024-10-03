@@ -83,7 +83,7 @@ class ChoosePlaceCategoryAdapter(
             HeaderViewHolder(view)
         } else {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.card_choose_place_category, parent, false)
+                .inflate(R.layout.item_choose_place_category, parent, false)
             CategoryViewHolder(view)
         }
     }

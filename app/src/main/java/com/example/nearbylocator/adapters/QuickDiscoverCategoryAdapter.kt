@@ -33,7 +33,7 @@ class QuickDiscoverCategoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
-            .inflate(R.layout.card_quick_place_category, parent, false)
+            .inflate(R.layout.item_quick_place_category, parent, false)
         return ViewHolder(view)
     }
 

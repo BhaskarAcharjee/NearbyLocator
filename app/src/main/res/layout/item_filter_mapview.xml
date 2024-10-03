@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/rounded_corner"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="3dp">
+
+    <ImageView
+        android:id="@+id/place_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/place_category_icon_bank"/>
+
+    <TextView
+        android:id="@+id/place_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical"
+        android:text="Place"
+        android:textColor="@color/blackTextColor"
+        android:textSize="12sp" />
+</LinearLayout>
