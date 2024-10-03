@@ -49,7 +49,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private lateinit var extendedTime: TextView
     private lateinit var extendedType: TextView
     private lateinit var extendedLocation: TextView
-//    private lateinit var extendedFoodImage: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,6 +73,11 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         setupRecyclerView()
         setupBottomSheet(view)
         setupSearchbarView()
+
+        // Set up the "Current Location" button to get the user's current location
+        binding.fabCurrentLocation.setOnClickListener {
+            moveToCurrentLocation()
+        }
     }
 
     private fun setupSearchbarView() {
@@ -110,9 +114,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private fun setupBottomSheet(view: View) {
         val bottomSheet: LinearLayout = view.findViewById(R.id.layoutMiscellaneous)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-
-        // No need to set the initial state here since it's gone in XML
-        // bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN // This is not needed now
         bottomSheetBehavior.peekHeight = 0
 
         bottomSheetBehavior.addBottomSheetCallback(object :
@@ -136,7 +137,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun expandBottomSheet() {
-        // Set the visibility to VISIBLE before expanding the bottom sheet
         binding.layoutMiscellaneous.visibility = View.VISIBLE
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
@@ -144,7 +144,11 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
 
-        // Check permission before requesting location
+        // Disable default location button
+        // Commenting out this line will remove the default My Location button
+        // googleMap.isMyLocationEnabled = true
+
+        // Get the user's current location and move the camera to that position
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -166,10 +170,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             return
         }
 
-        // Enable "My Location" on the map
-        googleMap.isMyLocationEnabled = true
-
-        // Get the user's current location and move the camera to that position
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val userLocation = LatLng(it.latitude, it.longitude)
@@ -197,12 +197,6 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
             googleMap.addMarker(MarkerOptions().position(latLng).title(addressText))
                 ?.showInfoWindow()
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-        }
-
-        // Handle clicking on the "My Location" button
-        googleMap.setOnMyLocationButtonClickListener {
-            moveToCurrentLocation()
-            true
         }
     }
 
@@ -232,7 +226,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     }
 
 
-    // Lifecycle methods for MapView
+// Lifecycle methods for MapView
     override fun onResume() {
         super.onResume()
         mapView.onResume()

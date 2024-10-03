@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.mapviewFragment -> {
-                updateStatusBar(R.color.white, false)
+                updateStatusBar(R.color.white, true)
                 updateViewVisibility(binding.viewMapview)
                 updateSelectedTextView(binding.tvMapview)
             }
