@@ -73,7 +73,35 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         setupBottomSheetBehavior()
         setupSearchBarHints()
         setupLocationButton()
+        setupSearchBarSearchListener()// Listen to search input
     }
+
+    private fun setupSearchBarSearchListener() {
+        searchBar.setOnSearchListener { query ->
+            searchForLocation(query)
+        }
+    }
+
+    private fun searchForLocation(query: String) {
+        try {
+            val geocoder = Geocoder(requireContext())
+            val addresses = geocoder.getFromLocationName(query, 1)
+
+            if (!addresses.isNullOrEmpty()) {
+                val address = addresses[0]
+                val latLng = LatLng(address.latitude, address.longitude)
+
+                // Update map location and add marker
+                updateMapLocation(latLng, address.getAddressLine(0))
+            } else {
+                Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(requireContext(), "Error finding location", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     // Set up the map view and location services
     private fun setupMapView(savedInstanceState: Bundle?) {
@@ -207,7 +235,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         return true
     }
 
-    // Update the map location with a marker
+    // Method to update the map location and add a marker
     private fun updateMapLocation(latLng: LatLng, title: String) {
         googleMap.apply {
             moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))

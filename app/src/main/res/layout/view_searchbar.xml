@@ -50,6 +50,7 @@
 
     <!-- Search Icon -->
     <ImageView
+        android:id="@+id/iv_search"
         android:layout_width="20sp"
         android:layout_height="20sp"
         android:layout_marginEnd="10sp"
