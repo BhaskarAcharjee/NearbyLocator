@@ -14,6 +14,8 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nearbylocator.R
+import com.example.nearbylocator.adapters.AutocompleteAdapter
 import com.example.nearbylocator.databinding.FragmentMapviewBinding
 import com.example.nearbylocator.model.MapviewFavDataClass
 import com.example.nearbylocator.utils.mapviewFavDataClasses
@@ -29,6 +31,9 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import java.util.Locale
 
@@ -39,6 +44,8 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var placesClient: PlacesClient
+    private lateinit var autocompleteAdapter: AutocompleteAdapter
 
     // UI Components
     private lateinit var mapviewFavAdapter: MapviewFavAdapter
@@ -46,6 +53,7 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     private lateinit var searchBar: SearchBarView
     private lateinit var favoriteCardsRecyclerView: RecyclerView
     private lateinit var horizontalContainerView: MapviewHorizontalContainerView
+    private lateinit var autocompleteRecyclerView: RecyclerView
 
     // Extended card views
     private lateinit var extendedHotelName: TextView
@@ -67,6 +75,13 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize Places API
+        if (!Places.isInitialized()) {
+            Places.initialize(requireContext(), getString(R.string.google_maps_key))
+        }
+        placesClient = Places.createClient(requireContext())
+
+
         setupUIComponents(view)
         setupMapView(savedInstanceState)
         setupRecyclerView()
@@ -77,8 +92,13 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupSearchBarSearchListener() {
-        searchBar.setOnSearchListener { query ->
-            searchForLocation(query)
+        searchBar.setOnTextChangedListener { query ->
+            if (query.isNotEmpty()) {
+                fetchAutocompleteSuggestions(query) // Fetch suggestions based on user input
+            } else {
+                autocompleteRecyclerView.visibility =
+                    View.GONE // Hide suggestions if input is empty
+            }
         }
     }
 
@@ -116,7 +136,40 @@ class MapViewFragment : Fragment(), OnMapReadyCallback {
         favoriteCardsRecyclerView = binding.favoriteCardsRecyclerView
         searchBar = binding.searchBarView
         horizontalContainerView = binding.mapviewHorizontalContainerView
+        autocompleteRecyclerView = searchBar.findViewById(R.id.autocompleteRecyclerView)
+
+        autocompleteAdapter = AutocompleteAdapter(emptyList()) { prediction ->
+            // Handle prediction click
+            searchBar.updateEditText(prediction.getFullText(null).toString())
+            searchForLocation(prediction.getFullText(null).toString())
+            autocompleteRecyclerView.visibility = View.GONE // Hide suggestions on click
+        }
+
+        autocompleteRecyclerView.layoutManager = LinearLayoutManager(context)
+        autocompleteRecyclerView.adapter = autocompleteAdapter
     }
+
+    private fun fetchAutocompleteSuggestions(query: String) {
+        val request = FindAutocompletePredictionsRequest.builder()
+            .setQuery(query)
+            .build()
+
+        placesClient.findAutocompletePredictions(request)
+            .addOnSuccessListener { response ->
+                val predictions = response.autocompletePredictions
+                autocompleteAdapter.updateData(predictions)
+                autocompleteRecyclerView.visibility =
+                    if (predictions.isNotEmpty()) View.VISIBLE else View.GONE
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    requireContext(),
+                    "Error fetching suggestions: $exception",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
 
     // Update the setupRecyclerView method
     private fun setupRecyclerView() {

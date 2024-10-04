@@ -3,6 +3,8 @@ package com.example.nearbylocator.view
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,8 @@ import android.widget.TextSwitcher
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nearbylocator.R
 import com.google.android.material.card.MaterialCardView
 
@@ -26,9 +30,9 @@ class SearchBarView @JvmOverloads constructor(
     private var textSwitcher: TextSwitcher
     private var editText: EditText
     private var searchIcon: ImageView
+    private var suggestionsRecyclerView: RecyclerView
     private var currentHintIndex = 0
     private val handler = Handler(Looper.getMainLooper())
-
     private var onSearchListener: ((String) -> Unit)? = null
 
     private val hintStrings = mutableListOf<String>()
@@ -39,6 +43,7 @@ class SearchBarView @JvmOverloads constructor(
         textSwitcher = findViewById(R.id.textSwitcher)
         editText = findViewById(R.id.et_search_input)
         searchIcon = findViewById(R.id.iv_search)
+        suggestionsRecyclerView = findViewById(R.id.autocompleteRecyclerView)
 
         setupTextSwitcher()
         switchText()
@@ -52,22 +57,24 @@ class SearchBarView @JvmOverloads constructor(
         editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 textSwitcher.visibility = View.GONE
+                findViewById<TextView>(R.id.tv_search).visibility = View.GONE
                 editText.visibility = View.VISIBLE
             } else {
-                // Show TextSwitcher if EditText is empty and it loses focus
                 if (editText.text.isNullOrEmpty()) {
                     textSwitcher.visibility = View.VISIBLE
+                    findViewById<TextView>(R.id.tv_search).visibility = View.VISIBLE
                     editText.visibility = View.GONE
                 }
             }
         }
 
-        // Set listener to trigger search when "Done" button is pressed on the keyboard
+        // Listener to trigger search when "Done" button is pressed on keyboard
         editText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = editText.text.toString()
                 if (query.isNotEmpty()) {
-                    onSearchListener?.invoke(query) // Invoke the search listener
+                    onSearchListener?.invoke(query)
+                    hideSuggestions() // Hide suggestions
                 }
                 true
             } else {
@@ -75,16 +82,26 @@ class SearchBarView @JvmOverloads constructor(
             }
         }
 
-        // Set listener to trigger search when the search icon is clicked
+        // Listener to trigger search when the search icon is clicked
         searchIcon.setOnClickListener {
             val query = editText.text.toString()
             if (query.isNotEmpty()) {
-                onSearchListener?.invoke(query) // Invoke the search listener
+                onSearchListener?.invoke(query)
+                hideSuggestions() // Hide suggestions
+            }
+        }
+
+        // Text change listener to show suggestions
+        editText.addTextChangedListener {
+            val query = it.toString()
+            if (query.isNotEmpty()) {
+                showSuggestions(query) // Display suggestions
+            } else {
+                hideSuggestions() // Hide suggestions if input is empty
             }
         }
     }
 
-    // Set up the TextSwitcher for hint rotation
     private fun setupTextSwitcher() {
         textSwitcher.setFactory {
             val textView = TextView(context)
@@ -95,7 +112,6 @@ class SearchBarView @JvmOverloads constructor(
         }
     }
 
-    // Recursively switch between hint strings
     private fun switchText() {
         if (hintStrings.isNotEmpty()) {
             textSwitcher.setText(hintStrings[currentHintIndex])
@@ -104,21 +120,17 @@ class SearchBarView @JvmOverloads constructor(
         }
     }
 
-    // Show keyboard and request focus on EditText
     private fun showKeyboardAndFocus() {
         editText.visibility = View.VISIBLE
         editText.requestFocus()
-
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
 
-    // Set listener for search queries
     fun setOnSearchListener(listener: (String) -> Unit) {
         onSearchListener = listener
     }
 
-    // Set hints for the TextSwitcher
     fun setHints(hints: Array<String>) {
         if (hints.isNotEmpty()) {
             handler.removeCallbacksAndMessages(null)
@@ -129,8 +141,33 @@ class SearchBarView @JvmOverloads constructor(
         }
     }
 
+    // Update the EditText value programmatically
+    fun updateEditText(query: String) {
+        editText.setText(query)
+    }
+
+    // Show suggestions based on user input
+    private fun showSuggestions(query: String) {
+        suggestionsRecyclerView.visibility = View.VISIBLE
+    }
+
+    private fun hideSuggestions() {
+        suggestionsRecyclerView.visibility = View.GONE
+    }
+
+    fun setOnTextChangedListener(onTextChanged: (String) -> Unit) {
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                onTextChanged(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        handler.removeCallbacksAndMessages(null) // Clean up the handler
+        handler.removeCallbacksAndMessages(null)
     }
 }

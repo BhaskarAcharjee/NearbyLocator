@@ -22,5 +22,7 @@
     <string name="place_category1"><![CDATA[Food & Drinks]]></string>
     <string name="crafted_by">Crafted with ❤️ by Bhaskar Acharjee</string>
     <string name="discover_nearby">DISCOVER NEARBY</string>
+    <string name="google_maps_key">AIzaSyCMVFXS7EP4J9GTRqLfL9_ZQheI_ZsfrqQ</string>
+    <string name="place_prediction_text">Auto complete places suggestion</string>
 
 </resources>
