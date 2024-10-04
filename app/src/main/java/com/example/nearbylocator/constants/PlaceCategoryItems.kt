@@ -297,7 +297,7 @@ object PlaceCategoryItems {
                 PlaceTypeIcon(
                     "Library",
                     R.drawable.place_category_icon_library
-                ), PlaceItem.Header("Entertainment", R.drawable.place_category_group_icon_education)
+                ), PlaceItem.Header("Education", R.drawable.place_category_group_icon_education)
             ),
 
             // Religious

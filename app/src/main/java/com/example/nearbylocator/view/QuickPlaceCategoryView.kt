@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickPlaceCategoryAdapter
-import com.example.nearbylocator.databinding.LayoutQuickPlaceCategoryBinding
+import com.example.nearbylocator.databinding.ViewQuickPlaceCategoryBinding
 import com.example.nearbylocator.fragments.HomeFragmentDirections
 import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
@@ -19,7 +19,7 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val binding: LayoutQuickPlaceCategoryBinding
+    private val binding: ViewQuickPlaceCategoryBinding
     private lateinit var quickPlaceCategoryAdapter: QuickPlaceCategoryAdapter
 
     // Default categories that show initially
@@ -31,7 +31,7 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
 
     init {
         orientation = VERTICAL
-        binding = LayoutQuickPlaceCategoryBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewQuickPlaceCategoryBinding.inflate(LayoutInflater.from(context), this, true)
         setupRecyclerView()
         setupSeeAllClickListener()
         displayDefaultCategories() // Display the default categories on initialization

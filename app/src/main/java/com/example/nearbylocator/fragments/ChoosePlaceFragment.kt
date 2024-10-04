@@ -77,11 +77,11 @@ class ChoosePlaceFragment : Fragment() {
             ).show()
         }
 
-        binding.categoryRecyclerView.layoutManager = GridLayoutManager(context, 3).apply {
+        binding.categoryRecyclerView.layoutManager = GridLayoutManager(context, 4).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return when (adapter.getItemViewType(position)) {
-                        ChoosePlaceCategoryAdapter.VIEW_TYPE_HEADER -> 3
+                        ChoosePlaceCategoryAdapter.VIEW_TYPE_HEADER -> 4
                         ChoosePlaceCategoryAdapter.VIEW_TYPE_CATEGORY -> 1
                         else -> 1
                     }

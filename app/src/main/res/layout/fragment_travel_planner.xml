@@ -21,95 +21,106 @@
         android:outlineAmbientShadowColor="@android:color/transparent"
         android:outlineSpotShadowColor="@android:color/transparent" />
 
-    <!-- Suggested Destinations Section -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Suggested Destinations"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <!-- Destination List -->
+    <!-- Timeline View -->
+    <!-- Timeline View -->
     <LinearLayout
-        android:id="@+id/destinationList"
+        android:id="@+id/timeline_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
-
-        <!-- Sample Destination Card -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:padding="16dp"
+        android:orientation="horizontal">
+        <!-- Timeline Items -->
+        <TextView
+            android:id="@+id/timeline_step_1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/background_event_card"
-            android:clipToPadding="false"
-            android:elevation="4dp"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_weight="1"
+            android:text="Step 1: Where to?"
+            android:textColor="@color/colorPrimary"
+            android:tag="timeline_step_1" /> <!-- Added tag -->
 
-            <ImageView
-                android:id="@+id/destination_image"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:contentDescription="Destination Image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/dineout_hori_3" />
+        <TextView
+            android:id="@+id/timeline_step_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Step 2: How many days?"
+            android:textColor="@color/grey"
+            android:tag="timeline_step_2" /> <!-- Added tag -->
 
-            <TextView
-                android:id="@+id/destination_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Destination Title"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/timeline_step_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Step 3: Budget"
+            android:textColor="@color/grey"
+            android:tag="timeline_step_3" /> <!-- Added tag -->
 
-            <TextView
-                android:id="@+id/destination_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Description of the destination."
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/timeline_step_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Step 4: Features"
+            android:textColor="@color/grey"
+            android:tag="timeline_step_4" /> <!-- Added tag -->
 
-            <TextView
-                android:id="@+id/destination_distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Distance: 50 km"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btn_plan_trip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@android:drawable/ic_menu_directions"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Plan Trip"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-
-        <!-- Additional Destination Cards can be added here dynamically -->
+        <TextView
+            android:id="@+id/timeline_step_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Results"
+            android:textColor="@color/grey"
+            android:tag="timeline_step_5" /> <!-- Added tag -->
     </LinearLayout>
 
-    <!-- Placeholder for no destinations available -->
+
+    <!-- Question Container -->
+    <LinearLayout
+        android:id="@+id/question_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="12dp"
+        android:background="@drawable/background_rounded"
+        android:padding="16dp">
+        <!-- Dynamic views will be added here -->
+    </LinearLayout>
+
+    <!-- Navigation Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/btn_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Previous"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Next" />
+    </LinearLayout>
+
+    <!-- AI Suggestion Placeholder -->
     <TextView
-        android:id="@+id/no_destinations_text"
+        android:id="@+id/ai_suggestion_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="No suggested destinations available."
+        android:text="AI Suggestions will be displayed here."
         android:textColor="@color/grey"
         android:textSize="16sp"
         android:visibility="gone" />
