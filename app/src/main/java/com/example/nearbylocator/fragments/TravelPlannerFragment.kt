@@ -4,113 +4,139 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.NumberPicker
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.nearbylocator.R
-import com.example.nearbylocator.databinding.FragmentTravelPlannerBinding
-import com.example.nearbylocator.utils.places_hint_Strings
 
 class TravelPlannerFragment : Fragment() {
-    private lateinit var binding: FragmentTravelPlannerBinding
-    private val questions = mutableListOf<Question>()
-    private var currentQuestionIndex = 0
+
+    private lateinit var questionContainer: LinearLayout
+    private lateinit var nextButton: Button
+    private lateinit var previousButton: Button
+    private lateinit var aiSuggestionText: TextView
+    private lateinit var resultText: TextView
+    private lateinit var progressBar: ProgressBar // Declare the progress bar
+
+    private var currentStep = 1
+    private var destination: String? = null
+    private var numberOfDays: Int? = null
+    private var budget: Int? = null
+    private var features: MutableList<String> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentTravelPlannerBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_travel_planner, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupSearchbarView()
-        setupQuestions() // Prepare the questions
-        updateQuestionView() // Display the first question
+        questionContainer = view.findViewById(R.id.question_container)
+        nextButton = view.findViewById(R.id.btn_next)
+        previousButton = view.findViewById(R.id.btn_previous)
+        aiSuggestionText = view.findViewById(R.id.ai_suggestion_text)
+        resultText = view.findViewById(R.id.result_text)
+        progressBar = view.findViewById(R.id.timeline_progress_bar) // Initialize the progress bar
 
-        // Set up button click listeners
-        binding.btnNext.setOnClickListener { onNextButtonClick() }
-        binding.btnPrevious.setOnClickListener { onPreviousButtonClick() }
-    }
+        setupStep(currentStep)
 
-    private fun setupSearchbarView() {
-        val searchBarView = binding.searchBarView   // Access custom SearchBarView
-        searchBarView.setHints(places_hint_Strings) // Update hints dynamically
-    }
-
-    private fun setupQuestions() {
-        questions.add(Question("Where do you want to go?", true)) // Location question
-        questions.add(Question("How many days?", false)) // Days question
-        questions.add(Question("Choose a budget: Economic, Normal, Luxury", false)) // Budget question
-        questions.add(Question("Choose features: Chill Mode, Nature, etc.", false)) // Features question
-        questions.add(Question("AI Suggestions will be displayed here.", false, true)) // Suggestions
-    }
-
-    private fun updateQuestionView() {
-        binding.questionContainer.removeAllViews() // Clear previous views
-
-        val question = questions[currentQuestionIndex]
-
-        if (question.isOpenEnded) {
-            // For open-ended questions, show an EditText
-            val editText = EditText(requireContext())
-            editText.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            editText.hint = question.text
-            binding.questionContainer.addView(editText)
-        } else {
-            // For options, show a TextView with the question
-            val textView = TextView(requireContext())
-            textView.text = question.text
-            binding.questionContainer.addView(textView)
+        nextButton.setOnClickListener {
+            currentStep++
+            setupStep(currentStep)
         }
 
-        // Update timeline
-        updateTimeline()
+        previousButton.setOnClickListener {
+            currentStep--
+            setupStep(currentStep)
+        }
 
-        // Show or hide the previous button
-        binding.btnPrevious.visibility = if (currentQuestionIndex == 0) View.GONE else View.VISIBLE
-
-        // Show AI suggestions if this is the last question
-        binding.aiSuggestionText.visibility = if (question.isSuggestion) View.VISIBLE else View.GONE
-        binding.aiSuggestionText.text = "Coming Soon"
+        return view
     }
 
-    private fun updateTimeline() {
-        // Reset timeline colors
-        for (i in 1..5) {
-            val stepTextView = binding.timelineView.findViewWithTag<TextView>("timeline_step_$i")
-            stepTextView?.let {
-                it.setTextColor(resources.getColor(R.color.grey, null))
+    private fun setupStep(step: Int) {
+        questionContainer.removeAllViews()
+        previousButton.visibility = if (step > 1) View.VISIBLE else View.GONE
+
+        // Update the progress bar
+        progressBar.progress = step
+
+        when (step) {
+            1 -> showDestinationInput()
+            2 -> showNumberPicker()
+            3 -> showBudgetInput()
+            4 -> showFeaturesSelection()
+            5 -> showResults()
+            else -> return
+        }
+    }
+
+    private fun showDestinationInput() {
+        val editText = EditText(requireContext()).apply {
+            hint = "Enter your destination"
+        }
+        questionContainer.addView(editText)
+        editText.setOnEditorActionListener { _, _, _ ->
+            destination = editText.text.toString()
+            true
+        }
+    }
+
+    private fun showNumberPicker() {
+        val numberPicker = NumberPicker(requireContext()).apply {
+            minValue = 1
+            maxValue = 30
+            wrapSelectorWheel = false
+            setOnValueChangedListener { _, _, newValue ->
+                numberOfDays = newValue
             }
         }
+        questionContainer.addView(numberPicker)
+    }
 
-        // Highlight the current step
-        val currentStepTextView = binding.timelineView.findViewWithTag<TextView>("timeline_step_${currentQuestionIndex + 1}")
-        currentStepTextView?.let {
-            it.setTextColor(resources.getColor(R.color.colorPrimary, null))
+    private fun showBudgetInput() {
+        val editText = EditText(requireContext()).apply {
+            hint = "Enter your budget"
+            inputType = android.text.InputType.TYPE_CLASS_NUMBER
+        }
+        questionContainer.addView(editText)
+        editText.setOnEditorActionListener { _, _, _ ->
+            budget = editText.text.toString().toIntOrNull()
+            true
         }
     }
 
-
-    private fun onNextButtonClick() {
-        if (currentQuestionIndex < questions.size - 1) {
-            currentQuestionIndex++
-            updateQuestionView()
+    private fun showFeaturesSelection() {
+        val featuresOptions = listOf("Beach", "Adventure", "Cultural", "Relaxation")
+        featuresOptions.forEach { feature ->
+            val button = Button(requireContext()).apply {
+                text = feature
+                setOnClickListener {
+                    if (features.contains(feature)) {
+                        features.remove(feature)
+                    } else {
+                        features.add(feature)
+                    }
+                    updateFeatureButtons()
+                }
+            }
+            questionContainer.addView(button)
         }
     }
 
-    private fun onPreviousButtonClick() {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--
-            updateQuestionView()
-        }
+    private fun updateFeatureButtons() {
+        // Logic to visually indicate selected features
+    }
+
+    private fun showResults() {
+        aiSuggestionText.visibility = View.VISIBLE
+        resultText.visibility = View.VISIBLE
+        resultText.text = "Your Travel Plan:\n" +
+                "Destination: $destination\n" +
+                "Days: $numberOfDays\n" +
+                "Budget: $budget\n" +
+                "Features: ${features.joinToString(", ")}"
     }
 }
-
-data class Question(val text: String, val isOpenEnded: Boolean, val isSuggestion: Boolean = false)

@@ -11,6 +11,7 @@ import com.example.nearbylocator.R
 import com.example.nearbylocator.adapters.QuickDiscoverCategoryAdapter
 import com.example.nearbylocator.fragments.HomeFragmentDirections
 import com.example.nearbylocator.model.PlaceTypeIcon
+import com.example.nearbylocator.utils.defaultPlaceCategories
 
 class QuickDiscoverCategoryView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -19,17 +20,6 @@ class QuickDiscoverCategoryView @JvmOverloads constructor(
     private lateinit var quickDiscoverCategoryAdapter: QuickDiscoverCategoryAdapter
     private lateinit var recyclerView: RecyclerView
 
-    // Default categories that show initially
-    private val defaultCategories = mutableListOf(
-        PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
-        PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
-        PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries),
-        PlaceTypeIcon("Hospital", R.drawable.place_category_icon_hospital),
-        PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
-        PlaceTypeIcon("Supermarket", R.drawable.place_category_icon_supermarket),
-        PlaceTypeIcon("Gym", R.drawable.place_category_icon_gym),
-        PlaceTypeIcon("Bus Stop", R.drawable.place_category_icon_busstop),
-    )
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_quick_discover_category, this, true)
@@ -60,7 +50,7 @@ class QuickDiscoverCategoryView @JvmOverloads constructor(
     // Display the default categories in the RecyclerView
     private fun displayDefaultCategories() {
         quickDiscoverCategoryAdapter.clearCategories() // Clear any existing categories
-        defaultCategories.forEach { category ->
+        defaultPlaceCategories.forEach { category ->
             quickDiscoverCategoryAdapter.addCategory(category)
         }
     }

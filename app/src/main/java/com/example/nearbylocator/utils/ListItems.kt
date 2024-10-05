@@ -7,6 +7,8 @@ import com.example.nearbylocator.model.PlaceCategoryGroupDataClass
 import com.example.nearbylocator.model.HoriServicesDataClass
 import com.example.nearbylocator.model.MapviewDataClass
 import com.example.nearbylocator.model.MapviewFavDataClass
+import com.example.nearbylocator.model.PlaceItem
+import com.example.nearbylocator.model.PlaceTypeIcon
 import com.example.nearbylocator.model.VertiServicesDataClass
 
 //--------------------Search hints------------------------
@@ -66,6 +68,25 @@ val services_hint_Strings = arrayOf(
     "Childcare",
     "Photography Service",
     "Moving Company"
+)
+
+// Default categories that show initially
+val defaultPlaceCategories = mutableListOf(
+    PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
+    PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
+    PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries),
+    PlaceTypeIcon("Hospital", R.drawable.place_category_icon_hospital),
+    PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
+    PlaceTypeIcon("Supermarket", R.drawable.place_category_icon_supermarket),
+    PlaceTypeIcon("Gym", R.drawable.place_category_icon_gym),
+    PlaceTypeIcon("Bus Stop", R.drawable.place_category_icon_busstop),
+)
+
+// Default categories that show initially
+val defaultPlaceCategoryGroups = mutableListOf(
+    PlaceItem.Header("Food & Drinks", R.drawable.place_category_icon_restaurant),
+    PlaceItem.Header("Financial Services", R.drawable.place_category_icon_bank),
+    PlaceItem.Header("Health & Wellness", R.drawable.place_category_icon_hospital)
 )
 
 // Used in CategoryIndividualFragment

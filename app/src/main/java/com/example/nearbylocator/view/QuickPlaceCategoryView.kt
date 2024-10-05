@@ -12,6 +12,7 @@ import com.example.nearbylocator.databinding.ViewQuickPlaceCategoryBinding
 import com.example.nearbylocator.fragments.HomeFragmentDirections
 import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
+import com.example.nearbylocator.utils.defaultPlaceCategoryGroups
 
 class QuickPlaceCategoryView @JvmOverloads constructor(
     context: Context,
@@ -21,13 +22,6 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
 
     private val binding: ViewQuickPlaceCategoryBinding
     private lateinit var quickPlaceCategoryAdapter: QuickPlaceCategoryAdapter
-
-    // Default categories that show initially
-    private val defaultCategories = mutableListOf(
-        PlaceItem.Header("Food & Drinks", R.drawable.place_category_icon_restaurant),
-        PlaceItem.Header("Financial Services", R.drawable.place_category_icon_bank),
-        PlaceItem.Header("Health & Wellness", R.drawable.place_category_icon_hospital)
-    )
 
     init {
         orientation = VERTICAL
@@ -65,7 +59,7 @@ class QuickPlaceCategoryView @JvmOverloads constructor(
     // Display the default categories in the RecyclerView
     private fun displayDefaultCategories() {
         quickPlaceCategoryAdapter.clearCategories() // Clear any existing categories
-        defaultCategories.forEach { category ->
+        defaultPlaceCategoryGroups.forEach { category ->
             quickPlaceCategoryAdapter.addCategory(category)
         }
     }

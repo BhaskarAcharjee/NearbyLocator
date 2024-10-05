@@ -13,6 +13,8 @@ import com.example.nearbylocator.adapters.MapviewFilterPlaceCategoryAdapter
 import com.example.nearbylocator.fragments.ChoosePlaceFragment
 import com.example.nearbylocator.model.PlaceItem
 import com.example.nearbylocator.model.PlaceTypeIcon
+import com.example.nearbylocator.utils.defaultPlaceCategories
+import com.example.nearbylocator.utils.defaultPlaceCategoryGroups
 
 class MapviewHorizontalContainerView @JvmOverloads constructor(
     context: Context,
@@ -54,7 +56,10 @@ class MapviewHorizontalContainerView @JvmOverloads constructor(
 
     private fun updateSavedIcon() {
         if (isSaved) {
-            savedImageView.setColorFilter(resources.getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN)
+            savedImageView.setColorFilter(
+                resources.getColor(R.color.colorPrimary),
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
         } else {
             savedImageView.clearColorFilter()
         }
@@ -82,16 +87,7 @@ class MapviewHorizontalContainerView @JvmOverloads constructor(
         return if (selectedCategories.isNotEmpty()) {
             selectedCategories.toList()
         } else {
-            listOf(
-                PlaceTypeIcon("Hospital", R.drawable.place_category_icon_hospital),
-                PlaceTypeIcon("Cafe", R.drawable.place_category_icon_cafe),
-                PlaceTypeIcon("Supermarket", R.drawable.place_category_icon_supermarket),
-                PlaceTypeIcon("Gym", R.drawable.place_category_icon_gym),
-                PlaceTypeIcon("Bus Stop", R.drawable.place_category_icon_busstop),
-                PlaceTypeIcon("Restaurant", R.drawable.place_category_icon_restaurant),
-                PlaceTypeIcon("Bank", R.drawable.place_category_icon_bank),
-                PlaceTypeIcon("Grocery Store", R.drawable.place_category_icon_groceries),
-            )
+            defaultPlaceCategories
         }
     }
 
@@ -99,17 +95,14 @@ class MapviewHorizontalContainerView @JvmOverloads constructor(
         return if (selectedHeaders.isNotEmpty()) {
             selectedHeaders.toList()
         } else {
-            listOf(
-                PlaceItem.Header("Food & Drinks", R.drawable.place_category_icon_restaurant),
-                PlaceItem.Header("Financial Services", R.drawable.place_category_icon_bank),
-                PlaceItem.Header("Health & Wellness", R.drawable.place_category_icon_hospital)
-            )
+            defaultPlaceCategoryGroups
         }
     }
 
     // Update RecyclerView with category icons
     private fun updateRecyclerViewWithCategories(categories: List<PlaceTypeIcon>) {
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter = MapviewFilterPlaceCategoryAdapter(categories) { position ->
             // Handle category item click
         }
@@ -118,7 +111,8 @@ class MapviewHorizontalContainerView @JvmOverloads constructor(
 
     // Update RecyclerView with header icons and text
     private fun updateRecyclerViewWithHeaders(headers: List<PlaceItem.Header>) {
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val headerAdapter = MapviewFilterHeaderAdapter(headers) { position ->
             // Handle header item click
         }

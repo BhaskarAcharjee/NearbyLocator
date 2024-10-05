@@ -1,128 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     tools:context=".fragments.TravelPlannerFragment">
 
-    <!-- Header -->
-    <com.example.nearbylocator.view.HeaderView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Search Bar for searching destinations -->
-    <com.example.nearbylocator.view.SearchBarView
-        android:id="@+id/search_bar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:outlineAmbientShadowColor="@android:color/transparent"
-        android:outlineSpotShadowColor="@android:color/transparent" />
-
-    <!-- Timeline View -->
-    <!-- Timeline View -->
-    <LinearLayout
-        android:id="@+id/timeline_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal">
-        <!-- Timeline Items -->
-        <TextView
-            android:id="@+id/timeline_step_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Step 1: Where to?"
-            android:textColor="@color/colorPrimary"
-            android:tag="timeline_step_1" /> <!-- Added tag -->
-
-        <TextView
-            android:id="@+id/timeline_step_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Step 2: How many days?"
-            android:textColor="@color/grey"
-            android:tag="timeline_step_2" /> <!-- Added tag -->
-
-        <TextView
-            android:id="@+id/timeline_step_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Step 3: Budget"
-            android:textColor="@color/grey"
-            android:tag="timeline_step_3" /> <!-- Added tag -->
-
-        <TextView
-            android:id="@+id/timeline_step_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Step 4: Features"
-            android:textColor="@color/grey"
-            android:tag="timeline_step_4" /> <!-- Added tag -->
-
-        <TextView
-            android:id="@+id/timeline_step_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Results"
-            android:textColor="@color/grey"
-            android:tag="timeline_step_5" /> <!-- Added tag -->
-    </LinearLayout>
-
-
-    <!-- Question Container -->
-    <LinearLayout
-        android:id="@+id/question_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="12dp"
-        android:background="@drawable/background_rounded"
-        android:padding="16dp">
-        <!-- Dynamic views will be added here -->
-    </LinearLayout>
-
-    <!-- Navigation Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:layout_gravity="end">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_previous"
+        <!-- Header -->
+        <com.example.nearbylocator.view.HeaderView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Search Bar for searching destinations -->
+        <com.example.nearbylocator.view.SearchBarView
+            android:id="@+id/search_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Timeline Progress Bar -->
+        <ProgressBar
+            android:id="@+id/timeline_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:progress="20"
+            android:max="100"
+            android:progressTint="@color/colorAccent"
+            android:backgroundTint="@color/grey"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Timeline Steps with Icons-->
+        <LinearLayout
+            android:id="@+id/timeline_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@drawable/background_rounded"
+            android:elevation="3dp"
+            android:layout_marginBottom="12dp">
+
+            <!-- Timeline Items with Icons -->
+            <LinearLayout
+                android:id="@+id/timeline_step_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_location"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:text="Where to?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Step 2: How many days? -->
+            <LinearLayout
+                android:id="@+id/timeline_step_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_calender"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    android:text="How many days?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Step 3: Budget -->
+            <LinearLayout
+                android:id="@+id/timeline_step_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_dollar"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    android:text="Budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Step 4: Features -->
+            <LinearLayout
+                android:id="@+id/timeline_step_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_feature"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    android:text="Features"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Step 5: Results -->
+            <LinearLayout
+                android:id="@+id/timeline_step_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_result"
+                    app:tint="@color/grey" />
+
+                <TextView
+                    android:text="Results"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Question Container -->
+        <LinearLayout
+            android:id="@+id/question_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="12dp"
+            android:background="@drawable/background_rounded"
+            android:elevation="3dp"
+            android:padding="16dp">
+
+            <!-- Dynamic views will be added here, can be TextViews or EditTexts -->
+        </LinearLayout>
+
+        <!-- Navigation Buttons with Icons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btn_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Previous"
+                android:textColor="@color/whiteTextColor"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="start"
+                android:elevation="4dp"
+                android:background="@drawable/background_rounded" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/whiteTextColor"
+                android:text="Next"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="end"
+                android:elevation="4dp"
+                android:background="@drawable/background_button" />
+        </LinearLayout>
+
+        <!-- AI Suggestion Placeholder -->
+        <TextView
+            android:id="@+id/ai_suggestion_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:text="AI Suggestions will be displayed here."
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:elevation="2dp"
+            android:background="@drawable/background_rounded"
+            android:padding="12dp"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/btn_next"
+        <!-- Result View -->
+        <TextView
+            android:id="@+id/result_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="Next" />
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:elevation="2dp"
+            android:background="@drawable/background_rounded"
+            android:padding="12dp"
+            android:visibility="gone" />
     </LinearLayout>
-
-    <!-- AI Suggestion Placeholder -->
-    <TextView
-        android:id="@+id/ai_suggestion_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="AI Suggestions will be displayed here."
-        android:textColor="@color/grey"
-        android:textSize="16sp"
-        android:visibility="gone" />
-
-</LinearLayout>
+</ScrollView>
